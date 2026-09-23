@@ -1,8 +1,8 @@
 # jameshan.fyt.life
 
-The one-page site of James Han, a full-stack developer in Orange County, California, who builds websites, apps and automations for restaurants and small businesses.
+The one-page site of James Han, a full-stack developer in Orange County, California, who builds apps, websites and automations end to end.
 
-It is plain HTML and CSS with no JavaScript, no framework and no trackers. The page is laid out like a restaurant's takeout menu: numbered house specials (the work), a price list, and how to order.
+It is plain HTML and CSS with no JavaScript, no framework and no trackers: selected work, services, how a project runs, and how to get in touch.
 
 ## Build
 
