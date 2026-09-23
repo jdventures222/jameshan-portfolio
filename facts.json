@@ -5,7 +5,7 @@
     "name": "James Han",
     "role": "Full-stack developer for small businesses",
     "area": "Orange County, California",
-    "languages": ["English", "Vietnamese"],
+    "languages": ["English"],
     "email": "hanjames1999@gmail.com",
     "_sources": {
       "email": "chosen by James for publication, 2026-09-23"
@@ -25,7 +25,6 @@
     "latest_version_date": "2026-09-21",
     "app_store_url": "https://apps.apple.com/us/app/fyt-run-club-gym-tracker/id6783633047",
     "site_url": "https://fyt.life",
-    "contra_url": "https://contra.com/p/sZOQPmRO-fyt-run-club-and-gym-tracker-for-i-phone-and-apple-watch",
     "commits_since_2026_05_01": 3425,
     "swiftui_files": 283,
     "stack": ["Swift", "SwiftUI", "TypeScript", "Fastify", "PostgreSQL", "Fly.io"],
@@ -37,25 +36,6 @@
       "stack": "the Fyt API's package.json (fastify, drizzle-orm, pg-boss) and its Fly.io config"
     }
   },
-  "runbot": {
-    "name": "runbot",
-    "tagline": "An AI assistant inside a running club's group chat",
-    "live_since": "2026-05-09",
-    "live_since_display": "May 2026",
-    "posts": 435,
-    "group_chats": 14,
-    "requests_answered": 543,
-    "people": 82,
-    "group_runs": 62,
-    "as_of": "2026-09-23",
-    "contra_url": "https://contra.com/p/727koAUR-runbot-an-ai-assistant-inside-a-running-clubs-group-chat",
-    "stack": ["TypeScript", "Claude", "iMessage", "PostgreSQL"],
-    "_sources": {
-      "posts, group_chats, live_since": "production announcements actually sent to iMessage (435 rows, 14 chats, earliest 2026-05-09) read 2026-09-23",
-      "requests_answered, people": "production chatbot conversations with a response sent (543 rows from 82 people) read 2026-09-23",
-      "group_runs": "production group runs detected (62) read 2026-09-23"
-    }
-  },
   "menus": {
     "name": "Multilingual QR menus",
     "tagline": "Scan-to-open menus guests read in their own language",
@@ -64,13 +44,12 @@
     "language_names": ["English", "Spanish", "Vietnamese", "Korean", "Simplified Chinese", "Traditional Chinese", "Tagalog", "Farsi", "Arabic", "Japanese", "Russian", "Hindi", "Urdu"],
     "rtl_languages": ["Arabic", "Farsi", "Urdu"],
     "pdf_per_brand_per_language": true,
-    "contra_url": "https://contra.com/p/lXX3YM2R-multilingual-qr-menus-8-restaurant-brands-13-languages",
-    "live_url": null,
+    "live_url": "https://menu.fyt.life/",
     "stack": ["Python", "HTML", "CSS", "JavaScript", "GitHub Pages"],
     "_sources": {
       "brands": "the menu build repository: one directory per brand with a pdf/ folder (8 on 2026-09-23)",
       "languages, language_names": "the language list in the menu build's shared build module",
-      "live_url": "null on purpose: the menus are a restaurant group's brands under review; the owner decided on 2026-09-23 not to link them"
+      "live_url": "the live menus; James asked on 2026-09-23 (evening) for the menu pictures to link here, replacing the earlier no-link decision"
     }
   },
   "packages": {
@@ -84,12 +63,10 @@
     }
   },
   "links": {
-    "contra": "https://contra.com/james_han_1n6rzzz8",
     "github": "https://github.com/jdventures222",
     "upwork": null,
     "app_store": "https://apps.apple.com/us/app/fyt-run-club-gym-tracker/id6783633047",
     "_sources": {
-      "contra": "the Contra profile, read 2026-09-23 (available for work, auto-expires 2026-10-23)",
       "github": "not linked from the page: James decided on 2026-09-23 to leave GitHub off",
       "upwork": "not linked: James decided on 2026-09-23 to leave Upwork out"
     }

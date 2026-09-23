@@ -122,8 +122,7 @@ nav,
 .hero-copy,
 .special-copy,
 .item-line,
-.screen-grid > *,
-.record-with-watch > * {
+.screen-grid > * {
   min-width: 0;
 }
 
@@ -230,14 +229,6 @@ h1 .dot {
   margin-top: var(--space-4);
 }
 
-.vietnamese {
-  max-width: 65ch;
-  margin-top: var(--space-3);
-  color: var(--green);
-  font-size: 15px;
-  line-height: 1.55;
-}
-
 .hero-actions {
   display: flex;
   flex-direction: column;
@@ -278,8 +269,11 @@ h1 .dot {
   margin-top: var(--space-2);
 }
 
+.photo-link {
+  display: block;
+}
+
 .cover-photo,
-.panel-photo,
 .phone-screen,
 .phone-pair {
   width: 100%;
@@ -524,27 +518,6 @@ details[open] .plus-stroke {
 
 .phone-screen {
   aspect-ratio: 1170 / 2532;
-  object-fit: contain;
-}
-
-.panel-grid {
-  grid-template-columns: minmax(0, 1fr);
-}
-
-.panel-photo {
-  aspect-ratio: 1400 / 875;
-  object-fit: contain;
-}
-
-.record-with-watch {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 0.21fr);
-  align-items: center;
-  gap: var(--space-2);
-}
-
-.watch-photo {
-  width: 100%;
   object-fit: contain;
 }
 
@@ -952,11 +925,6 @@ details[open] .plus-stroke {
     font-size: 19px;
   }
 
-  .vietnamese {
-    margin-top: var(--space-4);
-    font-size: 17px;
-  }
-
   .hero-actions {
     margin-top: var(--space-6);
   }
@@ -1047,8 +1015,8 @@ details[open] .plus-stroke {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .panel-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .phone-grid-four {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
   .phone-screen {
@@ -1145,7 +1113,6 @@ details[open] .plus-stroke {
   .case-link,
   .project-links,
   .about,
-  .for-business,
   .contact-band,
   .footer-band {
     display: none;
@@ -1224,11 +1191,6 @@ details[open] .plus-stroke {
 
   .support {
     margin-top: 3pt;
-  }
-
-  .vietnamese {
-    margin-top: 2pt;
-    font-size: 9pt;
   }
 
   .work {
