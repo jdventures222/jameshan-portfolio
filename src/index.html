@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0E6B47">
+  <meta name="color-scheme" content="light">
+  <title>James Han · Websites, apps and automations</title>
+  <meta name="description" content="James Han builds websites, apps and automations for restaurants and small businesses in Orange County, California. See the work, packages and prices.">
+  <link rel="canonical" href="{{site.url}}">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{site.url}}">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="James Han · Websites, apps and automations for restaurants">
+  <meta property="og:description" content="Full-stack developer in Orange County, California. See the work, packages and prices.">
+  <meta property="og:image" content="{{site.url}}assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="James Han: websites, apps and automations for restaurants, beside three phones showing a menu in Korean, English and Arabic.">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="fonts/alfa-slab-one/alfa-slab-one-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/be-vietnam-pro/be-vietnam-pro-normal-400-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="menu-sheet">
+    <header class="identity-band">
+      <p class="name">{{person.name}}</p>
+      <p class="location">{{person.area}}</p>
+      <p class="byline">Full-stack developer · English and Vietnamese</p>
+      <p class="print-only print-reach">{{person.email}} · {{site.host}}</p>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <section class="hero section-inset" aria-labelledby="hero-title">
+        <h1 id="hero-title"><span class="word">Websites</span> <span class="dot" aria-hidden="true">·</span> <span class="word">Apps</span> <span class="dot dot-last" aria-hidden="true">·</span> <span class="word word-last">Automations</span></h1>
+        <div class="hero-copy">
+          <p class="offer">for restaurants and small businesses in Orange County.</p>
+          <p class="support">I build the whole thing, from the screen your customers tap to the server behind it, and I keep it running after launch.</p>
+          <p class="vietnamese" lang="vi">Tôi làm trang web, ứng dụng và tự động hóa cho nhà hàng và doanh nghiệp nhỏ tại Orange County.</p>
+          <nav class="hero-actions" aria-label="Start here">
+            <a class="button" href="mailto:{{person.email}}">Email me</a>
+            <a class="text-action" href="#work">See the work</a>
+          </nav>
+        </div>
+        <div class="print-only print-qr">
+          {{include partials/qr-site.svg}}
+          <p>Scan for this page, with photos of the work:<br><strong>{{site.host}}</strong></p>
+        </div>
+        <figure class="hero-photo">
+          <img class="cover-photo" src="assets/menus-cover-v2-700.webp" srcset="assets/menus-cover-v2-700.webp 700w, assets/menus-cover-v2-1400.webp 1400w" sizes="(min-width: 1000px) 440px, (min-width: 600px) 640px, calc(100vw - 48px)" width="1400" height="1050" alt="Three mobile restaurant menus showing Korean, English and a right-to-left Arabic layout." fetchpriority="high">
+          <figcaption>Scan-to-open menus in {{menus.languages}} languages, special no.&nbsp;1 below.</figcaption>
+        </figure>
+      </section>
+
+      <section class="work section-inset" id="work" aria-labelledby="work-title">
+        <h2 class="section-heading" id="work-title">House specials</h2>
+
+        <article class="special" aria-labelledby="menus-title">
+          <div class="special-heading">
+            <span class="number-badge special-badge">1</span>
+            <div class="item-line">
+              <h3 id="menus-title">Multilingual QR menus</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="item-proof">{{menus.languages}} languages</p>
+            </div>
+          </div>
+          <div class="special-layout">
+            <figure class="special-photo menu-preview">
+              <div class="phone-pair">
+                <img src="assets/menu-02-en-585.webp" srcset="assets/menu-02-en-585.webp 585w, assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 600px) 225px, calc(50vw - 42px)" width="1170" height="2532" alt="A restaurant menu in English with language switching and an allergen filter." loading="lazy">
+                <img src="assets/menu-04-ar-585.webp" srcset="assets/menu-04-ar-585.webp 585w, assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 600px) 225px, calc(50vw - 42px)" width="1170" height="2532" alt="The same restaurant menu in Arabic, with the entire layout reading right to left." loading="lazy">
+              </div>
+              <figcaption>A menu in English, as a guest sees it at the table · The same menu in Arabic, laid out right to left</figcaption>
+            </figure>
+            <div class="special-copy">
+              <p>Restaurant guests read many languages, but most menus come in one. Guests scan a code at the table, read the menu in their own language, and flag the dishes that contain allergens they avoid. I built it on my own initiative for the multi-brand restaurant group where I work; working versions for all {{menus.brands}} brands are ready for the group’s review.</p>
+              <p class="includes"><strong>Includes:</strong> {{menus.languages}} languages, one-tap switching, right-to-left Arabic, Farsi and Urdu · allergen filter · each brand’s own colours and photos · print-ready PDFs in every language · QR codes per brand and location · one Python build pipeline</p>
+              <p class="proof">{{menus.brands}} brands · {{menus.languages}} languages · a printable menu in every language for every brand</p>
+              <p class="case-link"><a href="{{menus.contra_url}}">Read the full case study on Contra</a></p>
+            </div>
+          </div>
+          <details class="screen-details">
+            <summary>
+              <span>See all six screens</span>
+              <svg class="disclosure-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"></path><path class="plus-stroke" d="M12 5v14"></path></svg>
+            </summary>
+            <div class="details-content">
+              <div class="screen-grid phone-grid">
+                <figure>
+                  <img class="phone-screen" src="assets/menu-01-directory-585.webp" srcset="assets/menu-01-directory-585.webp 585w, assets/menu-01-directory-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A mobile directory with links to each restaurant brand’s menu." loading="lazy">
+                  <figcaption>The directory: every brand’s menu in one place</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone-screen" src="assets/menu-02-en-585.webp" srcset="assets/menu-02-en-585.webp 585w, assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The English menu with dish photos, language choices and allergen controls." loading="lazy">
+                  <figcaption>A menu in English, as a guest sees it at the table</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone-screen" src="assets/menu-04-ar-585.webp" srcset="assets/menu-04-ar-585.webp 585w, assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The Arabic menu with right-aligned text and mirrored navigation." loading="lazy">
+                  <figcaption>The same menu in Arabic, laid out right to left</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone-screen" src="assets/menu-06-allergen-585.webp" srcset="assets/menu-06-allergen-585.webp 585w, assets/menu-06-allergen-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="An allergen selection sheet opened over the menu." loading="lazy">
+                  <figcaption>Choosing an allergen to avoid</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone-screen" src="assets/menu-08-flagged-585.webp" srcset="assets/menu-08-flagged-585.webp 585w, assets/menu-08-flagged-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="Menu dishes marked with a warning when they contain the selected allergen." loading="lazy">
+                  <figcaption>Dishes that contain it are highlighted</figcaption>
+                </figure>
+                <figure>
+                  <img class="phone-screen" src="assets/menu-07-ko-585.webp" srcset="assets/menu-07-ko-585.webp 585w, assets/menu-07-ko-1170.webp 1170w" sizes="(min-width: 1000px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A different restaurant’s Korean menu with its own orange colours and food photography." loading="lazy">
+                  <figcaption>Another brand’s menu, in Korean</figcaption>
+                </figure>
+              </div>
+              <h4>What it does</h4>
+              <ul class="build-list">
+                <li>{{menus.languages}} languages, switched with one tap; Arabic, Farsi and Urdu flip the whole layout to read right to left.</li>
+                <li>An allergen filter: tap an allergen to flag every dish that contains it, or hide those dishes entirely.</li>
+                <li>Every brand keeps its own colours, logo and photos on the same system.</li>
+                <li>Print-ready PDFs of every menu in all {{menus.languages}} languages, with typography rules for each script.</li>
+                <li>QR codes for each brand and location that open the right menu from the table.</li>
+                <li>One build pipeline (Python) generates the mobile site and every PDF.</li>
+              </ul>
+            </div>
+          </details>
+        </article>
+
+        <article class="special special-reverse" aria-labelledby="fyt-title">
+          <div class="special-heading">
+            <span class="number-badge special-badge">2</span>
+            <div class="item-line">
+              <h3 id="fyt-title">Fyt: run club and gym tracker</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="item-proof">{{fyt.users_display}} users</p>
+            </div>
+          </div>
+          <div class="special-layout">
+            <figure class="special-photo">
+              <img class="cover-photo" src="assets/fyt-cover-v3-700.webp" srcset="assets/fyt-cover-v3-700.webp 700w, assets/fyt-cover-v3-1400.webp 1400w" sizes="(min-width: 1000px) 480px, (min-width: 600px) 640px, calc(100vw - 48px)" width="1400" height="1050" alt="Fyt’s iPhone screens, with demo accounts: a mapped running route and a gym session showing exercises and muscles trained." loading="lazy">
+              <figcaption>App screens shown with demo accounts.</figcaption>
+            </figure>
+            <div class="special-copy">
+              <p>Most fitness apps are built for one person. Fyt is built for a group: friends who run and lift together. Members track their runs and gym sessions, and Fyt announces each one live in the club’s iMessage group chat, so the crew can cheer every mile and every PR, including members who don’t have the app.</p>
+              <p class="includes"><strong>Includes:</strong> iPhone and Apple Watch app · server and database · public website · a live subscription tier</p>
+              <p class="proof">On the App Store since {{fyt.app_store_since_display}} · {{fyt.rating|fixed1}} from {{fyt.rating_count}} ratings · version {{fyt.latest_version}} released {{fyt.latest_version_date|date}}</p>
+              <p class="data-note">{{fyt.users_display}} users as of {{fyt.users_as_of|month}}.</p>
+              <div class="project-links">
+                <a href="{{fyt.app_store_url}}">View on the App Store</a>
+                <a href="{{fyt.site_url}}">fyt.life</a>
+                <a class="case-link" href="{{fyt.contra_url}}">Read the full case study on Contra</a>
+              </div>
+            </div>
+          </div>
+          <details class="screen-details">
+            <summary>
+              <span>See the app</span>
+              <svg class="disclosure-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"></path><path class="plus-stroke" d="M12 5v14"></path></svg>
+            </summary>
+            <div class="details-content">
+              <div class="screen-grid panel-grid">
+                <figure>
+                  <div class="record-with-watch">
+                    <img class="panel-photo" src="assets/fyt-panel-1-record-700.webp" srcset="assets/fyt-panel-1-record-700.webp 700w, assets/fyt-panel-1-record-1400.webp 1400w" sizes="(min-width: 1000px) 440px, calc(80vw - 40px)" width="1400" height="875" alt="Fyt recording a run on iPhone and Apple Watch with route, pace and heart rate." loading="lazy">
+                    <img class="watch-photo" src="assets/watch-run.webp" width="422" height="514" alt="Apple Watch displaying a run in progress." loading="lazy">
+                  </div>
+                  <figcaption>Record every run, live, on iPhone and Apple Watch</figcaption>
+                </figure>
+                <figure>
+                  <img class="panel-photo" src="assets/fyt-panel-2-runs-700.webp" srcset="assets/fyt-panel-2-runs-700.webp 700w, assets/fyt-panel-2-runs-1400.webp 1400w" sizes="(min-width: 1000px) 540px, calc(100vw - 48px)" width="1400" height="875" alt="The completed run’s route map and pace, elevation and heart-rate data." loading="lazy">
+                  <figcaption>Every mile, mapped: the full route with pace, elevation and heart rate</figcaption>
+                </figure>
+                <figure>
+                  <img class="panel-photo" src="assets/fyt-panel-3-lifts-700.webp" srcset="assets/fyt-panel-3-lifts-700.webp 700w, assets/fyt-panel-3-lifts-1400.webp 1400w" sizes="(min-width: 1000px) 540px, calc(100vw - 48px)" width="1400" height="875" alt="A gym session with sets, repetitions, weights and a muscle diagram." loading="lazy">
+                  <figcaption>Every lift, logged: sets, reps and weight, then the muscles trained</figcaption>
+                </figure>
+                <figure>
+                  <img class="panel-photo" src="assets/fyt-panel-4-chat-700.webp" srcset="assets/fyt-panel-4-chat-700.webp 700w, assets/fyt-panel-4-chat-1400.webp 1400w" sizes="(min-width: 1000px) 540px, calc(100vw - 48px)" width="1400" height="875" alt="An iMessage group chat, with demo accounts, receiving a friend’s finished-run announcement." loading="lazy">
+                  <figcaption>Announced to the crew in the group chat</figcaption>
+                </figure>
+              </div>
+              <p class="data-note demo-note">Every app screen here uses demo accounts.</p>
+              <h4>What I built</h4>
+              <ul class="build-list">
+                <li>The iPhone and Apple Watch app (Swift): live GPS run recording with pace, distance, elevation and heart rate; a gym logger with sets, reps, weights and a rest timer; workouts imported automatically from Apple Health.</li>
+                <li>The server and database (TypeScript, PostgreSQL): the API plus background jobs that import workouts, find personal records and update leaderboards, hosted on Fly.io.</li>
+                <li>The public website and a live subscription tier through Apple, with a shareable page for every workout.</li>
+              </ul>
+            </div>
+          </details>
+        </article>
+
+        <article class="special" aria-labelledby="runbot-title">
+          <div class="special-heading">
+            <span class="number-badge special-badge">3</span>
+            <div class="item-line">
+              <h3 id="runbot-title">runbot: an assistant in the group chat</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="item-proof">{{runbot.posts}} posts</p>
+            </div>
+          </div>
+          <div class="special-layout">
+            <figure class="special-photo">
+              <img class="cover-photo" src="assets/runbot-cover-v3-700.webp" srcset="assets/runbot-cover-v3-700.webp 700w, assets/runbot-cover-v3-1400.webp 1400w" sizes="(min-width: 1000px) 480px, (min-width: 600px) 640px, calc(100vw - 48px)" width="1400" height="1050" alt="runbot in a running club’s group chat, shown with demo accounts, beside its production totals for posts, requests and group runs." loading="lazy">
+              <figcaption>The chat uses demo accounts; the totals are real production figures, dated in the image.</figcaption>
+            </figure>
+            <div class="special-copy">
+              <p>A club’s group chat is where its members already talk, so that’s where runbot lives. It joins the club’s iMessage group chat like another member. When someone finishes a run or a gym session, runbot posts it to the chat, calls out personal records, spots group runs, and answers questions when someone @mentions it.</p>
+              <p class="includes"><strong>Includes:</strong> posts every run and workout · calls out records · spots group runs · answers @mentions · tested against prompt-injection attempts</p>
+              <p class="proof">{{runbot.posts}} posts to {{runbot.group_chats}} group chats since {{runbot.live_since_display}} · {{runbot.requests_answered}} requests answered from {{runbot.people}} people · {{runbot.group_runs}} group runs detected</p>
+              <p class="data-note">Production totals as of {{runbot.as_of|date}}.</p>
+              <p class="for-business"><strong>For your business:</strong> The same pattern works wherever your customers already talk: reminders, confirmations, daily summaries and answers, delivered where people will actually see them.</p>
+              <p class="case-link"><a href="{{runbot.contra_url}}">Read the full case study on Contra</a></p>
+            </div>
+          </div>
+          <details class="screen-details">
+            <summary>
+              <span>See how it talks</span>
+              <svg class="disclosure-icon" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.75" aria-hidden="true"><path d="M5 12h14"></path><path class="plus-stroke" d="M12 5v14"></path></svg>
+            </summary>
+            <div class="details-content">
+              <div class="screen-grid panel-grid">
+                <figure>
+                  <img class="panel-photo" src="assets/runbot-panel-1-chat-700.webp" srcset="assets/runbot-panel-1-chat-700.webp 700w, assets/runbot-panel-1-chat-1400.webp 1400w" sizes="(min-width: 1000px) 540px, calc(100vw - 48px)" width="1400" height="875" alt="Examples, with demo accounts, of runbot posting a leaderboard and a personal record, answering a question and scheduling a run." loading="lazy">
+                  <figcaption>How runbot talks: leaderboards, records, answers and scheduling</figcaption>
+                </figure>
+                <figure>
+                  <img class="panel-photo" src="assets/runbot-panel-2-flow-700.webp" srcset="assets/runbot-panel-2-flow-700.webp 700w, assets/runbot-panel-2-flow-1400.webp 1400w" sizes="(min-width: 1000px) 540px, calc(100vw - 48px)" width="1400" height="875" alt="A diagram of the four steps between a finished workout and its group-chat announcement." loading="lazy">
+                  <figcaption>From finished run to group chat, in four steps</figcaption>
+                </figure>
+              </div>
+              <p class="data-note demo-note">The chat examples use demo accounts.</p>
+              <h4>How it’s built</h4>
+              <p>A TypeScript bot on the Fyt server that uses Claude to understand requests; a relay that connects it to iMessage group chats; background jobs that pick up new workouts and send the announcements. It is tested against a corpus of prompt-injection attempts, messages written to trick an AI into misbehaving.</p>
+            </div>
+          </details>
+        </article>
+      </section>
+
+      <section class="packages section-inset" id="packages" aria-labelledby="packages-title">
+        <h2 class="section-heading" id="packages-title">Packages for restaurants</h2>
+        <p class="section-intro">Fixed price, in writing, before any work starts.</p>
+        <div class="price-list">
+          <article class="package" aria-labelledby="qr-package">
+            <div class="item-line price-line">
+              <h3 id="qr-package">Multilingual QR menu</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="price"><span>from</span> {{packages.qr_menu_from|usd}}</p>
+            </div>
+            <p>A scan-to-open menu in up to {{menus.languages}} languages, an allergen filter, dish photos, print-ready PDFs in every language, QR table cards, hosted. You send the menu and photos; I do the rest.</p>
+            <p class="ready">Ready in about two weeks.</p>
+          </article>
+          <article class="package" aria-labelledby="website-package">
+            <div class="item-line price-line">
+              <h3 id="website-package">Restaurant website</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="price"><span>from</span> {{packages.website_from|usd}}</p>
+            </div>
+            <p>Menu, hours, map, photos, online-ordering and reservation links, your Google Business listing tied in. Fast and mobile-first, hosted, with two rounds of revisions.</p>
+            <p class="ready">Ready in three to four weeks.</p>
+          </article>
+          <article class="package" aria-labelledby="automation-package">
+            <div class="item-line price-line">
+              <h3 id="automation-package">One automation</h3>
+              <span class="leader" aria-hidden="true"></span>
+              <p class="price"><span>from</span> {{packages.automation_from|usd}}</p>
+            </div>
+            <p>One repetitive task automated end to end: reservation reminders by text, a daily sales summary by email, review requests after a visit, low-stock alerts, or syncing two tools. Starts with a one-week paid pilot.</p>
+            <p class="ready">Ready in one to two weeks.</p>
+          </article>
+        </div>
+        <h3 class="list-label">Add-ons</h3>
+        <div class="package package-small">
+          <div class="item-line price-line">
+            <h4>Monthly care</h4>
+            <span class="leader" aria-hidden="true"></span>
+            <p class="price">{{packages.care_monthly|usd}} <span>a month</span></p>
+          </div>
+          <p>Hosting, updates, small changes, and one menu or price update a month.</p>
+        </div>
+        <div class="package package-small">
+          <div class="item-line price-line">
+            <h4>Custom work</h4>
+            <span class="leader" aria-hidden="true"></span>
+            <p class="price">fixed quote</p>
+          </div>
+          <p>Anything else gets a fixed quote after a short conversation; {{packages.custom_hourly|usd}} an hour only for open-ended maintenance.</p>
+        </div>
+      </section>
+
+      <section class="how section-inset" id="how" aria-labelledby="how-title">
+        <h2 class="section-heading" id="how-title">How it works</h2>
+        <ol class="order-steps" role="list">
+          <li><span class="number-badge step-badge" aria-hidden="true">1</span><p>We talk for twenty minutes about what is slowing your business down.</p></li>
+          <li><span class="number-badge step-badge" aria-hidden="true">2</span><p>You get a fixed quote in writing within two days.</p></li>
+          <li><span class="number-badge step-badge" aria-hidden="true">3</span><p>I build it, you review it, we launch. Monthly care if you want it.</p></li>
+        </ol>
+      </section>
+
+      <section class="about section-inset" id="about" aria-labelledby="about-title">
+        <h2 class="section-heading" id="about-title">About James</h2>
+        <div class="about-copy">
+          <p>I’m James Han, a full-stack developer in Orange County, California. I build software end to end: the screens people tap, the server and database behind them, and the launch, whether that is the App Store, a website or a printed QR code. Then I keep it running. I speak English and Vietnamese.</p>
+          <p class="tools"><strong>Tools:</strong> TypeScript, Node.js, PostgreSQL, Swift, Python, Fly.io, Cloudflare, GitHub Actions.</p>
+        </div>
+      </section>
+
+      <section class="contact-band" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Tell me what’s slowing your business down.</h2>
+        <p class="contact-support">I’ll suggest the simplest fix, usually the same day.</p>
+        <div class="contact-actions">
+          <a class="button button-white" href="mailto:{{person.email}}">Email me</a>
+          <a class="email-address" href="mailto:{{person.email}}">{{person.email|wbr}}</a>
+        </div>
+        <nav class="contact-links" aria-label="Find James online">
+          <a href="{{links.contra}}">Contra</a><span aria-hidden="true">·</span>
+          <a href="{{links.app_store}}">App Store</a>
+        </nav>
+      </section>
+    </main>
+    <footer class="footer-band">
+      <p>{{person.name}} · {{person.area}} · No page builder, no trackers. · © {{updated|year}}</p>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Allow-list: only the site's source is public. Everything else in this folder (scope, handoffs,
+# mockups, raw assets, local tools, screenshots, the built dist/) stays on this machine.
+/*
+!/.gitignore
+!/.github/
+!/README.md
+!/build.mjs
+!/facts.json
+!/site.config.json
+!/src/
