@@ -34,7 +34,7 @@ h2 { font-size: 30px; font-weight: 800; line-height: 1.15; letter-spacing: -0.02
 h3 { font-size: 20px; font-weight: 700; line-height: 1.35; letter-spacing: -0.01em; }
 h4 { font-size: 18px; line-height: 1.4; }
 p { max-width: 68ch; }
-a { color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+a { color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 0.25em; }
 a:hover { color: var(--accent-hover); }
 a:active { text-decoration-thickness: 3px; }
 img { display: block; width: 100%; max-width: 100%; height: auto; }
@@ -102,8 +102,7 @@ img { display: block; width: 100%; max-width: 100%; height: auto; }
 .fact:nth-child(even) { padding-inline: 16px 0; border-left: 1px solid var(--border); }
 .fact dt { margin-top: 4px; color: var(--secondary); font-size: 15px; line-height: 1.5; }
 .fact dd { font-size: 28px; font-weight: 700; line-height: 1.15; font-variant-numeric: tabular-nums; }
-.fact-date, .data-note { color: var(--secondary); font-size: 15px; line-height: 1.6; }
-.fact-date { margin-top: 16px; }
+.data-note { color: var(--secondary); font-size: 15px; line-height: 1.6; }
 .photo-link { display: block; border-radius: 16px; }
 .cover-photo { border: 1px solid var(--border); border-radius: 16px; box-shadow: var(--shadow); }
 figcaption { margin-top: 12px; color: var(--secondary); font-size: 16px; line-height: 1.5; }
