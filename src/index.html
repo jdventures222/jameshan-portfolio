@@ -6,17 +6,17 @@
   <meta name="theme-color" content="#1D4ED8">
   <meta name="color-scheme" content="light">
   <title>James Han · Full-stack developer in Orange County</title>
-  <meta name="description" content="James Han builds apps, websites and automations end to end, from the screens people tap to the server behind them. See the work: Fyt on the App Store and multilingual restaurant menus.">
+  <meta name="description" content="James Han builds and maintains iOS apps, websites and business automations, from the interface to the API, database and deployment. See the work: Fyt on the App Store and multilingual restaurant menus.">
   <link rel="canonical" href="{{site.url}}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{site.url}}">
   <meta property="og:site_name" content="James Han">
   <meta property="og:title" content="James Han · Full-stack developer">
-  <meta property="og:description" content="Apps, websites and automations, built end to end in Orange County, California.">
+  <meta property="og:description" content="iOS apps, websites and business automations, built and maintained in Orange County, California.">
   <meta property="og:image" content="{{site.url}}assets/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="James Han, full-stack developer in Orange County, California. I build apps, websites and automations, end to end. Beside the headline, three phones show menus in Korean, English and Arabic on a white and blue preview.">
+  <meta property="og:image:alt" content="James Han, full-stack developer in Orange County, California. I build and maintain iOS apps, websites and business automations. Beside the headline, three phones show menus in Korean, English and Arabic on a white and blue preview.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -24,6 +24,7 @@
   <link rel="preload" href="fonts/figtree/figtree-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" as="image" href="assets/menus-cover-v2-700.webp" imagesrcset="assets/menus-cover-v2-700.webp 700w, assets/menus-cover-v2-1400.webp 1400w" imagesizes="(min-width: 1296px) 553px, calc(48vw - 46px)" media="(min-width: 1100px)" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
+  <script src="viewer.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -55,8 +56,8 @@
       <div class="container hero-layout">
         <div class="hero-copy">
           <p class="eyebrow">Full-stack developer · {{person.area}}</p>
-          <h1 id="hero-title">I build apps, websites and automations, end to end.</h1>
-          <p class="hero-support">The screens people tap, the server and database behind them, the launch, and the upkeep after.</p>
+          <h1 id="hero-title">I build and maintain iOS apps, websites and business automations.</h1>
+          <p class="hero-support">End-to-end development, from the interface to the API, database and deployment, with support after launch.</p>
           <div class="hero-actions">
             <a class="button button-primary" href="mailto:{{person.email}}">Email me</a>
             <a class="button button-secondary text-action" href="#work">See the work <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg></a>
@@ -109,27 +110,27 @@
               <div class="details-content">
                 <div class="screen-grid phone-grid">
                   <figure>
-                    <img class="phone-screen" src="assets/menu-01-directory-585.webp" srcset="assets/menu-01-directory-585.webp 585w, assets/menu-01-directory-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A mobile directory with links to each restaurant brand’s menu." loading="lazy">
+                    <a class="shot-link" href="assets/menu-01-directory-1170.webp"><img class="phone-screen" src="assets/menu-01-directory-585.webp" srcset="assets/menu-01-directory-585.webp 585w, assets/menu-01-directory-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A mobile directory with links to each restaurant brand’s menu." loading="lazy"></a>
                     <figcaption>The directory: every brand’s menu in one place</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/menu-02-en-585.webp" srcset="assets/menu-02-en-585.webp 585w, assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The English menu with dish photos, language choices and allergen controls." loading="lazy">
+                    <a class="shot-link" href="assets/menu-02-en-1170.webp"><img class="phone-screen" src="assets/menu-02-en-585.webp" srcset="assets/menu-02-en-585.webp 585w, assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The English menu with dish photos, language choices and allergen controls." loading="lazy"></a>
                     <figcaption>A menu in English, as a guest sees it at the table</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/menu-04-ar-585.webp" srcset="assets/menu-04-ar-585.webp 585w, assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The Arabic menu with right-aligned text and mirrored navigation." loading="lazy">
+                    <a class="shot-link" href="assets/menu-04-ar-1170.webp"><img class="phone-screen" src="assets/menu-04-ar-585.webp" srcset="assets/menu-04-ar-585.webp 585w, assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="The Arabic menu with right-aligned text and mirrored navigation." loading="lazy"></a>
                     <figcaption>The same menu in Arabic, laid out right to left</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/menu-06-allergen-585.webp" srcset="assets/menu-06-allergen-585.webp 585w, assets/menu-06-allergen-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="An allergen selection sheet opened over the menu." loading="lazy">
+                    <a class="shot-link" href="assets/menu-06-allergen-1170.webp"><img class="phone-screen" src="assets/menu-06-allergen-585.webp" srcset="assets/menu-06-allergen-585.webp 585w, assets/menu-06-allergen-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="An allergen selection sheet opened over the menu." loading="lazy"></a>
                     <figcaption>Choosing an allergen to avoid</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/menu-08-flagged-585.webp" srcset="assets/menu-08-flagged-585.webp 585w, assets/menu-08-flagged-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="Menu dishes marked with a warning when they contain the selected allergen." loading="lazy">
+                    <a class="shot-link" href="assets/menu-08-flagged-1170.webp"><img class="phone-screen" src="assets/menu-08-flagged-585.webp" srcset="assets/menu-08-flagged-585.webp 585w, assets/menu-08-flagged-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="Menu dishes marked with a warning when they contain the selected allergen." loading="lazy"></a>
                     <figcaption>Dishes that contain it are highlighted</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/menu-07-ko-585.webp" srcset="assets/menu-07-ko-585.webp 585w, assets/menu-07-ko-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A different restaurant’s Korean menu with its own orange colours and food photography." loading="lazy">
+                    <a class="shot-link" href="assets/menu-07-ko-1170.webp"><img class="phone-screen" src="assets/menu-07-ko-585.webp" srcset="assets/menu-07-ko-585.webp 585w, assets/menu-07-ko-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1170" height="2532" alt="A different restaurant’s Korean menu with its own orange colours and food photography." loading="lazy"></a>
                     <figcaption>Another brand’s menu, in Korean</figcaption>
                   </figure>
                 </div>
@@ -147,7 +148,7 @@
           </article>
 
           <article class="project project-reverse" aria-labelledby="fyt-title">
-            <h3 class="project-title" id="fyt-title">Fyt: run club and gym tracker</h3>
+            <h3 class="project-title" id="fyt-title">Fyt: a social fitness app for iPhone and Apple Watch</h3>
             <div class="project-photo">
               <figure>
                 <a class="phone-pair" href="{{fyt.app_store_url}}" aria-label="Open Fyt on the App Store">
@@ -176,19 +177,19 @@
               <div class="details-content">
                 <div class="screen-grid phone-grid phone-grid-four">
                   <figure>
-                    <img class="phone-screen" src="assets/fyt-02-runs-585.webp" srcset="assets/fyt-02-runs-585.webp 585w, assets/fyt-02-runs-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Every mile, mapped”: the club feed with a run’s route map, distance, pace and time, beside its heart rate and calories." loading="lazy">
+                    <a class="shot-link" href="assets/fyt-02-runs-1170.webp"><img class="phone-screen" src="assets/fyt-02-runs-585.webp" srcset="assets/fyt-02-runs-585.webp 585w, assets/fyt-02-runs-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Every mile, mapped”: the club feed with a run’s route map, distance, pace and time, beside its heart rate and calories." loading="lazy"></a>
                     <figcaption>Every mile, mapped: the route, pace and time for each run</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/fyt-03-run-record-585.webp" srcset="assets/fyt-03-run-record-585.webp 585w, assets/fyt-03-run-record-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Record your run, live”: GPS recording on a map, with the same run on an Apple Watch." loading="lazy">
+                    <a class="shot-link" href="assets/fyt-03-run-record-1170.webp"><img class="phone-screen" src="assets/fyt-03-run-record-585.webp" srcset="assets/fyt-03-run-record-585.webp 585w, assets/fyt-03-run-record-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Record your run, live”: GPS recording on a map, with the same run on an Apple Watch." loading="lazy"></a>
                     <figcaption>Record your run, live, on iPhone and Apple Watch</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/fyt-04-gym-585.webp" srcset="assets/fyt-04-gym-585.webp 585w, assets/fyt-04-gym-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Every lift, logged”: a finished gym session with a muscle diagram, sets, total volume, records and the exercises done." loading="lazy">
+                    <a class="shot-link" href="assets/fyt-04-gym-1170.webp"><img class="phone-screen" src="assets/fyt-04-gym-585.webp" srcset="assets/fyt-04-gym-585.webp 585w, assets/fyt-04-gym-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Every lift, logged”: a finished gym session with a muscle diagram, sets, total volume, records and the exercises done." loading="lazy"></a>
                     <figcaption>Every lift, logged: sets, volume and the muscles trained</figcaption>
                   </figure>
                   <figure>
-                    <img class="phone-screen" src="assets/fyt-05-gym-record-585.webp" srcset="assets/fyt-05-gym-record-585.webp 585w, assets/fyt-05-gym-record-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Track your lift, live”: a gym session in progress, with weights and reps checked off set by set." loading="lazy">
+                    <a class="shot-link" href="assets/fyt-05-gym-record-1170.webp"><img class="phone-screen" src="assets/fyt-05-gym-record-585.webp" srcset="assets/fyt-05-gym-record-585.webp 585w, assets/fyt-05-gym-record-1170.webp 1170w" sizes="(min-width: 624px) 280px, calc(50vw - 32px)" width="1320" height="2868" alt="Fyt’s App Store screenshot “Track your lift, live”: a gym session in progress, with weights and reps checked off set by set." loading="lazy"></a>
                     <figcaption>Track your lift, live, set by set</figcaption>
                   </figure>
                 </div>
