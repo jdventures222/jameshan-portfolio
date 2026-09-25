@@ -44,15 +44,15 @@
         <span class="visually-hidden">Open the live menus.</span>
         <picture>
           <source type="image/avif" srcset="/assets/menu-07-ko-585.avif 585w, /assets/menu-07-ko-1170.avif 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)">
-          <img class="screen" src="/assets/menu-07-ko-585.webp" srcset="/assets/menu-07-ko-585.webp 585w, /assets/menu-07-ko-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="A restaurant menu in Korean, with dish photos, prices and the language choices across the top." decoding="async">
+          <img class="screen" src="/assets/menu-07-ko-585.webp" srcset="/assets/menu-07-ko-585.webp 585w, /assets/menu-07-ko-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="A restaurant menu in Korean, with dish photos, prices and the language choices across the top." decoding="async" fetchpriority="low">
         </picture>
         <picture>
           <source type="image/avif" srcset="/assets/menu-02-en-585.avif 585w, /assets/menu-02-en-1170.avif 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)">
-          <img class="screen" src="/assets/menu-02-en-585.webp" srcset="/assets/menu-02-en-585.webp 585w, /assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="Another restaurant’s menu in English, with dish photos, prices and a button for avoiding an allergen." decoding="async" loading="lazy">
+          <img class="screen" src="/assets/menu-02-en-585.webp" srcset="/assets/menu-02-en-585.webp 585w, /assets/menu-02-en-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="Another restaurant’s menu in English, with dish photos, prices and a button for avoiding an allergen." decoding="async" fetchpriority="low" loading="lazy">
         </picture>
         <picture>
           <source type="image/avif" srcset="/assets/menu-04-ar-585.avif 585w, /assets/menu-04-ar-1170.avif 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)">
-          <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="The same menu in Arabic, laid out right to left." decoding="async" loading="lazy">
+          <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="The same menu in Arabic, laid out right to left." decoding="async" fetchpriority="low" loading="lazy">
         </picture>
       </a>
     </section>
@@ -62,13 +62,13 @@
         <h2 class="span" id="work-title">Work</h2>
 
         <article class="entry span ledger" aria-labelledby="menus-title">
+          <h3 id="menus-title">Restaurant menus guests read in their own language</h3>
           <ul class="stamps rail">
             <li><strong>Built in {{menus.started|month}}</strong></li>
             <li><mark class="sweep" data-mark="{{menus.languages}} languages">{{menus.languages}} languages</mark> · the menu build’s language list</li>
             <li><strong>{{menus.brands}} brands</strong> · the menu repository</li>
           </ul>
           <div class="entry-body">
-            <h3 id="menus-title">Restaurant menus guests read in their own language</h3>
             <p>Guests scan a code at the table, pick one of {{menus.languages}} languages, and see which dishes contain the allergens they avoid.</p>
           </div>
           <ul class="scripts wide no-print">
@@ -90,40 +90,64 @@
             <p>Working versions for all {{menus.brands}} brands of the restaurant group where I work, ready for the group’s review.</p>
             <p class="live"><a class="button" href="{{menus.live_url}}">Open the live menus</a></p>
           </div>
-          <figure class="shot crop crop-end wide">
-            <a href="{{menus.live_url}}">
-              <span class="visually-hidden">Open the live menus.</span>
-              <picture>
-                <source type="image/avif" srcset="/assets/menu-06-allergen-585.avif 585w, /assets/menu-06-allergen-1170.avif 1170w" sizes="280px">
-                <img class="screen" src="/assets/menu-06-allergen-585.webp" srcset="/assets/menu-06-allergen-585.webp 585w, /assets/menu-06-allergen-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="A sheet over the menu for choosing the allergens to avoid, with egg selected." decoding="async" loading="lazy">
-              </picture>
-            </a>
-            <figcaption>Choosing an allergen to avoid</figcaption>
-          </figure>
+          <div class="shots wide">
+            <figure class="shot crop crop-end">
+              <a href="{{menus.live_url}}" tabindex="-1">
+                <span class="visually-hidden">Open the live menus.</span>
+                <picture>
+                  <source type="image/avif" srcset="/assets/menu-06-allergen-585.avif 585w, /assets/menu-06-allergen-1170.avif 1170w" sizes="280px">
+                  <img class="screen" src="/assets/menu-06-allergen-585.webp" srcset="/assets/menu-06-allergen-585.webp 585w, /assets/menu-06-allergen-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="A sheet over the menu for choosing the allergens to avoid, with egg selected." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>Choosing an allergen to avoid</figcaption>
+            </figure>
+            <figure class="shot crop wide-only">
+              <a href="{{menus.live_url}}" tabindex="-1">
+                <span class="visually-hidden">Open the live menus.</span>
+                <picture>
+                  <source type="image/avif" srcset="/assets/menu-08-flagged-585.avif 585w, /assets/menu-08-flagged-1170.avif 1170w" sizes="280px">
+                  <img class="screen" src="/assets/menu-08-flagged-585.webp" srcset="/assets/menu-08-flagged-585.webp 585w, /assets/menu-08-flagged-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="Menu dishes marked with a warning because they contain the selected allergen." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>Dishes that contain it, flagged</figcaption>
+            </figure>
+          </div>
           <p class="more"><a href="/work/menus/">Read how I built it</a></p>
         </article>
 
         <article class="entry span ledger" aria-labelledby="fyt-title">
+          <h3 id="fyt-title">Fyt, a social fitness app for iPhone and Apple Watch</h3>
           <ul class="stamps rail">
             <li><strong>On the App Store since {{fyt.app_store_since_display}}</strong> · version {{fyt.latest_version}}, {{fyt.latest_version_date|date}}</li>
             <li><strong>{{fyt.rating|fixed1}} from {{fyt.rating_count}} ratings</strong> · App Store</li>
             <li><mark>{{fyt.users_display}} users</mark> · as of {{fyt.users_as_of|date}} · Fyt’s production database</li>
           </ul>
           <div class="entry-body">
-            <h3 id="fyt-title">Fyt, a social fitness app for iPhone and Apple Watch</h3>
             <p>Friends who run and lift together track their workouts in Fyt, and each run is announced in their iMessage group chat, so members without the app see it too.</p>
             <p class="live"><a class="button" href="{{fyt.app_store_url}}">View on the App Store</a></p>
           </div>
-          <figure class="band shot crop crop-listing">
-            <a href="{{fyt.app_store_url}}">
-              <span class="visually-hidden">View on the App Store.</span>
-              <picture>
-                <source type="image/avif" srcset="/assets/fyt-02-runs-585.avif 585w, /assets/fyt-02-runs-1170.avif 1170w" sizes="280px">
-                <img class="screen" src="/assets/fyt-02-runs-585.webp" srcset="/assets/fyt-02-runs-585.webp 585w, /assets/fyt-02-runs-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s group feed: a run’s route map, distance, pace and time, beside its heart rate and calories." decoding="async" loading="lazy">
-              </picture>
-            </a>
-            <figcaption>The group’s feed: a run’s route, pace and time, from Fyt’s App Store listing</figcaption>
-          </figure>
+          <div class="band shots">
+            <figure class="shot crop crop-listing">
+              <a href="{{fyt.app_store_url}}" tabindex="-1">
+                <span class="visually-hidden">View on the App Store.</span>
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-02-runs-585.avif 585w, /assets/fyt-02-runs-1170.avif 1170w" sizes="280px">
+                  <img class="screen" src="/assets/fyt-02-runs-585.webp" srcset="/assets/fyt-02-runs-585.webp 585w, /assets/fyt-02-runs-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s group feed: a run’s route map, distance, pace and time, beside its heart rate and calories." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>The group’s feed: a run’s route, pace and time, from Fyt’s App Store listing</figcaption>
+            </figure>
+            <figure class="shot crop crop-listing wide-only">
+              <a href="{{fyt.app_store_url}}" tabindex="-1">
+                <span class="visually-hidden">View on the App Store.</span>
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-04-gym-585.avif 585w, /assets/fyt-04-gym-1170.avif 1170w" sizes="280px">
+                  <img class="screen" src="/assets/fyt-04-gym-585.webp" srcset="/assets/fyt-04-gym-585.webp 585w, /assets/fyt-04-gym-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="A finished gym session in Fyt: a muscle diagram, sets, total volume, records and the exercises done." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>A finished gym session: sets, volume and the muscles trained, from Fyt’s App Store listing</figcaption>
+            </figure>
+          </div>
           <p class="more"><a href="/work/fyt/">Read how I built it</a></p>
         </article>
       </div>

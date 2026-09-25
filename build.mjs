@@ -28,8 +28,9 @@ const num = v => {
   return v;
 };
 const formats = {
-  date: v => utc({ month: 'long', day: 'numeric', year: 'numeric' }).format(isoDate(v)),
-  month: v => utc({ month: 'long', year: 'numeric' }).format(isoDate(v)),
+  // A date never breaks across lines: "September 21, 2026" is joined by no-break spaces.
+  date: v => utc({ month: 'long', day: 'numeric', year: 'numeric' }).format(isoDate(v)).replaceAll(' ', '\u00a0'),
+  month: v => utc({ month: 'long', year: 'numeric' }).format(isoDate(v)).replaceAll(' ', '\u00a0'),
   year: v => utc({ year: 'numeric' }).format(isoDate(v)),
   fixed1: v => num(v).toFixed(1),
   usd: v => '$' + num(v).toLocaleString('en-US'),
