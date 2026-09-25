@@ -11,12 +11,12 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{site.url}}">
   <meta property="og:site_name" content="James Han">
-  <meta property="og:title" content="James Han · Full-stack developer">
-  <meta property="og:description" content="iOS apps, websites and business automations, built and maintained in Orange County, California.">
+  <meta property="og:title" content="Full-stack developer in {{person.area}}">
+  <meta property="og:description" content="I build and maintain iOS apps, websites and business automations, with support after launch.">
   <meta property="og:image" content="{{site.url}}assets/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="James Han, full-stack developer in Orange County, California. I build and maintain iOS apps, websites and business automations. Beside the headline, three phones show menus in Korean, English and Arabic on a white and blue preview.">
+  <meta property="og:image:alt" content="Three phones showing restaurant menus in Korean, English and right-to-left Arabic.">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
@@ -25,6 +25,7 @@
   <link rel="preload" as="image" href="assets/menus-cover-v2-700.webp" imagesrcset="assets/menus-cover-v2-700.webp 700w, assets/menus-cover-v2-1400.webp 1400w" imagesizes="(min-width: 1296px) 553px, calc(48vw - 46px)" media="(min-width: 1100px)" fetchpriority="high">
   <link rel="stylesheet" href="styles.css">
   <script src="viewer.js" defer></script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "{{person.name}}", "url": "{{site.url}}"}</script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -62,6 +63,7 @@
             <a class="button button-primary" href="mailto:{{person.email}}">Email me</a>
             <a class="button button-secondary text-action" href="#work">See the work <svg class="icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M12 4v16m-6-6 6 6 6-6"></path></svg></a>
           </div>
+          <p class="hero-reach"><span class="hero-address">{{person.email|wbr}}</span><br>I reply within one business day.</p>
           <dl class="fact-row" aria-label="Facts from the projects below">
             <div class="fact"><dt>users on Fyt</dt><dd>{{fyt.users_display}}</dd></div>
             <div class="fact"><dt>App Store rating from {{fyt.rating_count}} ratings</dt><dd>{{fyt.rating|fixed1}}</dd></div>
@@ -261,7 +263,7 @@
     <section class="section surface contact" id="contact" aria-labelledby="contact-title">
       <div class="container contact-content">
         <h2 id="contact-title">Tell me what you need built.</h2>
-        <p>Email is the fastest way to reach me. I usually reply the same day.</p>
+        <p>Email is the fastest way to reach me. I reply within one business day.</p>
         <a class="button button-primary" href="mailto:{{person.email}}">Email me</a>
         <a class="email-address" href="mailto:{{person.email}}">{{person.email|wbr}}</a>
         <nav class="contact-links" aria-label="Find James online">
