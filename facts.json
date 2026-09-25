@@ -8,7 +8,8 @@
     "languages": ["English"],
     "email": "hanjames1999@gmail.com",
     "_sources": {
-      "email": "chosen by James for publication, 2026-09-23"
+      "email": "chosen by James for publication, 2026-09-23",
+      "area": "James's wording, decided 2026-09-23: \"Orange County, California\", never a city"
     }
   },
   "fyt": {
@@ -41,8 +42,10 @@
       "swiftui_files": "Swift files importing SwiftUI in the Fyt iOS app (283 on 2026-09-23)",
       "stack": "the Fyt API's package.json (fastify, drizzle-orm, pg-boss) and its Fly.io config",
       "updates_since_launch": "the App Store listing's version history: 25 releases from 1.0.17 (2026-07-07) to 1.0.43 (2026-09-21), after the launch release; re-check by counting the listing's dated version entries",
-      "chat_posts, chat_posts_since": "read-only query of the production database: announcements with sent_to_imessage_at set (count, earliest date); 438 since 2026-05-09 on 2026-09-24",
-      "background_upload_since": "version 1.0.43 release notes and App Store listing: a run finished on the Watch reaches Fyt in the background; only workouts recorded by Fyt's own Watch app"
+      "chat_posts, chat_posts_since": "read-only query of the production database: announcements with sent_to_imessage_at set (count, earliest date): 438 posts since 2026-05-09 on 2026-09-24, covering 346 distinct workouts (a workout can be posted to more than one group chat), so the page says \"workout posts\"",
+      "background_upload_since": "version 1.0.43 release notes and App Store listing: a run finished on the Watch reaches Fyt in the background; only workouts recorded by Fyt's own Watch app",
+      "app_store_url": "the App Store lookup's trackViewUrl for id 6783633047, read 2026-09-24",
+      "site_url": "Fyt's public website, which James built"
     }
   },
   "menus": {
@@ -66,7 +69,8 @@
       "live_url": "the live menus; James asked on 2026-09-23 (evening) for the menu pictures to link here, replacing the earlier no-link decision",
       "started": "first commit of the menu repository: git log --reverse --format=%ad --date=short main | head -1",
       "allergens, allergen_names": "the allergens list in every brand's menu data (structure.json), the same in all eight",
-      "pdfs": "published PDF menus in the menu repository: every <brand>/pdf/*.pdf, 195 on 2026-09-24 (brands with more than one menu edition have one PDF per edition per language)"
+      "pdfs": "published PDF menus in the menu repository: every <brand>/pdf/*.pdf, 195 on 2026-09-24 (brands with more than one menu edition have one PDF per edition per language)",
+      "rtl_languages": "the right-to-left list in the menu build's language module (Persian, Arabic, Urdu)"
     }
   },
   "services": {
