@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>Fyt, a social fitness app for iPhone and Apple Watch · James Han</title>
+  <meta name="description" content="How I built Fyt, an iPhone and Apple Watch app on the App Store since {{fyt.app_store_since_display}} that announces each workout in the club’s group chat.">
+  <link rel="canonical" href="{{site.url}}work/fyt/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{site.url}}work/fyt/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="Fyt, a social fitness app for iPhone and Apple Watch">
+  <meta property="og:description" content="How I built Fyt, an iPhone and Apple Watch app on the App Store since {{fyt.app_store_since_display}} that announces each workout in the club’s group chat.">
+  <meta property="og:image" content="{{site.url}}assets/og-fyt.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two screens from Fyt: a run in the group’s feed with its route map, and a finished gym session with the muscles trained.">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main id="main" tabindex="-1">
+    <header class="case-head wrap">
+      <h1>Fyt, a social fitness app for iPhone and Apple Watch</h1>
+      <div class="ledger">
+        <dl class="facts rail">
+          <div><dt>Role</dt><dd>Founder and lead engineer: the product, the iPhone and Apple Watch app, the server and the website</dd></div>
+          <div><dt>On the App Store</dt><dd>Since {{fyt.app_store_since|date}}; version {{fyt.latest_version}}, {{fyt.latest_version_date|date}}</dd></div>
+          <div><dt>Stack</dt><dd>Swift, SwiftUI, watchOS, HealthKit · TypeScript, Fastify, PostgreSQL · Fly.io</dd></div>
+          <div><dt>Links</dt><dd class="links"><a class="button" href="{{fyt.app_store_url}}">View on the App Store</a> <a class="site-link" href="{{fyt.site_url}}">fyt.life</a></dd></div>
+        </dl>
+        <p class="lead">Friends who run and lift together track their workouts in Fyt, and each run is announced in their iMessage group chat, so members without the app see it too. It has been on the App Store since {{fyt.app_store_since_display}}, with {{fyt.users_display}} users and a {{fyt.rating|fixed1}} rating from {{fyt.rating_count}} ratings.</p>
+      </div>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="before-title">
+      <h2 class="rail" id="before-title">Before</h2>
+      <p>A group of friends who run and lift together already talk every day in an iMessage group chat. Their workouts sit in separate apps, and the chat only hears about one when someone remembers to post it.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="problem-title">
+      <h2 class="rail" id="problem-title">The problem</h2>
+      <p>Fitness apps are built around one person’s log. The group that trains together has to share by hand, and whoever doesn’t have the app is left out.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="goal-title">
+      <h2 class="rail" id="goal-title">The goal</h2>
+      <p>Put every run and lift in front of the whole group, in the chat they already use, without asking everyone to install an app.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="decisions-title">
+      <h2 class="rail" id="decisions-title">Decisions</h2>
+      <ol class="decisions">
+        <li>
+          <h3>Build for the group, not the individual.</h3>
+          <p>Every workout lands in a shared feed and on the group’s leaderboard, and a personal record is called out to everyone.</p>
+          <p><span class="label">Why:</span> the reason people train together is each other; a solo log gives them nothing to share.</p>
+        </li>
+        <li>
+          <h3>Announce in the chat people already use.</h3>
+          <p>Shortly after a member finishes a run, Fyt posts it in the group’s iMessage chat: the run, any personal records, where it moves them on the leaderboard, and a link to the full workout; a group can switch lifts on too. Everyone in the chat sees it, including members who haven’t installed the app.</p>
+          <p><span class="label">Why:</span> a new app is one more place to check; the group chat is already open.</p>
+          <p><span class="label">Trade-off:</span> the posts go out through Messages on a Mac that has to stay running.</p>
+        </li>
+        <li>
+          <h3>Record on the wrist.</h3>
+          <p>The Apple Watch app records a run with live GPS, pace, distance and heart rate, and sends the finished run straight to Fyt’s server.</p>
+          <p><span class="label">Why:</span> the watch is already on the runner’s wrist; the phone does not have to come along to record the run.</p>
+        </li>
+        <li>
+          <h3>Upload in the background, but only what is yours.</h3>
+          <p>Since {{fyt.background_upload_since|date}}, a run finished on the Watch reaches Fyt without opening the app. Only workouts recorded by Fyt’s own Watch app and marked with the signed-in member are taken; workouts from other apps and devices still sync when the app is opened.</p>
+          <p><span class="label">Why:</span> a phone’s Health data can hold workouts that are not the member’s own, and a group chat must never hear about someone else’s run under the wrong name.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="built-title">
+      <h2 class="rail" id="built-title">What I built</h2>
+      <ul class="bullets">
+        <li>The iPhone app (Swift, SwiftUI): live GPS run recording, a gym logger with sets, reps, weights and a rest timer, and workouts imported from Apple Health.</li>
+        <li>The Apple Watch app: live run recording.</li>
+        <li>The server and database (TypeScript, PostgreSQL): the API and the background jobs that import workouts, find personal records, update leaderboards and post to the group chats, hosted on Fly.io.</li>
+        <li>The public website, fyt.life, with a shareable page for every workout, and a subscription tier through Apple.</li>
+      </ul>
+      <div class="band">
+        <div class="screens gallery four screen-grid">
+          <figure>
+            <a class="shot-link" href="/assets/fyt-02-runs-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-02-runs-585.avif 585w, /assets/fyt-02-runs-1170.avif 1170w" sizes="280px">
+                <img class="screen" src="/assets/fyt-02-runs-585.webp" srcset="/assets/fyt-02-runs-585.webp 585w, /assets/fyt-02-runs-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s App Store screenshot “Every mile, mapped”: the club feed with a run’s route map, distance, pace and time, beside its heart rate and calories." decoding="async">
+              </picture>
+            </a>
+            <figcaption>The group’s feed: a run’s route, pace and time</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-03-run-record-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-03-run-record-585.avif 585w, /assets/fyt-03-run-record-1170.avif 1170w" sizes="280px">
+                <img class="screen" src="/assets/fyt-03-run-record-585.webp" srcset="/assets/fyt-03-run-record-585.webp 585w, /assets/fyt-03-run-record-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s App Store screenshot “Record your run, live”: GPS recording on a map, with the same run on an Apple Watch." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>Recording a run live, on iPhone and Apple Watch</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-04-gym-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-04-gym-585.avif 585w, /assets/fyt-04-gym-1170.avif 1170w" sizes="280px">
+                <img class="screen" src="/assets/fyt-04-gym-585.webp" srcset="/assets/fyt-04-gym-585.webp 585w, /assets/fyt-04-gym-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s App Store screenshot “Every lift, logged”: a finished gym session with a muscle diagram, sets, total volume, records and the exercises done." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>A finished gym session: sets, volume and the muscles trained</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-05-gym-record-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-05-gym-record-585.avif 585w, /assets/fyt-05-gym-record-1170.avif 1170w" sizes="280px">
+                <img class="screen" src="/assets/fyt-05-gym-record-585.webp" srcset="/assets/fyt-05-gym-record-585.webp 585w, /assets/fyt-05-gym-record-1170.webp 1170w" sizes="280px" width="1170" height="2543" alt="Fyt’s App Store screenshot “Track your lift, live”: a gym session in progress, with weights and reps checked off set by set." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>Logging a lift live, set by set</figcaption>
+          </figure>
+        </div>
+        <p class="band-note">All four screens are from Fyt’s App Store listing.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="limits-title">
+      <h2 class="rail" id="limits-title">Limits</h2>
+      <ul class="bullets">
+        <li>iPhone and Apple Watch only; there is no Android app.</li>
+        <li>The background upload covers runs recorded with Fyt’s Watch app; other workouts sync when the app is opened.</li>
+        <li>One other person has contributed code to Fyt.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="result-title">
+      <h2 class="rail" id="result-title">Result</h2>
+      <div class="results">
+        <div class="result">
+          <h3><mark>{{fyt.users_display}}</mark> users</h3>
+          <p>As of {{fyt.users_as_of|month}} · Fyt’s production database</p>
+        </div>
+        <div class="result">
+          <h3><mark>{{fyt.rating|fixed1}}</mark> from {{fyt.rating_count}} ratings</h3>
+          <p>On the App Store</p>
+        </div>
+        <div class="result">
+          <h3><mark>{{fyt.chat_posts}}</mark> workouts announced</h3>
+          <p>In group chats since {{fyt.chat_posts_since|month}} · Fyt’s production database</p>
+        </div>
+        <div class="result">
+          <h3>{{fyt.updates_since_launch}} updates</h3>
+          <p>Since launch, the latest on {{fyt.latest_version_date|date}} · the App Store version history</p>
+        </div>
+        <p>Fyt is live, people use it, and I keep shipping updates.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="contact-title">
+      <h2 class="rail" id="contact-title">Contact</h2>
+      <div>
+        <p>Want an app built, or to talk through how this one works? Email me at {{person.email}}; I reply within one business day.</p>
+        <div class="actions">
+          <a class="button" href="mailto:{{person.email}}">Email me</a>
+          <span class="address" data-copy>{{person.email}}</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>

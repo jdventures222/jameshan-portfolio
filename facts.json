@@ -80,9 +80,11 @@
     "github": "https://github.com/jdventures222",
     "upwork": null,
     "app_store": "https://apps.apple.com/us/app/fyt-run-club-gym-tracker/id6783633047",
+    "app_store_developer": "https://apps.apple.com/us/developer/james-han/id1896170542",
     "_sources": {
-      "github": "not linked from the page: James decided on 2026-09-23 to leave GitHub off",
-      "upwork": "not linked: James decided on 2026-09-23 to leave Upwork out"
+      "github": "linked from /about/ by James's decision of 2026-09-24, after his profile README fix (pushed 2026-09-24)",
+      "upwork": "not linked: James decided on 2026-09-23 to leave Upwork out",
+      "app_store_developer": "the App Store lookup's artistViewUrl (artistName James Han, artistId 1896170542), read 2026-09-24"
     }
   }
 }

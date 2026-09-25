@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>About James Han · Full-stack developer in Orange County</title>
+  <meta name="description" content="James Han is a full-stack developer in Orange County, California. The tools he uses, the projects that show each one, and how he works.">
+  <link rel="canonical" href="{{site.url}}about/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{site.url}}about/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="About the developer behind Fyt and the {{menus.languages}}-language menus">
+  <meta property="og:description" content="James Han is a full-stack developer in Orange County, California. The tools he uses, the projects that show each one, and how he works.">
+  <meta property="og:image" content="{{site.url}}assets/og-about.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two phone screens: a restaurant menu in English and a run in Fyt’s group feed.">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main id="main" tabindex="-1">
+    <header class="case-head wrap ledger">
+      <h1 class="span">About me</h1>
+      <div class="about-intro">
+        <p class="lead">I’m James Han, a full-stack developer in {{person.area}}. I build software end to end: the screens people tap, the server and database behind them, and the launch, whether that is the App Store, a website or a printed QR code. Then I keep it running.</p>
+        <p>Fyt is my own product: an iPhone and Apple Watch app on the App Store since {{fyt.app_store_since_display}}. The menus I built on my own initiative for the restaurant group where I work, in {{menus.languages}} languages.</p>
+      </div>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="how-title">
+      <h2 class="rail" id="how-title">How I work</h2>
+      <ul class="bullets">
+        <li>A fixed price in writing before I start.</li>
+        <li>Plain English, no jargon.</li>
+        <li>Every number on this site comes from a source I can show you.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="tools-title">
+      <h2 class="rail" id="tools-title">What I use, and where you can see it</h2>
+      <ul class="bullets tools">
+        <li><span class="label">Swift, SwiftUI, watchOS, HealthKit:</span> Fyt’s iPhone and Apple Watch app.</li>
+        <li><span class="label">TypeScript, Node.js, Fastify, PostgreSQL:</span> Fyt’s server, database and background jobs.</li>
+        <li><span class="label">Python:</span> the menu build that makes every web page and PDF.</li>
+        <li><span class="label">HTML, CSS, JavaScript:</span> the menus, and this site.</li>
+        <li><span class="label">Fly.io, GitHub Actions, GitHub Pages:</span> hosting and deploys.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="elsewhere-title">
+      <h2 class="rail" id="elsewhere-title">Elsewhere</h2>
+      <ul class="elsewhere">
+        <li><a href="{{links.github}}">GitHub</a></li>
+        <li><a href="{{fyt.app_store_url}}">Fyt on the App Store</a></li>
+      </ul>
+    </section>
+
+    <div class="side-row wrap ledger">
+      <div>
+        <p>Have something you want built? Email {{person.email}}. I reply within one business day.</p>
+        <div class="actions">
+          <a class="button" href="mailto:{{person.email}}">Email me</a>
+          <span class="address" data-copy>{{person.email}}</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>

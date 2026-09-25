@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>Restaurant menus in {{menus.languages}} languages · James Han</title>
+  <meta name="description" content="A QR menu system for {{menus.brands}} restaurant brands: {{menus.languages}} languages, allergen warnings on every dish, right-to-left layouts and print-ready PDFs.">
+  <link rel="canonical" href="{{site.url}}work/menus/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{site.url}}work/menus/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="Restaurant menus guests read in their own language">
+  <meta property="og:description" content="A QR menu system for {{menus.brands}} restaurant brands: {{menus.languages}} languages, allergen warnings on every dish, right-to-left layouts and print-ready PDFs.">
+  <meta property="og:image" content="{{site.url}}assets/og-menus.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Three phone screens from the menus: the sheet for choosing an allergen to avoid, the dishes that contain it flagged, and a menu in Arabic.">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main id="main" tabindex="-1">
+    <header class="case-head wrap">
+      <h1>Restaurant menus guests read in their own language</h1>
+      <ul class="scripts">
+        <li lang="en" dir="ltr">English</li>
+        <li lang="es" dir="ltr">Español</li>
+        <li lang="vi" dir="ltr">Tiếng Việt</li>
+        <li lang="ko" dir="ltr">한국어</li>
+        <li lang="zh-Hans" dir="ltr">简体中文</li>
+        <li lang="zh-Hant" dir="ltr">繁體中文</li>
+        <li lang="tl" dir="ltr">Tagalog</li>
+        <li lang="fa" dir="rtl">فارسی</li>
+        <li lang="ar" dir="rtl">العربية</li>
+        <li lang="ja" dir="ltr">日本語</li>
+        <li lang="ru" dir="ltr">Русский</li>
+        <li lang="hi" dir="ltr">हिन्दी</li>
+        <li lang="ur" dir="rtl">اردو</li>
+      </ul>
+      <div class="ledger">
+        <dl class="facts rail">
+          <div><dt>Role</dt><dd>I designed and built it, on my own initiative</dd></div>
+          <div><dt>Started</dt><dd>{{menus.started|date}}</dd></div>
+          <div><dt>Stack</dt><dd>Python, HTML, CSS, JavaScript, GitHub Pages</dd></div>
+          <div><dt>Status</dt><dd>Working versions for all {{menus.brands}} brands, ready for the group’s review</dd></div>
+          <div><dt>Live</dt><dd><a class="button" href="{{menus.live_url}}">Open the live menus</a></dd></div>
+        </dl>
+        <p class="lead">Working menus for all {{menus.brands}} brands of the restaurant group where I work. A guest scans the code at the table, picks one of {{menus.languages}} languages, and sees which dishes contain the allergens they avoid. They are ready for the group’s review.</p>
+      </div>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="before-title">
+      <h2 class="rail" id="before-title">Before</h2>
+      <p>It started with one of the group’s restaurants. Its menu was a designed PDF, in English.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="problem-title">
+      <h2 class="rail" id="problem-title">The problem</h2>
+      <p>Guests at these restaurants read many languages first, but the menu came in one. A guest with an allergy had to ask about each dish.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="goal-title">
+      <h2 class="rail" id="goal-title">The goal</h2>
+      <p>One system every brand in the group could use: each dish in {{menus.languages}} languages with its allergens on the page, a printable menu for the table, and all of it built from one set of data, so a change is made once.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="decisions-title">
+      <h2 class="rail" id="decisions-title">Decisions</h2>
+      <ol class="decisions">
+        <li>
+          <h3>The allergen warning works even when nothing else does.</h3>
+          <p>Every page carries a plain menu inside the page itself, shown when JavaScript is off or fails to load, and each dish in it keeps its own allergen warning.</p>
+          <p><span class="label">Why:</span> a guest with an allergy should never see a menu without its warnings, whatever phone or browser they use.</p>
+          <p><span class="label">Trade-off:</span> that fallback is in English only, without the language switch or the photos.</p>
+        </li>
+        <li>
+          <h3>“Contains: Egg” only where it tells the guest something.</h3>
+          <p>An item that is just an egg, like a fried egg or a sous-vide egg on the side, no longer carries the line; dishes that are more than an egg, like egg fried rice, egg tarts and egg rolls, keep it. The allergen filter still reads the full data, so a guest who marks egg still sees every one of those items flagged or hidden.</p>
+          <p><span class="label">Why:</span> on a dish that is an egg, “Contains: Egg” says nothing, and warnings that say nothing teach guests to skip them.</p>
+        </li>
+        <li>
+          <h3>Right to left is the whole layout, not just the text.</h3>
+          <p>In Arabic, Farsi and Urdu the whole page mirrors and reads from the right, not just the text. In the printed menus, prices and English names inside those lines keep reading left to right.</p>
+          <p><span class="label">Why:</span> a mirrored sentence inside a left-to-right page still reads as a translation stuck onto an English menu.</p>
+        </li>
+        <li>
+          <h3>Each script gets its own print rules.</h3>
+          <p>The PDFs set Korean, Chinese, Japanese, Arabic, Farsi, Hindi and Russian each in a typeface drawn for that script, Urdu in its traditional Nastaliq style, with taller lines where the script needs them, no capitals or letter-spacing where a script has no capitals, and line breaks that follow Korean and Japanese rules.</p>
+          <p><span class="label">Why:</span> a printed menu in the wrong typeface, or with clipped letters, is the first thing a native reader notices.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="built-title">
+      <h2 class="rail" id="built-title">What I built</h2>
+      <ul class="bullets">
+        <li>A phone menu for every brand and location, in {{menus.languages}} languages, one tap to switch.</li>
+        <li>An allergen filter for {{menus.allergens}} allergens that flags or hides every dish containing one.</li>
+        <li>Print-ready PDFs of every menu in every language: {{menus.pdfs}} of them.</li>
+        <li>A QR code for each brand and location, and a directory of every brand’s menu.</li>
+        <li>One Python build that makes the web pages and the PDFs from the same data.</li>
+      </ul>
+      <div class="screens gallery screen-grid wide">
+        <figure>
+          <a class="shot-link" href="/assets/menu-01-directory-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-01-directory-585.avif 585w, /assets/menu-01-directory-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-01-directory-585.webp" srcset="/assets/menu-01-directory-585.webp 585w, /assets/menu-01-directory-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="The directory of every brand’s menu, with each location’s hours, phone and directions." decoding="async">
+            </picture>
+          </a>
+          <figcaption>Finding a restaurant’s menu in the directory</figcaption>
+        </figure>
+        <figure>
+          <a class="shot-link" href="/assets/menu-02-en-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-02-en-585.avif 585w, /assets/menu-02-en-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-02-en-585.webp" srcset="/assets/menu-02-en-585.webp 585w, /assets/menu-02-en-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="A menu in English, with dish photos, prices, the language choices and a button for avoiding an allergen." decoding="async" loading="lazy">
+            </picture>
+          </a>
+          <figcaption>Reading the menu in English, as a guest sees it at the table</figcaption>
+        </figure>
+        <figure>
+          <a class="shot-link" href="/assets/menu-04-ar-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-04-ar-585.avif 585w, /assets/menu-04-ar-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="The same menu in Arabic, with the text, buttons and dish cards all reading from the right." decoding="async" loading="lazy">
+            </picture>
+          </a>
+          <figcaption>The same menu in Arabic, laid out right to left</figcaption>
+        </figure>
+        <figure>
+          <a class="shot-link" href="/assets/menu-06-allergen-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-06-allergen-585.avif 585w, /assets/menu-06-allergen-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-06-allergen-585.webp" srcset="/assets/menu-06-allergen-585.webp 585w, /assets/menu-06-allergen-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="A sheet over the menu for choosing the allergens to avoid, with egg selected." decoding="async" loading="lazy">
+            </picture>
+          </a>
+          <figcaption>Choosing an allergen to avoid</figcaption>
+        </figure>
+        <figure>
+          <a class="shot-link" href="/assets/menu-08-flagged-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-08-flagged-585.avif 585w, /assets/menu-08-flagged-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-08-flagged-585.webp" srcset="/assets/menu-08-flagged-585.webp 585w, /assets/menu-08-flagged-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="Menu dishes that contain egg, outlined, with egg marked in each dish’s list of allergens." decoding="async" loading="lazy">
+            </picture>
+          </a>
+          <figcaption>Dishes that contain it, flagged</figcaption>
+        </figure>
+        <figure>
+          <a class="shot-link" href="/assets/menu-07-ko-1170.webp">
+            <picture>
+              <source type="image/avif" srcset="/assets/menu-07-ko-585.avif 585w, /assets/menu-07-ko-1170.avif 1170w" sizes="280px">
+              <img class="screen" src="/assets/menu-07-ko-585.webp" srcset="/assets/menu-07-ko-585.webp 585w, /assets/menu-07-ko-1170.webp 1170w" sizes="280px" width="1170" height="2532" alt="A different restaurant’s menu in Korean, with its own colours and food photos." decoding="async" loading="lazy">
+            </picture>
+          </a>
+          <figcaption>Another brand’s menu, in Korean</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="limits-title">
+      <h2 class="rail" id="limits-title">Limits</h2>
+      <ul class="bullets">
+        <li>The allergen lines come from the restaurant’s own published allergen information and the dish descriptions, and are marked as pending the kitchen’s review.</li>
+        <li>No native speaker has reviewed the translations yet.</li>
+        <li>Without JavaScript the menu is shown in English only.</li>
+        <li>The group has not adopted the menus. My part so far is everything up to its review.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="result-title">
+      <h2 class="rail" id="result-title">Result</h2>
+      <div class="results">
+        <div class="result">
+          <h3><mark>{{menus.languages}}</mark> languages, {{menus.rtl_languages|count}} of them right to left</h3>
+          <p>The menu build’s language list</p>
+        </div>
+        <div class="result">
+          <h3><mark>{{menus.brands}}</mark> brands, every one with a working menu</h3>
+          <p>The menu repository</p>
+        </div>
+        <div class="result">
+          <h3><mark>{{menus.pdfs}}</mark> print-ready PDFs</h3>
+          <p>As of {{menus.pdfs_as_of|month}} · the menu repository</p>
+        </div>
+        <p>Every brand in the group has a menu a guest can read in their own language, with the allergen warnings on every dish, on the phone and on paper.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="next-title">
+      <h2 class="rail" id="next-title">Next</h2>
+      <p>The group’s review, the kitchen’s sign-off on the allergen lines, and a native speaker’s read of each language.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="contact-title">
+      <h2 class="rail" id="contact-title">Contact</h2>
+      <div>
+        <p>Want a menu like this for your restaurant? QR menus start at {{services.menu_from|usd}}. Email me at {{person.email}}; I reply within one business day.</p>
+        <div class="actions">
+          <a class="button" href="mailto:{{person.email}}">Email me</a>
+          <span class="address" data-copy>{{person.email}}</span>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>

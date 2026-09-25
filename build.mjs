@@ -1,8 +1,9 @@
 // Build dist/ from src/, facts.json and site.config.json. Usage: node build.mjs
+// Every .html under src/ (except src/partials/) renders to the same path in dist/.
 // Tokens: {{path.in.facts}} or {{path|format}}; {{site.host}} and {{site.url}} come from site.config.json.
 // {{include partials/<file>}} inlines a file from src/partials. Every value is HTML-escaped.
-import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync, existsSync } from 'node:fs';
-import { join, dirname, relative, sep } from 'node:path';
+import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync, existsSync, statSync } from 'node:fs';
+import { join, dirname, relative, sep, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -32,15 +33,21 @@ const formats = {
   year: v => utc({ year: 'numeric' }).format(isoDate(v)),
   fixed1: v => num(v).toFixed(1),
   usd: v => '$' + num(v).toLocaleString('en-US'),
+  count: v => {
+    if (!Array.isArray(v)) throw new Error(`"${v}" is not a list`);
+    return v.length;
+  },
 };
 // These return markup, so they escape the value themselves.
 const htmlFormats = {
   wbr: v => escape(v).replace('@', '@<wbr>'),
 };
 
-function lookup(path) {
+// Only |count may take a list, and never an empty one.
+function lookup(path, fmt) {
   const v = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), data);
-  if (v == null || v === '' || typeof v === 'object') throw new Error(`no value for {{${path}}}`);
+  const list = fmt === 'count' && Array.isArray(v) && v.length > 0;
+  if (v == null || v === '' || (typeof v === 'object' && !list)) throw new Error(`no value for {{${path}${fmt ? `|${fmt}` : ''}}}`);
   return v;
 }
 
@@ -54,7 +61,7 @@ function render(file) {
   });
   html = html.replace(/\{\{([\w.]+)(?:\|(\w+))?\}\}/g, (_, path, fmt) => {
     if (fmt && !formats[fmt] && !htmlFormats[fmt]) throw new Error(`${file}: unknown format |${fmt}`);
-    const v = lookup(path);
+    const v = lookup(path, fmt);
     if (htmlFormats[fmt]) return htmlFormats[fmt](v);
     try {
       return escape(fmt ? formats[fmt](v) : v);
@@ -73,8 +80,13 @@ const skip = s => s.endsWith('.html') || s.startsWith(join(src, 'partials')) || 
   || (s.startsWith(join(src, 'fonts') + sep) && s.endsWith('.css'));
 cpSync(src, dist, { recursive: true, filter: s => !skip(s) });
 
-const pages = readdirSync(src).filter(f => f.endsWith('.html'));
-for (const f of pages) writeFileSync(join(dist, f), render(f));
+// Page paths use forward slashes: they double as URL paths.
+const pages = readdirSync(src, { recursive: true }).map(f => f.split(sep).join('/'))
+  .filter(f => f.endsWith('.html') && !f.startsWith('partials/')).sort();
+for (const f of pages) {
+  mkdirSync(dirname(join(dist, f)), { recursive: true });
+  writeFileSync(join(dist, f), render(f));
+}
 
 const fontCss = readdirSync(join(src, 'fonts')).filter(f => f.endsWith('.css')).sort()
   .map(f => read(`src/fonts/${f}`).replaceAll('url(./', 'url(fonts/'));
@@ -82,24 +94,33 @@ writeFileSync(join(dist, 'styles.css'), [...fontCss, read('src/styles.css')].joi
 
 writeFileSync(join(dist, 'CNAME'), `${config.host}\n`);
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
+const pageUrl = f => `${origin}/${f.replace(/(^|\/)index\.html$/, '$1')}`;
+const listed = pages.filter(f => f !== '404.html').map(pageUrl).sort();
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>${origin}/</loc><lastmod>${facts.updated}</lastmod></url>
+${listed.map(u => `  <url><loc>${u}</loc><lastmod>${facts.updated}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 
-// Every local reference must resolve inside dist/, and every #fragment must name an id on its page.
+// Every local reference must resolve inside dist/ (root-absolute from dist/, relative from the page's own folder;
+// a folder must hold an index.html), and every #fragment must name an id on the page it points at.
 const missing = [];
+const ids = new Map(pages.map(f => [f, new Set([...readFileSync(join(dist, f), 'utf8').matchAll(/\sid="([^"]+)"/g)].map(m => m[1]))]));
 for (const f of pages) {
   const html = readFileSync(join(dist, f), 'utf8');
-  const ids = new Set([...html.matchAll(/\sid="([^"]+)"/g)].map(m => m[1]));
   const refs = [...html.matchAll(/\s(?:src|href)=(["'])([^"']+)\1/g)].map(m => m[2])
     .concat([...html.matchAll(/\ssrcset=(["'])([^"']+)\1/g)].flatMap(m => m[2].split(',').map(c => c.trim().split(/\s+/)[0])));
   for (const r of refs) {
     if (/^(https?:|mailto:|data:)/.test(r)) continue;
-    if (r.startsWith('#')) { if (r.length > 1 && !ids.has(r.slice(1))) missing.push(`${f}: ${r}`); continue; }
-    const path = r.split(/[?#]/)[0];
-    if (!existsSync(join(dist, path.startsWith('/') ? path.slice(1) : path))) missing.push(`${f}: ${r}`);
+    const path = r.split(/[?#]/)[0], fragment = r.includes('#') ? r.slice(r.indexOf('#') + 1) : '';
+    let target = f;
+    if (path) {
+      target = posix.normalize(path.startsWith('/') ? path.slice(1) : posix.join(posix.dirname(f), path));
+      if (target.startsWith('..') || !existsSync(join(dist, target))) { missing.push(`${f}: ${r}`); continue; }
+      if (statSync(join(dist, target)).isDirectory()) target = posix.join(target, 'index.html');
+      if (!existsSync(join(dist, target))) { missing.push(`${f}: ${r}`); continue; }
+    }
+    if (fragment && ids.has(target) && !ids.get(target).has(fragment)) missing.push(`${f}: ${r}`);
   }
 }
 for (const u of read('dist/styles.css').matchAll(/url\(([^)]+)\)/g)) {
