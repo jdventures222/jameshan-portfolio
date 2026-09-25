@@ -74,10 +74,21 @@
     }
   },
   "services": {
-    "menu_from": 1200,
-    "website_from": 2500,
+    "menu_from": 900,
+    "website_from": 1800,
     "_sources": {
-      "menu_from, website_from": "James's prices (Ladder B, set 2026-09-23); shown as 'from' prices on the page by his decision of 2026-09-24"
+      "menu_from, website_from, kit, care_basic, care_plus": "James's first-client prices, decided 2026-09-24/25 (SERVICES-SCOPE.md v0.2): Menu from $900, Website from $1,800, Restaurant Kit $2,500, care $75 or $125 a month"
+    },
+    "kit": 2500,
+    "care_basic": 75,
+    "care_plus": 125
+  },
+  "market": {
+    "platform_monthly_low": 149,
+    "platform_monthly_high": 499,
+    "as_of": "2026-09-24",
+    "_sources": {
+      "platform_monthly_low, platform_monthly_high": "published monthly prices of restaurant website and ordering platforms, read 2026-09-24: Menufy $149/mo on a yearly contract and MenuDrive $149/mo (lowest), Owner.com $499/mo flat and Popmenu's $499/mo plan (highest); ChowNow $249-$449 in between. Owner.com also takes 5% per order and Popmenu $1 per online order"
     }
   },
   "links": {
