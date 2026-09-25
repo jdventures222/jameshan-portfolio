@@ -10,7 +10,7 @@
   --on-link: light-dark(#FCFCFB, #141414);
   --mark: light-dark(#FFE14D, #E8C547);
   --mark-ink: light-dark(#17181A, #141414);
-  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --serif: "Literata", "Literata Fallback", Georgia, "Times New Roman", serif;
   --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
   --pad: 1.25rem;
   --max: 70rem;
@@ -100,7 +100,12 @@ main:focus { outline: none; }
 .nav ul a:hover { text-decoration-color: currentColor; }
 .nav ul a:active { color: var(--secondary); }
 .nav .nav-email { color: var(--link); font-weight: 600; text-decoration-color: currentColor; }
-@media (max-width: 22.4375em) { .nav { font-size: 0.9375rem; } }
+/* Four links: below 440 px the text steps down and the gaps close, so the bar stays on one line from 353 px. */
+@media (max-width: 27.4375em) {
+  .nav { font-size: 0.9375rem; }
+  .nav ul { column-gap: 0.625rem; }
+}
+@media (max-width: 23.4375em) { .nav { font-size: 0.875rem; } }
 
 /* Hero */
 .hero { padding-block: 2.25rem 0; }
@@ -286,7 +291,8 @@ mark {
 @media (min-width: 48em) { .scripts { font-size: 1.1875rem; } }
 
 /* Services: a plain list, the price in the rail */
-.intro { margin-top: 0.75rem; }
+.intro { margin-top: 1rem; }
+@media (min-width: 64em) { .intro { margin-top: 1.25rem; } }
 .services { margin-top: 1.5rem; list-style: none; }
 .service { padding-block: 1.25rem; border-top: 1px solid var(--hairline); }
 .service h3 { font-size: 1.3125rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.25; }
@@ -294,12 +300,17 @@ mark {
 .service-body { margin-top: 0.5rem; }
 .service-body > * + * { margin-top: 0.5rem; }
 .label { font-family: var(--sans); font-size: 0.9375em; font-weight: 600; }
-.ready { font-family: var(--sans); font-size: 0.9375rem; color: var(--secondary); }
+.ready, .source { font-family: var(--sans); font-size: 0.9375rem; color: var(--secondary); }
+.source { line-height: 1.45; }
 @media (min-width: 64em) {
   .services { margin-top: 2rem; }
   .service { padding-block: 1.5rem; }
   .service .price { margin-top: 0; }
 }
+.packages { border-bottom: 1px solid var(--hairline); }
+.packages .service { padding-block: 1rem; }
+.quoted { margin-top: 1rem; }
+@media (min-width: 64em) { .packages .service { padding-block: 1.25rem; } }
 
 .row > p { margin-top: 1rem; }
 @media (min-width: 64em) { .row > h2 + p { margin-top: 1.25rem; } }
@@ -322,7 +333,7 @@ h1, h2, h3 { hanging-punctuation: first; }
   font-size: clamp(2rem, 1.3rem + 2.6vw, 3.125rem);
   font-weight: 560; line-height: 1.1; letter-spacing: -0.022em;
 }
-.case-head > .ledger, .case-head > .about-intro { margin-top: 1.5rem; }
+.case-head > .ledger, .case-head > .about-intro, .case-head > .lead { margin-top: 1.5rem; }
 .lead { font-size: 1.25rem; line-height: 1.5; }
 .about-intro > p + p { margin-top: 1rem; }
 .facts {
@@ -338,22 +349,41 @@ h1, h2, h3 { hanging-punctuation: first; }
   .lead { font-size: 1.375rem; }
   .facts { margin-bottom: 0; }
   .case-head .scripts { margin-block: 2rem 2.5rem; }
-  .case-head > .about-intro { margin-top: 2rem; }
+  .case-head > .about-intro, .case-head > .lead { margin-top: 2rem; }
 }
 
 .side-row { padding-top: 3.5rem; }
-.side-row > h2 { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.012em; line-height: 1.2; margin-bottom: 0.75rem; }
+.side-row > h2, .rail-head > h2 { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.012em; line-height: 1.2; }
+.side-row > h2, .rail-head { margin-bottom: 0.75rem; }
 .side-row p + p { margin-top: 1rem; }
 @media (min-width: 64em) {
   .side-row { padding-top: 4.5rem; }
-  .side-row > h2 { font-size: 1.5rem; margin-bottom: 0; }
+  .side-row > h2, .rail-head > h2 { font-size: 1.5rem; }
+  .side-row > h2, .rail-head { margin-bottom: 0; }
 }
+.side-row > .actions { margin-top: 0; }
+
+/* The services page: each package's list, then what I need and when it is ready. */
+.detail > * + * { margin-top: 1rem; }
+.detail > .ready, .detail > .source { margin-top: 0.5rem; }
+.ready strong { color: var(--ink); font-weight: 600; }
+
+/* The care comparison: a real table that wraps inside the measure, never scrolls sideways. */
+.care { width: 100%; border-collapse: collapse; font-size: 1rem; line-height: 1.45; }
+.care th, .care td { padding: 0.625rem 0.75rem 0.625rem 0; border-bottom: 1px solid var(--hairline); text-align: left; vertical-align: baseline; }
+.care tr > :last-child { padding-right: 0; }
+.care th, .care td { font-family: var(--sans); font-size: 0.9375rem; }
+.care thead th { width: 26%; font-size: 1rem; font-weight: 600; }
+.care tbody th { font-weight: 400; }
+@media (min-width: 48em) { .care thead th { width: 8.5rem; } }
 
 .decisions { padding-left: 1.75rem; }
 .decisions > li + li { margin-top: 2rem; }
 .decisions ::marker { font-family: var(--sans); font-weight: 600; color: var(--secondary); font-variant-numeric: proportional-nums; }
-.decisions h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
-.decisions p { margin-top: 0.5rem; }
+.decisions h3, .faq h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+.decisions p, .faq p { margin-top: 0.5rem; }
+.faq p + h3 { margin-top: 1.5rem; }
+@media (max-width: 63.9375em) { .faq { margin-top: 1.25rem; } }
 .decisions p + p { margin-top: 0.5rem; }
 .bullets { padding-left: 1.25rem; }
 .bullets li + li { margin-top: 0.5rem; }
@@ -437,12 +467,12 @@ html:has(.viewer[open]) { overflow: hidden; }
 
   body:has(.print-sheet) .site-header, body:has(.print-sheet) .site-footer { display: none; }
   .print-only { display: block; }
-  .print-sheet { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16pt; padding-bottom: 12pt; border-bottom: 1px solid #999999; }
+  .print-sheet { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16pt; padding-bottom: 12pt; border-bottom: 1px solid var(--hairline); }
   .print-name { font-size: 22pt; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
   .print-sheet p:not(.print-name) { font-family: var(--sans); }
   .print-reach { margin-top: 4pt; font-size: 10pt; }
   .print-qr { display: flex; align-items: center; gap: 8pt; }
-  .print-qr svg { flex-shrink: 0; width: 24mm; height: 24mm; color: #000000; }
+  .print-qr svg { flex-shrink: 0; width: 24mm; height: 24mm; color: var(--ink); }
   .print-qr p { max-width: 18ch; font-size: 8pt; line-height: 1.35; }
   .section { padding-top: 14pt; }
   .section h2 { font-size: 15pt; }
@@ -451,4 +481,12 @@ html:has(.viewer[open]) { overflow: hidden; }
   .entry h3 { font-size: 13pt; }
   .stamps { gap: 1pt; margin-bottom: 5pt; font-size: 9pt; }
   .entry-body > * + *, .entry-body ~ .entry-body { margin-top: 5pt; }
+  /* The packages print as rows: name and price on the left, the one line beside them. */
+  .intro { margin-top: 4pt; }
+  .services { margin-top: 8pt; }
+  .packages .service { display: grid; grid-template-columns: 9.5rem minmax(0, 1fr); column-gap: 12pt; padding-block: 5pt; break-inside: avoid; }
+  .packages h3 { font-size: 11.5pt; }
+  .packages .price { margin-top: 1pt; font-size: 9.5pt; }
+  .packages .service-body { grid-column: 2; grid-row: 1 / span 2; margin-top: 0; }
+  .quoted { margin-top: 5pt; }
 }

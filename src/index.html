@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   {{include partials/head.html}}
-  <title>James Han · Full-stack developer in Orange County</title>
-  <meta name="description" content="I build and maintain iOS apps, websites and business automations. See Fyt on the App Store and a restaurant menu system in {{menus.languages}} languages.">
+  <title>James Han · Restaurant websites and menus in Orange County</title>
+  <meta name="description" content="I build websites and menus for Orange County restaurants, on accounts you own: menus in your guests’ languages with allergens, websites linked to the ordering your POS already has, and care after launch.">
   <link rel="canonical" href="{{site.url}}">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{site.url}}">
   <meta property="og:site_name" content="James Han">
-  <meta property="og:title" content="Full-stack developer in {{person.area}}">
-  <meta property="og:description" content="I build and maintain iOS apps, websites and business automations. See Fyt on the App Store and a restaurant menu system in {{menus.languages}} languages.">
+  <meta property="og:title" content="Restaurant websites and menus, on accounts you own">
+  <meta property="og:description" content="I build websites and menus for Orange County restaurants, on accounts you own: menus in your guests’ languages with allergens, websites linked to the ordering your POS already has, and care after launch.">
   <meta property="og:image" content="{{site.url}}assets/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,7 +23,7 @@
   <div class="print-only print-sheet">
     <div>
       <p class="print-name">{{person.name}}</p>
-      <p>Full-stack developer</p>
+      <p>Websites and menus for Orange County restaurants</p>
       <p class="print-reach">{{person.email}} · {{site.host}}</p>
     </div>
     <div class="print-qr">
@@ -35,8 +35,8 @@
   <main id="main" tabindex="-1">
     <section class="hero wrap no-print" aria-labelledby="hero-title">
       <div class="hero-text">
-        <h1 id="hero-title">I build and maintain iOS apps, websites and business automations.</h1>
-        <p class="support">End-to-end development, from the interface to the API, database and deployment, with support after launch.</p>
+        <h1 id="hero-title">I build websites and menus for Orange County restaurants, on accounts you own.</h1>
+        <p class="support">Menus in your guests’ languages with their allergens, websites linked to the ordering your POS already has, and someone you’ve met to keep them up to date.</p>
         <p class="hero-action"><a class="button" href="mailto:{{person.email}}">Email me</a></p>
         <p class="reach"><span class="address">{{person.email}}</span><br>I reply within one business day.</p>
       </div>
@@ -55,6 +55,37 @@
           <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 70em) 168px, (min-width: 40em) 184px, calc(33vw - 21px)" width="1170" height="2532" alt="The same menu in Arabic, laid out right to left." decoding="async" fetchpriority="low" loading="lazy">
         </picture>
       </a>
+    </section>
+
+    <section class="section" id="services" aria-labelledby="services-title">
+      <div class="wrap ledger">
+        <h2 class="span" id="services-title">What I build for restaurants</h2>
+        <p class="intro">Every project starts with a fixed price in writing, and you own everything I build.</p>
+        <ul class="services packages span">
+          <li class="service ledger">
+            <h3>Menu</h3>
+            <p class="price rail">From {{services.menu_from|usd}}</p>
+            <p class="service-body">Your menu on your guests’ phones in up to {{menus.languages}} languages, with an allergen filter, print-ready menus and QR table cards.</p>
+          </li>
+          <li class="service ledger">
+            <h3>Website</h3>
+            <p class="price rail">From {{services.website_from|usd}}</p>
+            <p class="service-body">A fast website on your own domain with your menu, hours, map and photos, linked to the ordering your POS already has.</p>
+          </li>
+          <li class="service ledger">
+            <h3>Restaurant Kit</h3>
+            <p class="price rail">{{services.kit|usd}}</p>
+            <p class="service-body">The menu and the website, plus QR cards that ask guests for a review, and the first month of the {{services.care_plus|usd}} care plan.</p>
+          </li>
+          <li class="service ledger">
+            <h3>Care</h3>
+            <p class="price rail">{{services.care_basic|usd}} or {{services.care_plus|usd}} a month</p>
+            <p class="service-body">Hosting, fixes and small changes; the {{services.care_plus|usd}} plan adds menu, price and hours changes within one business day.</p>
+          </li>
+        </ul>
+        <p class="quoted">Apps, automations and POS features: a fixed quote after a short conversation.</p>
+        <p class="more"><a href="/services/">See everything that’s included</a></p>
+      </div>
     </section>
 
     <section class="section" id="work" aria-labelledby="work-title">
@@ -124,6 +155,7 @@
           </ul>
           <div class="entry-body">
             <p>Friends who run and lift together track their workouts in Fyt, and each run is announced in their iMessage group chat, so members without the app see it too.</p>
+            <p>The same skills build apps and automations for restaurants: order alerts, daily sales summaries, reservation reminders.</p>
             <p class="live"><a class="button" href="{{fyt.app_store_url}}">View on the App Store</a></p>
           </div>
           <div class="band shots">
@@ -153,51 +185,6 @@
       </div>
     </section>
 
-    <section class="section no-print" id="services" aria-labelledby="services-title">
-      <div class="wrap ledger">
-        <h2 class="span" id="services-title">What I build for restaurants and small businesses</h2>
-        <p class="intro">Every project starts with a fixed price in writing.</p>
-        <ul class="services span">
-          <li class="service ledger">
-            <h3>QR menus in up to {{menus.languages}} languages</h3>
-            <p class="price rail">From {{services.menu_from|usd}}</p>
-            <div class="service-body">
-              <p><span class="label">You get:</span> a scan-to-open menu with an allergen filter and dish photos, print-ready PDFs in every language, and QR table cards, for one brand and up to three locations, hosted.</p>
-              <p><span class="label">I need from you:</span> the menu, your photos, and your kitchen’s check of the allergen lines before launch.</p>
-              <p class="ready">Ready in about two weeks.</p>
-            </div>
-          </li>
-          <li class="service ledger">
-            <h3>Restaurant websites</h3>
-            <p class="price rail">From {{services.website_from|usd}}</p>
-            <div class="service-body">
-              <p><span class="label">You get:</span> three to five pages with your menu, hours, map and photos, links for online ordering and reservations, and your Google Business listing tied in; fast on phones, hosted, with two rounds of revisions.</p>
-              <p><span class="label">I need from you:</span> your logo, photos, and the links you already use for ordering and reservations.</p>
-              <p class="ready">Ready in three to four weeks.</p>
-            </div>
-          </li>
-          <li class="service ledger">
-            <h3>Automations</h3>
-            <p class="price rail">Quoted after a short conversation</p>
-            <div class="service-body">
-              <p>One repetitive task done for you end to end: reservation reminders by text, a daily sales summary by email, review requests after a visit, low-stock alerts, or two tools kept in sync. It starts with a one-week paid pilot.</p>
-              <p class="ready">Ready in one to two weeks.</p>
-            </div>
-          </li>
-          <li class="service ledger">
-            <h3>Apps and custom software</h3>
-            <p class="price rail">A fixed quote after a short conversation</p>
-          </li>
-          <li class="service ledger">
-            <h3>Monthly care</h3>
-            <div class="service-body">
-              <p>Hosting, updates and small changes after launch.</p>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
     <section class="section no-print" aria-labelledby="how-title">
       <div class="wrap ledger row">
         <h2 class="span" id="how-title">How a project runs</h2>
@@ -207,7 +194,7 @@
 
     <section class="section no-print" id="contact" aria-labelledby="contact-title">
       <div class="wrap ledger row">
-        <h2 class="span" id="contact-title">Tell me what you need built.</h2>
+        <h2 class="span" id="contact-title">Tell me about your restaurant.</h2>
         <p>Email is the fastest way to reach me. I reply within one business day.</p>
         <div class="actions">
           <a class="button" href="mailto:{{person.email}}">Email me</a>

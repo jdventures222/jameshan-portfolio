@@ -1,6 +1,6 @@
 # jameshan.fyt.life
 
-The site of James Han, a full-stack developer in Orange County, California, who builds and maintains iOS apps, websites and business automations: a home page, a page for each project (a restaurant menu system and Fyt, an iPhone and Apple Watch app) and an About page.
+The site of James Han, a full-stack developer in Orange County, California, who builds websites and menus for restaurants: a home page, a services page with prices, a page for each project (a restaurant menu system and Fyt, an iPhone and Apple Watch app) and an About page.
 
 It is plain HTML and CSS with no framework and no trackers, plus two small scripts, one for the full-screen screenshot viewer and one for the copy-address button; everything works without them.
 

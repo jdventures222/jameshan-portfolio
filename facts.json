@@ -1,6 +1,6 @@
 {
   "_about": "Single source for every number and link on the page. The build step injects these values; nothing on the page is typed by hand. Re-verify each entry with its _source before anything goes public.",
-  "updated": "2026-09-24",
+  "updated": "2026-09-25",
   "person": {
     "name": "James Han",
     "role": "Full-stack developer for small businesses",
@@ -89,6 +89,13 @@
     "as_of": "2026-09-24",
     "_sources": {
       "platform_monthly_low, platform_monthly_high": "published monthly prices of restaurant website and ordering platforms, read 2026-09-24: Menufy $149/mo on a yearly contract and MenuDrive $149/mo (lowest), Owner.com $499/mo flat and Popmenu's $499/mo plan (highest); ChowNow $249-$449 in between. Owner.com also takes 5% per order and Popmenu $1 per online order"
+    }
+  },
+  "law": {
+    "sb68_in_force": "2026-07-01",
+    "sb68_chain_locations": 20,
+    "_sources": {
+      "sb68_in_force, sb68_chain_locations": "California SB 68 (Chapter 741, Statutes of 2025), Health and Safety Code section 114093.5: \"Commencing July 1, 2026\", for food facilities subject to 21 U.S.C. 343(q)(5)(H), which are chains of 20 or more locations; read 2026-09-24 at https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB68"
     }
   },
   "links": {

@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>Services and prices · James Han</title>
+  <meta name="description" content="Restaurant menus in up to {{menus.languages}} languages, websites linked to your POS’s ordering, the Restaurant Kit and monthly care, with prices, what’s included and what I need from you.">
+  <link rel="canonical" href="{{site.url}}services/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{site.url}}services/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="Restaurant menus, websites and care: what’s included">
+  <meta property="og:description" content="Restaurant menus in up to {{menus.languages}} languages, websites linked to your POS’s ordering, the Restaurant Kit and monthly care, with prices, what’s included and what I need from you.">
+  <meta property="og:image" content="{{site.url}}assets/og-services.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two phone screens of restaurant menus with dish photos and prices, one in English and one in Korean.">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main id="main" tabindex="-1">
+    <header class="case-head wrap ledger">
+      <h1 class="span">Services and prices</h1>
+      <p class="lead">Every project starts with a <span class="nowrap">twenty-minute</span> talk and a fixed price in writing. You own everything I build: the domain, the site, the menu and your guests’ data.</p>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="menu-title">
+      <div class="rail rail-head">
+        <h2 id="menu-title">Menu</h2>
+        <p class="price">From {{services.menu_from|usd}}</p>
+      </div>
+      <div class="detail">
+        <ul class="bullets">
+          <li>A phone menu at your own web address, in up to {{menus.languages}} languages, one tap to switch; right-to-left for Arabic, Farsi and Urdu.</li>
+          <li>An allergen filter for the {{menus.allergens}} major allergens, the same list California requires restaurant chains of {{law.sb68_chain_locations}} or more locations to show from {{law.sb68_in_force|month}} (SB 68).</li>
+          <li>Print-ready menus in every language and a one-page allergen chart.</li>
+          <li>QR table cards for each location, pointing at your own address.</li>
+          <li>Your service fee shown clearly next to your prices, if you charge one, as California requires.</li>
+          <li>One restaurant, up to three locations, one menu. Lunch or happy-hour menus are quoted.</li>
+        </ul>
+        <p><span class="label">I need from you:</span> the menu, your photos, and your kitchen’s check of the allergen lines before launch.</p>
+        <p class="ready"><strong>Ready in:</strong> about two weeks.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="website-title">
+      <div class="rail rail-head">
+        <h2 id="website-title">Website</h2>
+        <p class="price">From {{services.website_from|usd}}</p>
+      </div>
+      <div class="detail">
+        <ul class="bullets">
+          <li>Three to five pages on your own domain: menu, hours, map, photos, your story, and a catering or private-event request form that comes to your email.</li>
+          <li>Linked to the online ordering your POS already includes (Square, Toast or Clover) and to your reservations: no second ordering system, no commission.</li>
+          <li>Your Google Business Profile claimed, filled in and matched to the site.</li>
+          <li>Built for phones and for guests who use screen readers or a keyboard.</li>
+          <li>Two rounds of revisions. Hosting is free on your own account; you pay only for your domain.</li>
+        </ul>
+        <p><span class="label">I need from you:</span> your logo, photos, the words you want, and your ordering and reservation links.</p>
+        <p class="ready"><strong>Ready in:</strong> three to four weeks.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="kit-title">
+      <div class="rail rail-head">
+        <h2 id="kit-title">Restaurant Kit</h2>
+        <p class="price">{{services.kit|usd}}</p>
+      </div>
+      <p>The menu and the website, plus QR cards that send guests to your Google review page, and the first month of the {{services.care_plus|usd}} care plan.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="care-title">
+      <h2 class="rail" id="care-title">Care, month to month</h2>
+      <div class="detail">
+        <table class="care">
+          <caption class="visually-hidden">Care, month to month</caption>
+          <thead>
+            <tr><td></td><th scope="col">{{services.care_basic|usd}} <span class="nowrap">a month</span></th><th scope="col">{{services.care_plus|usd}} <span class="nowrap">a month</span></th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Hosting and domain-renewal checks, backups and security</th><td>yes</td><td>yes</td></tr>
+            <tr><th scope="row">Fixes if something breaks</th><td>yes</td><td>yes</td></tr>
+            <tr><th scope="row">Small text or photo changes</th><td>one a month</td><td>yes</td></tr>
+            <tr><th scope="row">Menu and price changes on the site, the printed menus and Google, within one business day</th><td>quoted</td><td>yes</td></tr>
+            <tr><th scope="row">Hours and holiday updates on the site and Google</th><td>quoted</td><td>yes</td></tr>
+            <tr><th scope="row">A speed and accessibility check every three months</th><td><span class="visually-hidden">not included</span></td><td>yes</td></tr>
+          </tbody>
+        </table>
+        <p>Stop anytime; everything stays yours.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="own-title">
+      <h2 class="rail" id="own-title">Why own your site</h2>
+      <div class="detail">
+        <p>Restaurant website platforms charge {{market.platform_monthly_low|usd}} to {{market.platform_monthly_high|usd}} a month, some take a share of every online order, and the site stays with them if you leave. What I build is yours: the domain, the site, the menu and your guests’ data. The only monthly cost is care, and you can stop it anytime.</p>
+        <p class="source">As of {{market.as_of|month}} · the platforms’ published prices</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="quoted-title">
+      <h2 class="rail" id="quoted-title">Quoted after a short conversation</h2>
+      <ul class="bullets">
+        <li>Automations, starting with a one-week paid pilot: catering and large-order requests to your phone, a daily sales summary from Square or Toast, reservation reminders.</li>
+        <li>Apps and custom software.</li>
+        <li>Loyalty, gift cards and texting inside Square or Toast.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="dont-title">
+      <h2 class="rail" id="dont-title">What I don’t do</h2>
+      <p>Delivery-app management, social media posting, review replies, or legal guarantees. I’ll tell you who does.</p>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="how-title">
+      <h2 class="rail" id="how-title">How we work</h2>
+      <ul class="bullets">
+        <li>Half to start, half at launch.</li>
+        <li>You own the accounts; I hand over every login.</li>
+        <li>Translations are checked by me and read by someone on your staff who speaks the language before launch.</li>
+        <li>Allergen lines come from your kitchen and say so on the menu.</li>
+        <li>I reply within one business day.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="faq-title">
+      <h2 class="rail" id="faq-title">FAQ</h2>
+      <div class="faq">
+        <h3>Who owns the website?</h3>
+        <p>You do: the domain, the hosting account and everything on it.</p>
+        <h3>Does it work with my POS?</h3>
+        <p>It links to the online ordering Square, Toast and Clover already include.</p>
+        <h3>What if I stop care?</h3>
+        <p>The site keeps running on your account; changes are then quoted one at a time.</p>
+        <h3>Who checks the translations and allergens?</h3>
+        <p>Your staff reads each language and your kitchen confirms the allergen lines before anything goes live.</p>
+      </div>
+    </section>
+
+    <div class="side-row wrap ledger">
+      <div class="actions">
+        <a class="button" href="mailto:{{person.email}}">Email me</a>
+        <span class="address" data-copy>{{person.email}}</span>
+      </div>
+    </div>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>
