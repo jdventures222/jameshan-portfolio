@@ -336,6 +336,9 @@ h1, h2, h3 { hanging-punctuation: first; }
 .case-head > .ledger, .case-head > .about-intro, .case-head > .lead { margin-top: 1.5rem; }
 .lead { font-size: 1.25rem; line-height: 1.5; }
 .about-intro > p + p { margin-top: 1rem; }
+.portrait { display: block; width: 10rem; margin-top: 1.5rem; }
+.portrait img { border-radius: 4px; }
+@media (min-width: 64em) { .case-head > .portrait { grid-column: 1; grid-row: 2; align-self: start; width: 100%; margin-top: 2.5625rem; } }
 .facts {
   display: grid; gap: 0.625rem; margin-bottom: 1.5rem;
   font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45;
@@ -454,7 +457,7 @@ html:has(.viewer[open]) { overflow: hidden; }
   :root { color-scheme: light; --ground: #FFFFFF; --ink: #000000; --secondary: #333333; --link: #000000; --hairline: #999999; }
   body { font-size: 10.5pt; line-height: 1.45; }
   a { color: inherit; text-decoration: none; }
-  .skip-link, .nav ul, .copy, .actions .button, .live, .more, picture, .shot, .shots, .screens, .band, .proof, .scripts, .no-print { display: none; }
+  .skip-link, .nav ul, .copy, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .proof, .scripts, .no-print { display: none; }
   .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; background: none; color: inherit; font-size: inherit; }
   mark { margin: 0; padding: 0; background: none; color: var(--ink); }
   .sweep::before, .sweep::after { display: none; }
