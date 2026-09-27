@@ -114,7 +114,6 @@ main:focus { outline: none; }
   font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
   font-weight: 560; line-height: 1.08; letter-spacing: -0.022em;
 }
-.support { max-width: 32em; margin-top: 1.25rem; font-size: 1.1875rem; line-height: 1.5; }
 .hero-action { margin-top: 1.75rem; }
 .reach { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--secondary); }
 .reach > p { min-width: 0; }
@@ -130,7 +129,6 @@ main:focus { outline: none; }
     display: grid; grid-template-columns: minmax(0, 1fr) 33rem; column-gap: 4rem; align-items: center;
     padding-block: 4.5rem 1rem;
   }
-  .support { font-size: 1.3125rem; }
   .proof { margin-top: 0; }
 }
 
