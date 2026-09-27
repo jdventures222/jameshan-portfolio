@@ -119,15 +119,14 @@ main:focus { outline: none; }
   font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
   font-weight: 560; line-height: 1.08; letter-spacing: -0.022em;
 }
-/* The photo with the button centred beside it; the address on one line underneath. */
+/* The photo with the button and the reply line centred beside it. */
 .reach {
-  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action" "note note";
-  align-items: center; column-gap: 1.25rem; row-gap: 1rem; margin-top: 1.75rem;
+  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action";
+  align-items: center; column-gap: 1.25rem; margin-top: 1.75rem;
   font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--secondary);
 }
 .reach .portrait { grid-area: photo; width: 5.5rem; margin-top: 0; }
-.reach .hero-action { grid-area: action; }
-.reach-note { grid-area: note; min-width: 0; }
+.reach .hero-action { grid-area: action; display: grid; justify-items: start; row-gap: 0.5rem; }
 /* Lighter than --secondary but still 4.5:1 on both grounds. */
 .reply { color: color-mix(in srgb, var(--secondary) 85%, var(--ground)); font-size: 0.8125rem; }
 @media (min-width: 30em) { .reach .portrait { width: 7.5rem; } }

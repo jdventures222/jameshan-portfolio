@@ -39,10 +39,6 @@ const formats = {
     return v.length;
   },
 };
-// These return markup, so they escape the value themselves.
-const htmlFormats = {
-  wbr: v => escape(v).replace('@', '@<wbr>'),
-};
 
 // Only |count may take a list, and never an empty one.
 function lookup(path, fmt) {
@@ -77,9 +73,8 @@ function render(file) {
   });
   html = markNav(html, file);
   html = html.replace(/\{\{([\w.]+)(?:\|(\w+))?\}\}/g, (_, path, fmt) => {
-    if (fmt && !formats[fmt] && !htmlFormats[fmt]) throw new Error(`${file}: unknown format |${fmt}`);
+    if (fmt && !formats[fmt]) throw new Error(`${file}: unknown format |${fmt}`);
     const v = lookup(path, fmt);
-    if (htmlFormats[fmt]) return htmlFormats[fmt](v);
     try {
       return escape(fmt ? formats[fmt](v) : v);
     } catch (e) {
