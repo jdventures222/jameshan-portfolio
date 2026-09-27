@@ -1,14 +1,14 @@
 {
   "_about": "Single source for every number and link on the page. The build step injects these values; nothing on the page is typed by hand. Re-verify each entry with its _source before anything goes public.",
-  "updated": "2026-09-25",
+  "updated": "2026-09-26",
   "person": {
     "name": "James Han",
     "role": "Full-stack developer for small businesses",
     "area": "Orange County, California",
     "languages": ["English"],
-    "email": "hanjames1999@gmail.com",
+    "email": "jamestheanswerhan@gmail.com",
     "_sources": {
-      "email": "chosen by James for publication, 2026-09-23",
+      "email": "chosen by James for publication, 2026-09-26 (\"I want to use this as my professional email now\"); was hanjames1999@gmail.com from 2026-09-23",
       "area": "James's wording, decided 2026-09-23: \"Orange County, California\", never a city"
     }
   },
