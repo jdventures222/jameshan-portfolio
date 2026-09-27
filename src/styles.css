@@ -396,6 +396,43 @@ h1, h2, h3 { hanging-punctuation: first; }
 .elsewhere { display: flex; flex-wrap: wrap; column-gap: 1.5rem; list-style: none; font-family: var(--sans); font-weight: 600; }
 .elsewhere a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; }
 
+/* Services, About and case studies: shorter chapters, separated by the book's existing rule. */
+.page-upgrade .side-row { position: relative; margin-top: 2rem; padding-top: 1.25rem; }
+.page-upgrade .side-row::before {
+  content: ""; position: absolute; top: 0; inset-inline: var(--pad); border-top: 1px solid var(--hairline);
+}
+.page-upgrade .item-title, .project-steps h3, .project-notes h3 {
+  font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;
+}
+.project-steps { padding-left: 1.25rem; }
+.project-steps li + li { margin-top: 1.25rem; }
+.project-steps ::marker { color: var(--secondary); font-family: var(--sans); font-weight: 600; }
+.project-steps p, .project-notes article > p { margin-top: 0.5rem; }
+.project-notes article + article { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+.tool-list > div + div { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--hairline); }
+.tool-list dt { font-weight: 600; }
+.tool-list dd { margin-top: 0.25rem; font-family: var(--sans); font-size: 1rem; color: var(--secondary); }
+.case-study .case-head .facts { margin-top: 1.5rem; margin-bottom: 0; }
+.case-results { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
+.case-results > h2 { margin-bottom: 1.25rem; font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+.case-study .result + .result { margin-top: 0.875rem; padding-top: 0.875rem; border-top: 1px solid var(--hairline); }
+.project-gallery .scripts { margin-top: 0; margin-bottom: 0; }
+.project-gallery .screens { margin-top: 1.5rem; }
+.project-gallery .band { margin-top: 1rem; }
+.project-gallery .band .screens { margin-top: 0; }
+@media (min-width: 37.5em) and (max-width: 63.9375em) {
+  .case-study .case-head .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.5rem; }
+}
+@media (min-width: 64em) {
+  .page-upgrade .side-row { margin-top: 2.5rem; padding-top: 1.5rem; }
+  .case-study .case-head > .ledger { align-items: start; }
+  .case-study .case-head .facts { margin-top: 0; }
+  .project-steps { padding-left: 0; }
+  .project-gallery { align-items: start; }
+  .project-gallery > .rail { grid-row: 1; }
+  .project-gallery > .band { grid-row: 2; }
+}
+
 .not-found { padding-block: 3rem 1rem; }
 .not-found h1 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.125rem); font-weight: 560; line-height: 1.1; letter-spacing: -0.022em; }
 .not-found p { max-width: var(--measure); margin-block: 1.25rem 0.75rem; }
@@ -483,6 +520,13 @@ html:has(.viewer[open]) { overflow: hidden; }
   .site-header { border-bottom: 0; }
   .site-footer { margin-top: 18pt; padding-block: 8pt 0; }
   .case-head, .side-row { padding-top: 14pt; }
+  .page-upgrade .side-row { margin-top: 14pt; padding-top: 10pt; }
+  .page-upgrade .side-row::before { inset-inline: 0; }
+  .page-upgrade .project-gallery { display: none; }
+  .page-upgrade .case-head .facts { grid-template-columns: none; margin-top: 10pt; }
+  .page-upgrade .lead { font-size: 12pt; }
+  .page-upgrade .tool-list dd { font-size: 10pt; }
+  .project-steps li, .project-notes article, .tool-list > div { break-inside: avoid; }
   .decisions > li, .result { break-inside: avoid; }
   p, li { orphans: 2; widows: 2; }
   h1, h2, h3 { break-after: avoid; }

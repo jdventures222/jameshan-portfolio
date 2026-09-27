@@ -101,9 +101,9 @@
         <article class="entry span ledger" aria-labelledby="menus-title">
           <h3 id="menus-title">Restaurant menus guests read in their own language</h3>
           <ul class="stamps rail">
-            <li><strong>Built in {{menus.started|month}}</strong></li>
             <li><mark class="sweep" data-mark="{{menus.languages}} languages">{{menus.languages}} languages</mark> · the menu build’s language list</li>
             <li><strong>{{menus.brands}} brands</strong> · the menu repository</li>
+            <li><strong>Built in {{menus.started|month}}</strong></li>
           </ul>
           <a class="proof wide" href="{{menus.live_url}}" tabindex="-1">
             <span class="visually-hidden">Open the live menus.</span>
@@ -121,7 +121,8 @@
             </picture>
           </a>
           <div class="entry-body">
-            <p>Guests scan a code at the table, pick one of {{menus.languages}} languages, and see which dishes contain the allergens they avoid.</p>
+            <p>Guests scan a code at the table, choose their language and filter by the allergens they avoid. I built working menus for all {{menus.brands}} brands of the restaurant group where I work.</p>
+            <p class="live"><a class="button" href="{{menus.live_url}}">Open the live menus</a></p>
           </div>
           <ul class="scripts wide no-print">
             <li lang="en" dir="ltr">English</li>
@@ -139,8 +140,7 @@
             <li lang="ur" dir="rtl">اردو</li>
           </ul>
           <div class="entry-body">
-            <p>Working versions for all {{menus.brands}} brands of the restaurant group where I work.</p>
-            <p class="live"><a class="button" href="{{menus.live_url}}">Open the live menus</a></p>
+            <p>The web pages and print-ready PDFs come from the same menu data.</p>
           </div>
           <div class="shots wide">
             <figure class="shot crop crop-end">
@@ -164,15 +164,15 @@
               <figcaption>Dishes that contain it, flagged</figcaption>
             </figure>
           </div>
-          <p class="more"><a href="/work/menus/">Read how I built it<span class="visually-hidden">: the menus</span></a></p>
+          <p class="more"><a href="/work/menus/">How I built the menus</a></p>
         </article>
 
         <article class="entry span ledger" aria-labelledby="fyt-title">
           <h3 id="fyt-title">Fyt, a social fitness app for iPhone and Apple Watch</h3>
           <ul class="stamps rail">
-            <li><strong>On the App Store since {{fyt.app_store_since_display}}</strong> · version {{fyt.latest_version}}, {{fyt.latest_version_date|date}}</li>
-            <li><strong>{{fyt.rating|fixed1}} from {{fyt.rating_count}} ratings</strong> · App Store</li>
             <li><mark>{{fyt.users_display}} users</mark> · as of {{fyt.users_as_of|date}} · Fyt’s production database</li>
+            <li><strong>{{fyt.rating|fixed1}} from {{fyt.rating_count}} ratings</strong> · App Store</li>
+            <li><strong>On the App Store since {{fyt.app_store_since_display}}</strong> · version {{fyt.latest_version}}, {{fyt.latest_version_date|date}}</li>
           </ul>
           <div class="band shots">
             <figure class="shot crop crop-listing">
@@ -197,11 +197,11 @@
             </figure>
           </div>
           <div class="entry-body">
-            <p>Friends who run and lift together track their workouts in Fyt, and each run is announced in their iMessage group chat, so members without the app see it too.</p>
-            <p>The same skills build apps and automations for any business.</p>
+            <p>Fyt tracks the group’s runs and lifts, and announces each run in the group’s iMessage chat. Friends without the app see it too.</p>
+            <p>I built the iPhone and Apple Watch apps, the server and the website.</p>
             <p class="live"><a class="button" href="{{fyt.app_store_url}}">View on the App Store</a></p>
           </div>
-          <p class="more"><a href="/work/fyt/">Read how I built it<span class="visually-hidden">: Fyt</span></a></p>
+          <p class="more"><a href="/work/fyt/">How I built Fyt</a></p>
         </article>
       </div>
     </section>

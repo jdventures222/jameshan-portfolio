@@ -19,19 +19,35 @@
 <body>
   {{include partials/header.html}}
 
-  <main id="main" tabindex="-1">
+  <main class="page-upgrade about-page" id="main" tabindex="-1">
     <header class="case-head wrap ledger">
       <h1 class="span">About me</h1>
       <div class="about-intro">
-        <p class="lead">I’m James Han, a freelance full-stack developer in {{person.area}}. I take an idea from the first sketch to launch and keep it running: the screens people tap, the server and data behind them, and the launch itself, on the App Store, the web or a printed QR code.</p>
-        <p>Fyt is my own product, an iPhone and Apple Watch app on the App Store since {{fyt.app_store_since_display}}. Restaurants are a specialty: I work for a restaurant group, and on my own initiative I built its menus in {{menus.languages}} languages.</p>
+        <p class="lead">I’m James Han, a freelance full-stack developer in {{person.area}}.</p>
+        <p>I build the screens people use and the server and data behind them. I handle the launch, on the App Store, the web or a printed QR code. Then I keep it running.</p>
       </div>
     </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="work-title">
+      <h2 class="rail" id="work-title">The work behind it</h2>
+      <div class="project-notes">
+        <article>
+          <h3>Fyt</h3>
+          <p>Fyt is my own product, an iPhone and Apple Watch app on the App Store since {{fyt.app_store_since_display}}. I built the apps, the server and the website.</p>
+          <p class="more"><a href="/work/fyt/">How I built Fyt</a></p>
+        </article>
+        <article>
+          <h3>Restaurant menus</h3>
+          <p>Restaurants are a specialty: I work for a restaurant group, and on my own initiative I built its menus in {{menus.languages}} languages.</p>
+          <p class="more"><a href="/work/menus/">How I built the menus</a></p>
+        </article>
+      </div>
+    </section>
 
     <section class="side-row wrap ledger" aria-labelledby="how-title">
       <h2 class="rail" id="how-title">How I work</h2>
       <ul class="bullets">
-        <li>One person, start to finish: the one you talk to is the one who builds it.</li>
+        <li>You talk directly to the person building it.</li>
         <li>A fixed price in writing before I start.</li>
         <li>Plain English, no jargon.</li>
         <li>Every number on this site comes from a source I can show you.</li>
@@ -39,14 +55,14 @@
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="tools-title">
-      <h2 class="rail" id="tools-title">What I use, and where to see it</h2>
-      <ul class="bullets tools">
-        <li><span class="label">Swift, SwiftUI, watchOS, HealthKit:</span> Fyt’s iPhone and Apple Watch app.</li>
-        <li><span class="label">TypeScript, Node.js, Fastify, PostgreSQL:</span> Fyt’s server, database and background jobs.</li>
-        <li><span class="label">Python:</span> the menu build that makes every web page and PDF.</li>
-        <li><span class="label">HTML, CSS, JavaScript:</span> the menus, and this site.</li>
-        <li><span class="label">Fly.io, GitHub Actions, GitHub Pages:</span> hosting and deploys.</li>
-      </ul>
+      <h2 class="rail" id="tools-title">What I use</h2>
+      <dl class="tool-list">
+        <div><dt>Fyt’s iPhone and Apple Watch apps</dt><dd>Swift, SwiftUI, watchOS, HealthKit</dd></div>
+        <div><dt>Fyt’s server, database and background jobs</dt><dd>TypeScript, Node.js, Fastify, PostgreSQL</dd></div>
+        <div><dt>The menu build, for web pages and PDFs</dt><dd>Python</dd></div>
+        <div><dt>The menus and this site</dt><dd>HTML, CSS, JavaScript</dd></div>
+        <div><dt>Hosting and deploys</dt><dd>Fly.io, GitHub Actions, GitHub Pages</dd></div>
+      </dl>
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="elsewhere-title">
