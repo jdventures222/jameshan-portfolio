@@ -114,12 +114,22 @@ main:focus { outline: none; }
   font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
   font-weight: 560; line-height: 1.08; letter-spacing: -0.022em;
 }
-.hero-action { margin-top: 1.75rem; }
-.reach { display: flex; align-items: center; gap: 1rem; margin-top: 1rem; font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--secondary); }
-.reach > p { min-width: 0; }
-.reach .portrait { flex: none; width: 10rem; margin-top: 0; }
-@media (max-width: 29.9375em) { .reach { flex-direction: column; align-items: flex-start; } }
-@media (min-width: 30em) { .reach .portrait { width: 11rem; } }
+/* The photo, with the button centred beside it; on phones the address sits on one line underneath. */
+.reach {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action" "note note";
+  align-items: center; column-gap: 1.25rem; row-gap: 1rem; margin-top: 1.75rem;
+  font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--secondary);
+}
+.reach .portrait { grid-area: photo; width: 8rem; margin-top: 0; }
+.reach .hero-action { grid-area: action; }
+.reach-note { grid-area: note; min-width: 0; }
+.reply { font-size: 0.875rem; }
+@media (min-width: 30em) {
+  .reach { grid-template-areas: "photo action" "photo note"; row-gap: 0.75rem; }
+  .reach .portrait { width: 11rem; }
+  .reach .hero-action { align-self: end; }
+  .reach-note { align-self: start; }
+}
 .address { color: var(--ink); font-family: var(--sans); font-weight: 500; overflow-wrap: anywhere; }
 .proof {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem;
@@ -296,7 +306,7 @@ mark {
 .intro { margin-top: 1rem; }
 @media (min-width: 64em) { .intro { margin-top: 1.25rem; } }
 /* What I build: four cards, each a hook and three things you get. */
-#services .intro, #services .more { grid-column: 1 / -1; max-width: var(--measure); }
+#services .more { grid-column: 1 / -1; max-width: var(--measure); }
 .offer { display: grid; gap: 1rem; margin: 1.5rem 0 0; padding: 0; list-style: none; }
 @media (min-width: 48em) { .offer { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; } }
 .offer-card { padding: 1.5rem; background: color-mix(in srgb, var(--ink) 3.5%, var(--ground)); border: 1px solid var(--hairline); border-radius: 8px; }
@@ -314,9 +324,10 @@ mark {
 
 /* Contact */
 .actions { display: grid; justify-items: start; gap: 1rem; margin-top: 1.5rem; }
-/* The address and its copy button wrap as one unit under the main button. */
-.email-alt { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.75rem; color: var(--secondary); font-family: var(--sans); font-size: 1rem; line-height: 1.5; }
+/* "Or email", the address under it, then its copy button. */
+.email-alt { display: grid; justify-items: start; color: var(--secondary); font-family: var(--sans); font-size: 1rem; line-height: 1.5; }
 .email-alt .address { font-size: 1.0625rem; }
+.email-alt .copy { margin-top: 0.625rem; }
 
 /* Footer */
 .site-footer { margin-top: 3rem; padding-block: 1.75rem 2.5rem; border-top: 1px solid var(--hairline); }
