@@ -417,38 +417,63 @@ h1, h2, h3 { hanging-punctuation: first; }
 /* The screenshot viewer (viewer.js); without the script each screenshot link opens the large image. */
 html:has(.viewer[open]) { overflow: hidden; }
 .viewer {
-  width: 100vw; max-width: none; height: 100dvh; max-height: none;
-  margin: 0; padding: 0; border: 0;
-  background: var(--ground); color: var(--ink);
+  position: fixed; inset: 0; width: 100%; max-width: none; height: 100%; height: 100dvh; max-height: none;
+  margin: 0; padding: 0; border: 0; overflow: hidden;
+  background: transparent; color: #fff; color-scheme: dark; font-family: var(--sans); touch-action: none;
 }
-.viewer::backdrop { background: var(--ground); }
-.viewer[open] { display: grid; grid-template-columns: 4rem minmax(0, 1fr) 4rem; grid-template-rows: 4rem minmax(0, 1fr); touch-action: pan-y pinch-zoom; }
-.viewer-count {
-  grid-column: 1 / 3; grid-row: 1; align-self: center; margin: 0; padding-inline: 1.25rem;
-  color: var(--secondary); font-family: var(--sans); font-size: 0.9375rem; font-variant-numeric: tabular-nums;
+.viewer::backdrop { background: transparent; }
+.viewer[open] { display: block; }
+.viewer-bg { position: absolute; inset: 0; background: #000; opacity: 0; }
+.viewer-track {
+  position: absolute; inset: 0; direction: ltr; touch-action: none; user-select: none; -webkit-user-select: none; cursor: grab;
 }
-.viewer-figure {
-  display: grid; grid-column: 1 / -1; grid-row: 2; grid-template-rows: minmax(0, 1fr) auto; justify-items: center;
-  min-height: 0; margin: 0; padding: 0 1rem 1.25rem;
+.viewer-track:focus { outline: none; }
+.viewer-track.zoomed { cursor: move; }
+.viewer-figure { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; overflow: hidden; }
+.viewer-zoom {
+  position: relative; flex-shrink: 0; transform-origin: center; overflow: hidden;
+  background-position: center; background-size: contain; background-repeat: no-repeat;
 }
 .viewer-image {
-  width: auto; height: auto; min-height: 0; max-width: 100%; max-height: 100%; object-fit: contain;
-  border: 1px solid var(--hairline); border-radius: 1rem;
+  display: block; width: 100%; height: 100%; max-width: none; object-fit: contain;
+  border: 0; border-radius: 0; opacity: 0; pointer-events: none; -webkit-user-drag: none;
 }
-.viewer-caption { max-width: 60ch; margin-top: 0.75rem; text-align: center; }
+.viewer-image.loaded { opacity: 1; }
+.viewer-chrome { position: absolute; inset: 0; pointer-events: none; }
+.viewer-chrome.off > * { pointer-events: none; }
+.viewer-count {
+  position: absolute; top: calc(16px + env(safe-area-inset-top)); right: calc(16px + env(safe-area-inset-right));
+  margin: 0; padding: 4px 10px; border-radius: 999px; background: rgb(0 0 0 / 72%);
+  color: #ddd; font-size: 0.8125rem; line-height: 1.5; font-variant-numeric: tabular-nums;
+}
+.viewer-caption {
+  position: absolute; bottom: calc(24px + env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%);
+  width: max-content; max-width: min(60ch, calc(100% - 32px - env(safe-area-inset-left) - env(safe-area-inset-right)));
+  margin: 0; padding: 7px 14px; border-radius: 18px; background: rgb(0 0 0 / 72%);
+  color: #fff; font-family: var(--sans); font-size: 0.875rem; font-weight: 600; line-height: 1.5;
+  text-align: center; overflow-wrap: anywhere;
+}
 .viewer button {
-  display: grid; z-index: 1; width: 2.75rem; height: 2.75rem; place-items: center; place-self: center;
-  padding: 0; border: 1px solid var(--secondary); border-radius: 4px;
-  background: var(--ground); color: var(--ink); cursor: pointer;
+  position: absolute; display: grid; width: 44px; height: 44px; place-items: center; pointer-events: auto;
+  padding: 0; border: 0; border-radius: 50%; background: none; color: #e6e6e6; cursor: pointer;
 }
-.viewer button svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-.viewer button:hover:not(:disabled) { border-color: var(--ink); }
-.viewer button:active:not(:disabled) { color: var(--secondary); }
-.viewer button:disabled { opacity: 0.35; cursor: default; }
-.viewer-close { grid-column: 3; grid-row: 1; }
-.viewer-step { grid-row: 2; }
-.viewer-prev { grid-column: 1; }
-.viewer-next { grid-column: 3; }
+.viewer button span { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; background: rgb(0 0 0 / 65%); }
+.viewer button svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.viewer button:hover:not(:disabled), .viewer button:active:not(:disabled) { color: #fff; }
+.viewer button:disabled { opacity: 0.3; cursor: default; }
+.viewer button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; box-shadow: 0 0 0 5px #000; }
+.viewer-close { top: calc(10px + env(safe-area-inset-top)); left: calc(10px + env(safe-area-inset-left)); }
+.viewer .viewer-close span { width: 34px; height: 34px; }
+.viewer .viewer-close svg { width: 14px; height: 14px; }
+.viewer-step { top: 50%; margin-top: -22px; }
+.viewer-prev { left: calc(12px + env(safe-area-inset-left)); }
+.viewer-next { right: calc(12px + env(safe-area-inset-right)); }
+@media (prefers-reduced-motion: no-preference) {
+  .viewer-image { transition: opacity .25s; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .viewer, .viewer *, .viewer::backdrop { animation: none !important; transition: none !important; }
+}
 
 /* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. */
 @media (prefers-reduced-motion: no-preference) {
@@ -462,7 +487,8 @@ html:has(.viewer[open]) { overflow: hidden; }
   :root { color-scheme: light; --ground: #FFFFFF; --ink: #000000; --secondary: #333333; --link: #000000; --hairline: #999999; }
   body { font-size: 10.5pt; line-height: 1.45; }
   a { color: inherit; text-decoration: none; }
-  .skip-link, .nav ul, .copy, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .proof, .scripts, .no-print { display: none; }
+  .skip-link, .nav ul, .copy, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .proof, .scripts, .no-print, .viewer[open] { display: none; }
+  html:has(.viewer[open]) { overflow: visible; }
   .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; background: none; color: inherit; font-size: inherit; }
   mark { margin: 0; padding: 0; background: none; color: var(--ink); }
   .sweep::before, .sweep::after { display: none; }
