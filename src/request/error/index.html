@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <meta name="robots" content="noindex">
+  <title>Request not sent · James Han</title>
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main id="main" class="request-page" tabindex="-1">
+    <header class="case-head wrap ledger">
+      <h1 class="span">Your request didn’t go through.</h1>
+    </header>
+    <div class="side-row wrap ledger">
+      <div>
+        <p>Go back to the form and check your details, or email <a class="address" href="mailto:{{person.email}}">{{person.email}}</a> instead.</p>
+        <p><a href="/request/">Start a new request</a></p>
+      </div>
+    </div>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>
