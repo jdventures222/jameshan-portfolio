@@ -52,6 +52,21 @@ function lookup(path, fmt) {
   return v;
 }
 
+// The header marks where the reader is: the page itself, or the section a case study or result page belongs to.
+const navCurrent = {
+  'services/index.html': ['/services/', 'page'], 'about/index.html': ['/about/', 'page'], 'request/index.html': ['/request/', 'page'],
+  'request/thanks/index.html': ['/request/', 'true'], 'request/error/index.html': ['/request/', 'true'],
+  'work/fyt/index.html': ['/#work', 'true'], 'work/menus/index.html': ['/#work', 'true'],
+};
+function markNav(html, file) {
+  if (!navCurrent[file]) return html;
+  const [href, value] = navCurrent[file], attr = `href="${href}"`;
+  const start = html.indexOf('<nav class="wrap nav"'), end = html.indexOf('</nav>', start);
+  const nav = html.slice(start, end);
+  if (start < 0 || nav.split(attr).length !== 2) throw new Error(`${file}: the header has no single ${attr} to mark as current`);
+  return html.slice(0, start) + nav.replace(attr, `${attr} aria-current="${value}"`) + html.slice(end);
+}
+
 function render(file) {
   let html = readFileSync(join(src, file), 'utf8');
   html = html.replace(/\{\{include (partials\/[\w.-]+)\}\}/g, (_, p) => {
@@ -60,6 +75,7 @@ function render(file) {
     if (p.includes('qr') && !part.includes(`<title>QR code for ${origin}</title>`)) throw new Error(`${p} is not labelled as encoding ${origin}; regenerate the QR code for this host`);
     return part;
   });
+  html = markNav(html, file);
   html = html.replace(/\{\{([\w.]+)(?:\|(\w+))?\}\}/g, (_, path, fmt) => {
     if (fmt && !formats[fmt] && !htmlFormats[fmt]) throw new Error(`${file}: unknown format |${fmt}`);
     const v = lookup(path, fmt);
