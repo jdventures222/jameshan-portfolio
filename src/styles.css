@@ -100,10 +100,8 @@ main:focus { outline: none; }
 .nav ul a { color: var(--ink); font-weight: 500; text-decoration-color: transparent; }
 .nav ul a:hover { text-decoration-color: currentColor; }
 .nav ul a:active { color: var(--secondary); }
-.nav .nav-email { color: var(--link); font-weight: 600; text-decoration-color: currentColor; }
 /* The build marks the current page or section with aria-current; the rule does not change the links' width. */
 .nav a[aria-current]::after { content: ""; position: absolute; inset: auto 0 0; height: 2px; background: var(--link); }
-.nav .nav-email[aria-current] { text-decoration-color: transparent; }
 /* Below 440 px the text steps down and the gaps close, so the bar stays on one line. */
 @media (max-width: 27.4375em) {
   .nav { font-size: 0.9375rem; }
@@ -146,7 +144,8 @@ figcaption, .band-note {
 .wide-only { display: none; }
 @media (min-width: 48em) { .wide-only { display: block; } }
 .shot > a { display: block; width: min(100%, 17.5rem); border-radius: 1.5rem; }
-.shot > a:is(:hover, :focus-visible) .screen { border-color: var(--link); }
+.shot > a:focus-visible .screen { border-color: var(--link); }
+@media (hover: hover) { .shot > a:hover .screen { border-color: var(--link); } }
 .shot > a:active .screen { border-color: var(--secondary); }
 .crop .screen { aspect-ratio: 14 / 15; object-fit: cover; object-position: top; border-radius: 1.5rem; }
 /* The allergen sheet sits at the foot of its screen; this crop is a little taller so the sheet shows whole. */
@@ -158,7 +157,8 @@ figcaption, .band-note {
 .screens { display: flex; gap: 1rem; margin-top: 2rem; }
 .screens > * { flex: 0 0 16.25rem; }
 .shot-link { display: block; border-radius: 9% / 4.16%; cursor: zoom-in; }
-.shot-link:is(:hover, :focus-visible) .screen { border-color: var(--link); }
+.shot-link:focus-visible .screen { border-color: var(--link); }
+@media (hover: hover) { .shot-link:hover .screen { border-color: var(--link); } }
 .shot-link:active .screen { border-color: var(--secondary); }
 @media (max-width: 37.4375em) {
   .screens {
@@ -214,6 +214,8 @@ figcaption, .band-note {
 /* Text that follows an entry's pictures keeps the same space the pictures have above them. */
 .screen-grid + .entry-body, .band + .entry-body { margin-top: 1.75rem; }
 .entry-body .live { margin-top: 1.5rem; }
+.entry-body .live:first-child { margin-top: 0; }
+.entry-body .live + p { margin-top: 1.5rem; }
 .more { margin-top: 0.75rem; }
 .more a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; font-family: var(--sans); font-weight: 600; }
 @media (min-width: 64em) {
@@ -375,7 +377,6 @@ h1, h2, h3 { hanging-punctuation: first; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; flex: none; color: var(--link); font-family: var(--sans); font-size: 1.5rem; line-height: 1; transition: transform 0.2s ease; }
 .faq details[open] summary::after { transform: rotate(45deg); }
-.faq summary:hover h3 { text-decoration: underline; text-underline-offset: 0.2em; }
 .faq summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .faq details > p { margin: 0 0 1rem; }
 @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
@@ -490,9 +491,6 @@ html:has(.viewer[open]) { overflow: hidden; }
 .viewer-close { top: calc(10px + env(safe-area-inset-top)); left: calc(10px + env(safe-area-inset-left)); }
 .viewer .viewer-close span { width: 34px; height: 34px; }
 .viewer .viewer-close svg { width: 14px; height: 14px; }
-.viewer-step { top: 50%; margin-top: -22px; }
-.viewer-prev { left: calc(12px + env(safe-area-inset-left)); }
-.viewer-next { right: calc(12px + env(safe-area-inset-right)); }
 @media (prefers-reduced-motion: no-preference) {
   .viewer-image { transition: opacity .25s; }
 }

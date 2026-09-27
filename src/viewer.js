@@ -18,19 +18,21 @@
     <div class="viewer-chrome">
       <button class="viewer-close" type="button" aria-label="Close">${icon('M6 6l12 12M18 6 6 18')}</button>
       <p class="viewer-count" aria-live="polite" aria-atomic="true"></p>
-      <button class="viewer-step viewer-prev" type="button" aria-label="Previous screenshot">${icon('m15 5-7 7 7 7')}</button>
-      <button class="viewer-step viewer-next" type="button" aria-label="Next screenshot">${icon('m9 5 7 7-7 7')}</button>
       <p class="viewer-caption" role="status" aria-live="polite" aria-atomic="true"></p>
     </div>`;
   document.body.append(dialog);
   const $ = selector => dialog.querySelector(selector);
   const track = $('.viewer-track'), bg = $('.viewer-bg'), chrome = $('.viewer-chrome');
   const caption = $('.viewer-caption'), count = $('.viewer-count');
-  const prev = $('.viewer-prev'), next = $('.viewer-next'), closeButton = $('.viewer-close');
+  const closeButton = $('.viewer-close');
   const pointers = new Map();
   let group = [], index = 0, opener = null, gesture = null;
   let scale = 1, tx = 0, ty = 0, chromeOn = true, closing = false, closeTimer = 0;
   let tap = null, tapTimer = 0, ownsHistory = false, waitingForBack = false, pendingOpen = null;
+  // Focus goes back to the opener with a ring only when the viewer was left from the keyboard.
+  let usedKeyboard = false;
+  addEventListener('keydown', () => { usedKeyboard = true; }, true);
+  addEventListener('pointerdown', () => { usedKeyboard = false; }, true);
 
   const width = () => track.clientWidth, height = () => track.clientHeight;
   const current = () => group[index];
@@ -115,10 +117,6 @@
     setZoom(1, 0, 0);
     caption.textContent = current().caption;
     count.textContent = `${index + 1} of ${group.length}`;
-    prev.disabled = index === 0;
-    next.disabled = index === group.length - 1;
-    // A button disabled at an endpoint must not leave focus outside the dialog.
-    if ((document.activeElement === prev && prev.disabled) || (document.activeElement === next && next.disabled)) closeButton.focus({ preventScroll: true });
     loadImages();
     placeSlides(smooth);
   }
@@ -224,7 +222,7 @@
     bg.style.opacity = 0; chrome.style.opacity = 1; chrome.inert = false;
     chrome.classList.remove('off'); chromeOn = true;
     track.classList.remove('zoomed');
-    if (!pendingOpen) opener?.focus({ preventScroll: true });
+    if (!pendingOpen) opener?.focus({ preventScroll: true, focusVisible: usedKeyboard });
     runPendingOpen();
   });
   addEventListener('popstate', () => {
@@ -234,8 +232,6 @@
   });
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   closeButton.addEventListener('click', () => close());
-  prev.addEventListener('click', () => goTo(index - 1));
-  next.addEventListener('click', () => goTo(index + 1));
   dialog.addEventListener('keydown', event => {
     if (!dialog.open || closing) return;
     cancelTap();

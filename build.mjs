@@ -48,10 +48,9 @@ function lookup(path, fmt) {
   return v;
 }
 
-// The header marks where the reader is: the page itself, or the section a result page belongs to.
+// The header marks the page the reader is on.
 const navCurrent = {
-  'services/index.html': ['/services/', 'page'], 'about/index.html': ['/about/', 'page'], 'request/index.html': ['/request/', 'page'],
-  'request/thanks/index.html': ['/request/', 'true'], 'request/error/index.html': ['/request/', 'true'],
+  'services/index.html': ['/services/', 'page'], 'about/index.html': ['/about/', 'page'],
 };
 function markNav(html, file) {
   if (!navCurrent[file]) return html;
