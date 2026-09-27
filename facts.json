@@ -3,13 +3,14 @@
   "updated": "2026-09-26",
   "person": {
     "name": "James Han",
-    "role": "Full-stack developer for small businesses",
+    "role": "Freelance full-stack developer",
     "area": "Orange County, California",
     "languages": ["English"],
     "email": "jamestheanswerhan@gmail.com",
     "_sources": {
       "email": "chosen by James for publication, 2026-09-26 (\"I want to use this as my professional email now\"); was hanjames1999@gmail.com from 2026-09-23",
-      "area": "James's wording, decided 2026-09-23: \"Orange County, California\", never a city"
+      "area": "James's wording, decided 2026-09-23: \"Orange County, California\", never a city",
+      "role": "Previous value: Full-stack developer for small businesses; changed 2026-09-27 by James: general freelancer"
     }
   },
   "fyt": {
