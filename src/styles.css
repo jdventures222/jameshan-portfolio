@@ -114,7 +114,7 @@ main:focus { outline: none; }
   font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
   font-weight: 560; line-height: 1.08; letter-spacing: -0.022em;
 }
-/* The photo, with the button centred beside it; on phones the address sits on one line underneath. */
+/* The photo with the button centred beside it; the address on one line underneath. */
 .reach {
   display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action" "note note";
   align-items: center; column-gap: 1.25rem; row-gap: 1rem; margin-top: 1.75rem;
@@ -123,13 +123,9 @@ main:focus { outline: none; }
 .reach .portrait { grid-area: photo; width: 8rem; margin-top: 0; }
 .reach .hero-action { grid-area: action; }
 .reach-note { grid-area: note; min-width: 0; }
-.reply { font-size: 0.875rem; }
-@media (min-width: 30em) {
-  .reach { grid-template-areas: "photo action" "photo note"; row-gap: 0.75rem; }
-  .reach .portrait { width: 11rem; }
-  .reach .hero-action { align-self: end; }
-  .reach-note { align-self: start; }
-}
+/* Lighter than --secondary but still 4.5:1 on both grounds. */
+.reply { color: color-mix(in srgb, var(--secondary) 85%, var(--ground)); font-size: 0.8125rem; }
+@media (min-width: 30em) { .reach .portrait { width: 11rem; } }
 .address { color: var(--ink); font-family: var(--sans); font-weight: 500; overflow-wrap: anywhere; }
 .proof {
   display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem;
