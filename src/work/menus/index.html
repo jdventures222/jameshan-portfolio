@@ -42,10 +42,10 @@
           <div><dt>Role</dt><dd>I designed and built it, on my own initiative</dd></div>
           <div><dt>Started</dt><dd>{{menus.started|date}}</dd></div>
           <div><dt>Stack</dt><dd>Python, HTML, CSS, JavaScript, GitHub Pages</dd></div>
-          <div><dt>Status</dt><dd>Working versions for all {{menus.brands}} brands, ready for the group’s review</dd></div>
+          <div><dt>Status</dt><dd>Working versions for all {{menus.brands}} brands</dd></div>
           <div><dt>Live</dt><dd><a class="button" href="{{menus.live_url}}">Open the live menus</a></dd></div>
         </dl>
-        <p class="lead">Working menus for all {{menus.brands}} brands of the restaurant group where I work. A guest scans the code at the table, picks one of {{menus.languages}} languages, and sees which dishes contain the allergens they avoid. They are ready for the group’s review.</p>
+        <p class="lead">Working menus for all {{menus.brands}} brands of the restaurant group where I work. A guest scans the code at the table, picks one of {{menus.languages}} languages, and sees which dishes contain the allergens they avoid.</p>
       </div>
     </header>
 
@@ -72,11 +72,6 @@
           <p>Every page carries a plain menu inside the page itself, shown when JavaScript is off or fails to load, and each dish in it keeps its own allergen warning.</p>
           <p><span class="label">Why:</span> a guest with an allergy should never see a menu without its warnings, whatever phone or browser they use.</p>
           <p><span class="label">Trade-off:</span> that fallback is in English only, without the language switch or the photos.</p>
-        </li>
-        <li>
-          <h3>“Contains: Egg” only where it tells the guest something.</h3>
-          <p>An item that is just an egg, like a fried egg or a sous-vide egg on the side, no longer carries the line; dishes that are more than an egg, like egg fried rice, egg tarts and egg rolls, keep it. The allergen filter still reads the full data, so a guest who marks egg still sees every one of those items flagged or hidden.</p>
-          <p><span class="label">Why:</span> on a dish that is an egg, “Contains: Egg” says nothing, and warnings that say nothing teach guests to skip them.</p>
         </li>
         <li>
           <h3>Right to left is the whole layout, not just the text.</h3>
@@ -158,16 +153,6 @@
       </div>
     </section>
 
-    <section class="side-row wrap ledger" aria-labelledby="limits-title">
-      <h2 class="rail" id="limits-title">Limits</h2>
-      <ul class="bullets">
-        <li>The allergen lines come from the restaurant’s own published allergen information and the dish descriptions, and are marked as pending the kitchen’s review.</li>
-        <li>No native speaker has reviewed the translations yet.</li>
-        <li>Without JavaScript the menu is shown in English only.</li>
-        <li>The group has not adopted the menus. My part so far is everything up to its review.</li>
-      </ul>
-    </section>
-
     <section class="side-row wrap ledger" aria-labelledby="result-title">
       <h2 class="rail" id="result-title">Result</h2>
       <div class="results">
@@ -187,18 +172,13 @@
       </div>
     </section>
 
-    <section class="side-row wrap ledger" aria-labelledby="next-title">
-      <h2 class="rail" id="next-title">Next</h2>
-      <p>The group’s review, the kitchen’s sign-off on the allergen lines, and a native speaker’s read of each language.</p>
-    </section>
-
     <section class="side-row wrap ledger" aria-labelledby="contact-title">
       <h2 class="rail" id="contact-title">Contact</h2>
       <div>
         <p>Want a menu like this, or something else built? I reply within one business day.</p>
         <div class="actions">
           <a class="button" href="/request/">Start a project</a>
-          <span class="address" data-copy>{{person.email}}</span>
+          <p class="email-alt">Or email <span class="address" data-copy>{{person.email}}</span></p>
         </div>
       </div>
     </section>

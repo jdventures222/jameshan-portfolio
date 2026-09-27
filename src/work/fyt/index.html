@@ -67,11 +67,6 @@
           <p>The Apple Watch app records a run with live GPS, pace, distance and heart rate, and sends the finished run straight to Fyt’s server.</p>
           <p><span class="label">Why:</span> the watch is already on the runner’s wrist; the phone does not have to come along to record the run.</p>
         </li>
-        <li>
-          <h3>Upload in the background, but only what is yours.</h3>
-          <p>Since {{fyt.background_upload_since|date}}, a run finished on the Watch reaches Fyt without opening the app. Only workouts recorded by Fyt’s own Watch app and marked with the signed-in member are taken; workouts from other apps and devices still sync when the app is opened.</p>
-          <p><span class="label">Why:</span> a phone’s Health data can hold workouts that are not the member’s own, and a group chat must never hear about someone else’s run under the wrong name.</p>
-        </li>
       </ol>
     </section>
 
@@ -126,15 +121,6 @@
       </div>
     </section>
 
-    <section class="side-row wrap ledger" aria-labelledby="limits-title">
-      <h2 class="rail" id="limits-title">Limits</h2>
-      <ul class="bullets">
-        <li>iPhone and Apple Watch only; there is no Android app.</li>
-        <li>The background upload covers runs recorded with Fyt’s Watch app; other workouts sync when the app is opened.</li>
-        <li>One other person has contributed code to Fyt.</li>
-      </ul>
-    </section>
-
     <section class="side-row wrap ledger" aria-labelledby="result-title">
       <h2 class="rail" id="result-title">Result</h2>
       <div class="results">
@@ -154,7 +140,6 @@
           <h3>{{fyt.updates_since_launch}} updates</h3>
           <p>Since launch, the latest on {{fyt.latest_version_date|date}} · the App Store version history</p>
         </div>
-        <p>Fyt is live, people use it, and I keep shipping updates.</p>
       </div>
     </section>
 
@@ -164,7 +149,7 @@
         <p>Want an app built? I reply within one business day.</p>
         <div class="actions">
           <a class="button" href="/request/">Start a project</a>
-          <span class="address" data-copy>{{person.email}}</span>
+          <p class="email-alt">Or email <span class="address" data-copy>{{person.email}}</span></p>
         </div>
       </div>
     </section>

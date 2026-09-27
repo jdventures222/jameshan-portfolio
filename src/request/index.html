@@ -3,13 +3,13 @@
 <head>
   {{include partials/head.html}}
   <title>Start a project · James Han</title>
-  <meta name="description" content="Tell me what you picture. A few sentences is enough; I reply within one business day.">
+  <meta name="description" content="Tell me what you picture. I reply within one business day.">
   <link rel="canonical" href="{{site.url}}request/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="{{site.url}}request/">
   <meta property="og:site_name" content="James Han">
   <meta property="og:title" content="Start a project with James Han">
-  <meta property="og:description" content="Tell me what you picture. A few sentences is enough; I reply within one business day.">
+  <meta property="og:description" content="Tell me what you picture. I reply within one business day.">
   <meta property="og:image" content="{{site.url}}assets/og.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -20,59 +20,90 @@
   {{include partials/header.html}}
 
   <main id="main" class="request-page" tabindex="-1">
-    <header class="case-head wrap ledger">
-      <h1 class="span">Tell me what you picture.</h1>
-      <p class="lead" id="request-intro">A project, a fix or a question: a few sentences is enough. I reply by email within one business day.</p>
+    <header class="request-head wrap">
+      <h1>Tell me what you picture.</h1>
     </header>
 
-    <div class="side-row wrap ledger">
-      <div>
-        <form class="request-form" action="{{request.endpoint}}"
-              method="post" accept-charset="UTF-8"
-              aria-describedby="request-intro request-privacy">
-          <input type="hidden" name="_redirect"
-                 value="{{site.url}}request/thanks/">
-          <input type="hidden" name="_error"
-                 value="{{site.url}}request/error/">
-          <input type="hidden" name="_append" value="false">
+    <div class="request-body wrap">
+      <form class="request-form" action="{{request.endpoint}}"
+            method="post" accept-charset="UTF-8"
+            aria-describedby="request-privacy">
+        <input type="hidden" name="_redirect"
+               value="{{site.url}}request/thanks/">
+        <input type="hidden" name="_error"
+               value="{{site.url}}request/error/">
+        <input type="hidden" name="_append" value="false">
 
-          <div hidden style="display:none">
-            <label for="request-trap">Leave this unchecked</label>
-            <input id="request-trap" type="checkbox" name="_honeypot"
-                   tabindex="-1">
+        <div hidden style="display:none">
+          <label for="request-trap">Leave this unchecked</label>
+          <input id="request-trap" type="checkbox" name="_honeypot"
+                 tabindex="-1">
+        </div>
+
+        <fieldset class="choices">
+          <legend>What is it? <span class="optional">Optional</span></legend>
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="type" value="Website or web app"> Website or web app</label>
+            <label class="choice"><input type="radio" name="type" value="iPhone or Apple Watch app"> iPhone or Watch app</label>
+            <label class="choice"><input type="radio" name="type" value="Automation or integration"> Automation</label>
+            <label class="choice"><input type="radio" name="type" value="Restaurant"> Restaurant</label>
+            <label class="choice"><input type="radio" name="type" value="Something else"> Something else</label>
           </div>
+        </fieldset>
 
-          <p>
-            <label for="request-name">Your name</label>
-            <input id="request-name" name="name" type="text"
-                   autocomplete="name" maxlength="120" required>
-          </p>
-          <p>
-            <label for="request-email">Email</label>
-            <span class="request-hint" id="request-email-hint">Where I should reply.</span>
-            <input id="request-email" name="email" type="email"
-                   autocomplete="email" autocapitalize="none" spellcheck="false"
-                   aria-describedby="request-email-hint" required>
-          </p>
-          <p>
-            <label for="request-message">What do you want built?</label>
-            <span class="request-hint" id="request-message-hint">What you want to make, fix or improve. A link helps if you have one.</span>
-            <textarea id="request-message" name="message" rows="6"
-                      maxlength="5000" aria-describedby="request-message-hint"
-                      required></textarea>
-          </p>
-          <p>
-            <label for="request-timing">Timing (optional)</label>
-            <span class="request-hint" id="request-timing-hint">A date, a rough timeframe, or just exploring.</span>
-            <input id="request-timing" name="timing" type="text" maxlength="120"
-                   aria-describedby="request-timing-hint">
-          </p>
+        <p class="field">
+          <label for="request-name">Name</label>
+          <input id="request-name" name="name" type="text"
+                 autocomplete="name" maxlength="120" required>
+        </p>
+        <p class="field">
+          <label for="request-email">Email</label>
+          <span class="request-hint" id="request-email-hint">Where I should reply.</span>
+          <input id="request-email" name="email" type="email"
+                 autocomplete="email" autocapitalize="none" spellcheck="false"
+                 aria-describedby="request-email-hint" required>
+        </p>
+        <p class="field">
+          <label for="request-message">What do you want built?</label>
+          <span class="request-hint" id="request-message-hint">What you want to make, fix or improve. A link helps.</span>
+          <textarea id="request-message" name="message" rows="6"
+                    maxlength="5000" aria-describedby="request-message-hint"
+                    placeholder="A booking site for my studio, an app for my team, a menu in three languages…"
+                    required></textarea>
+        </p>
+
+        <fieldset class="choices">
+          <legend>When? <span class="optional">Optional</span></legend>
+          <div class="choice-list">
+            <label class="choice"><input type="radio" name="timing" value="As soon as possible"> As soon as possible</label>
+            <label class="choice"><input type="radio" name="timing" value="Within a month"> Within a month</label>
+            <label class="choice"><input type="radio" name="timing" value="In a few months"> In a few months</label>
+            <label class="choice"><input type="radio" name="timing" value="Just exploring"> Just exploring</label>
+          </div>
+        </fieldset>
+
+        <div class="request-send">
           <button class="button" type="submit">Send request</button>
           <p id="request-privacy">Your request goes through Formspark, which emails it to me. Please leave out passwords and payment details.</p>
-        </form>
+        </div>
+      </form>
 
-        <p>Prefer email? <a class="address" href="mailto:{{person.email}}">{{person.email}}</a></p>
-      </div>
+      <aside class="request-next" aria-labelledby="next-title">
+        <div class="request-me">
+          <picture>
+            <source type="image/avif" srcset="/assets/james-han-headshot-320.avif 320w" sizes="4.5rem">
+            <img src="/assets/james-han-headshot-320.webp" srcset="/assets/james-han-headshot-320.webp 320w" sizes="4.5rem" width="640" height="640" alt="James Han" decoding="async">
+          </picture>
+          <p><strong>James Han</strong><br>You’ll hear back from me, not a team.</p>
+        </div>
+        <h2 id="next-title">What happens next</h2>
+        <ol class="steps">
+          <li><strong>A reply within one business day.</strong> I read every request myself.</li>
+          <li><strong>A twenty-minute talk.</strong> What you need, and what it takes.</li>
+          <li><strong>A fixed price in writing</strong> within two days. You own everything I build.</li>
+        </ol>
+        <div class="request-alt"><p class="email-alt">Prefer email? <span class="address" data-copy>{{person.email}}</span></p></div>
+      </aside>
     </div>
   </main>
 
