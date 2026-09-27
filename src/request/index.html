@@ -58,14 +58,12 @@
         </p>
         <p class="field">
           <label for="request-email">Email</label>
-          <span class="request-hint" id="request-email-hint">Where I should reply.</span>
           <input id="request-email" name="email" type="email"
-                 autocomplete="email" autocapitalize="none" spellcheck="false"
-                 aria-describedby="request-email-hint" required>
+                 autocomplete="email" autocapitalize="none" spellcheck="false" required>
         </p>
         <p class="field">
           <label for="request-message">What do you want built?</label>
-          <span class="request-hint" id="request-message-hint">What you want to make, fix or improve. A link helps.</span>
+          <span class="request-hint" id="request-message-hint">What you want to make, fix or improve.</span>
           <textarea id="request-message" name="message" rows="6"
                     maxlength="5000" aria-describedby="request-message-hint"
                     placeholder="A booking site for my studio, an app for my team, a menu in three languages…"
@@ -88,7 +86,7 @@
         </div>
       </form>
 
-      <aside class="request-next" aria-labelledby="next-title">
+      <aside class="request-next">
         <div class="request-me">
           <picture>
             <source type="image/avif" srcset="/assets/james-han-headshot-320.avif 320w" sizes="4.5rem">
@@ -96,12 +94,6 @@
           </picture>
           <p><strong>James Han</strong><br>You’ll hear back from me, not a team.</p>
         </div>
-        <h2 id="next-title">What happens next</h2>
-        <ol class="steps">
-          <li><strong>A reply within one business day.</strong> I read every request myself.</li>
-          <li><strong>A twenty-minute talk.</strong> What you need, and what it takes.</li>
-          <li><strong>A fixed price in writing</strong> within two days. You own everything I build.</li>
-        </ol>
         <div class="request-alt"><p class="email-alt">Prefer email? <span class="address" data-copy>{{person.email}}</span></p></div>
       </aside>
     </div>

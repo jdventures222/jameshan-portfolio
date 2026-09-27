@@ -608,11 +608,6 @@ html:has(.viewer[open]) { overflow: hidden; }
 .request-me img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .request-me p { color: var(--secondary); font-size: 0.9375rem; line-height: 1.45; }
 .request-me strong { color: var(--ink); font-size: 1rem; }
-.request-next h2 { margin-top: 1.5rem; font-family: var(--serif); font-size: 1.5rem; font-weight: 600; line-height: 1.2; letter-spacing: -0.012em; }
-.steps { display: grid; gap: 1rem; margin: 1rem 0 0; padding: 0; list-style: none; counter-reset: step; }
-.steps li { position: relative; padding-left: 1.75rem; color: var(--secondary); font-size: 0.9375rem; line-height: 1.5; counter-increment: step; }
-.steps li::before { content: counter(step); position: absolute; left: 0; top: -0.0625rem; color: var(--secondary); font-family: var(--serif); font-size: 1.25rem; font-weight: 600; line-height: 1.2; }
-.steps strong { color: var(--ink); font-weight: 600; }
 .request-alt { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
 .request-alt .email-alt { font-size: 0.9375rem; }
 .request-alt .address { font-size: 1rem; }
@@ -621,6 +616,5 @@ html:has(.viewer[open]) { overflow: hidden; }
   .request-form { display: none; }
   .request-body { display: block; padding-block: 14pt 0; }
   .request-next { position: static; }
-  .request-next h2 { font-size: 14pt; }
-  .request-me p, .request-me strong, .steps li, .request-alt .email-alt, .request-alt .address { font-size: 10.5pt; }
+  .request-me p, .request-me strong, .request-alt .email-alt, .request-alt .address { font-size: 10.5pt; }
 }
