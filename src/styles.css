@@ -231,7 +231,7 @@ figcaption, .band-note {
    The entries under it keep their hairlines, so the rule's weight is what marks the section. */
 @media screen {
   #work { padding-top: 4rem; }
-  #work-title { padding-top: 1.25rem; border-top: 2px solid var(--ink); font-size: clamp(1.875rem, 1.35rem + 2vw, 2.75rem); }
+  #work #work-title { padding-top: 1.25rem; border-top: 2px solid var(--ink); font-size: clamp(1.875rem, 1.35rem + 2vw, 2.75rem); }
 }
 @media screen and (min-width: 64em) { #work { padding-top: 7rem; } }
 
@@ -665,7 +665,7 @@ html:has(.viewer[open]) { overflow: hidden; }
 #request-privacy { color: var(--secondary); font-family: var(--sans); font-size: 0.875rem; line-height: 1.45; }
 .request-form [hidden] { display: none !important; }
 .request-next { font-family: var(--sans); }
-.request-me { display: flex; align-items: center; gap: 0.875rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--hairline); }
+.request-me { display: flex; align-items: center; gap: 0.875rem; }
 .request-me picture { flex: none; width: 4.5rem; }
 .request-me img { display: block; width: 100%; height: auto; border-radius: 4px; }
 .request-me p { color: var(--secondary); font-size: 0.9375rem; line-height: 1.45; }
