@@ -511,7 +511,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 .project-steps { padding-left: 1.25rem; }
 .project-steps h3 { text-wrap: pretty; }
 .project-steps li + li { margin-top: 1.25rem; }
-.project-steps ::marker { color: var(--secondary); font-family: var(--sans); font-weight: 600; }
+.project-steps ::marker { color: var(--secondary); font-family: var(--sans); font-weight: 600; font-variant-numeric: proportional-nums; }
 .project-steps p, .project-notes article > p { margin-top: 0.5rem; }
 .project-notes article + article { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
 .tool-list > div + div { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--hairline); }
