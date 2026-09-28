@@ -74,7 +74,7 @@ main:focus { outline: none; }
   font-family: var(--sans); font-size: 1.0625rem; font-weight: 600; line-height: 1.2;
   text-decoration: none; border-radius: 4px;
 }
-.button:hover, .skip-link:hover { background: var(--ink); color: var(--ground); }
+@media (hover: hover) { .button:hover, .skip-link:hover { background: var(--ink); color: var(--ground); } }
 .button:active, .skip-link:active { background: var(--secondary); color: var(--ground); }
 .copy {
   min-width: 8.5rem; min-height: 2.75rem; padding: 0.5rem 1rem;
@@ -83,7 +83,7 @@ main:focus { outline: none; }
   font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; line-height: 1.2;
   cursor: pointer;
 }
-.copy:hover { color: var(--ink); border-color: var(--ink); }
+@media (hover: hover) { .copy:hover { color: var(--ink); border-color: var(--ink); } }
 .copy:active { color: var(--secondary); border-color: var(--secondary); }
 .copy-status { margin-top: 0.5rem; color: var(--secondary); font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; }
 
