@@ -227,7 +227,7 @@ figcaption, .band-note {
   background: #1B1714;
   box-shadow: 0 0 0 100vmax #1B1714;
   clip-path: inset(0 -100vmax);
-  margin-top: 2rem; padding-block: 2rem 1.75rem;
+  margin-top: 2rem;
 }
 .band .screens { margin-top: 0; }
 .band-note { margin-top: 1.5rem; }
@@ -349,11 +349,12 @@ mark {
   :is(.offer, .band.shots) { scrollbar-width: thin; scrollbar-color: var(--secondary) transparent; }
 }
 :is(.offer, .band.shots):focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
-/* Fyt's pictures scroll the same way where two do not fit side by side (on screen only; print hides the band). */
+/* Fyt's pictures scroll the same way where two do not fit side by side, with the offer row's room for its focus ring
+   and scrollbar (on screen only; print hides the band). */
 @media screen and (max-width: 63.9375em) {
   .band.shots {
     display: grid; grid-auto-flow: column; grid-auto-columns: 17.5rem; gap: 1rem;
-    margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad);
+    margin-inline: calc(-1 * var(--pad)); padding: 0.25rem var(--pad) 1.125rem;
     overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
   }
   .band.shots > .shot { scroll-snap-align: start; }
