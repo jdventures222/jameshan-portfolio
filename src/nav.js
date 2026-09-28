@@ -6,6 +6,10 @@ addEventListener('focusin', event => {
   const a = item.getBoundingClientRect(), r = row.getBoundingClientRect();
   if (a.left < r.left || a.right > r.right) item.scrollIntoView({ block: 'nearest', inline: 'start' });
 });
+// Fyt's home picture row is a Tab stop only while it scrolls sideways (below 64em); on desktop it holds nothing to reach.
+for (const row of document.querySelectorAll('.band.shots[tabindex]')) {
+  new ResizeObserver(() => { row.tabIndex = row.scrollWidth > row.clientWidth ? 0 : -1; }).observe(row);
+}
 
 // Shows the header's "Start a project" once the page's title and its own "Start a project" buttons are out of sight,
 // the way the menus' bar shows their logo. Without JavaScript the header keeps the name and About only.
