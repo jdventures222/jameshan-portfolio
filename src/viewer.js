@@ -182,6 +182,14 @@
     settleAnimations();
     releasePointers();
     placeSlides();
+    // Come back to the picture on screen: focus returns to it, and a sideways strip brings it into view first so the
+    // closing animation can land on it.
+    opener = current().link;
+    const strip = opener.closest('.screens');
+    if (strip && strip.scrollWidth > strip.clientWidth) {
+      const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
+      if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
+    }
     if (reduced.matches) { dialog.close(); return; }
     const item = current(), frame = thumbFrame(item), rect = frame.rect;
     const bgFrom = getComputedStyle(bg).opacity, chromeFrom = getComputedStyle(chrome).opacity;
