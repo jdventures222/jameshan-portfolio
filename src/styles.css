@@ -523,7 +523,8 @@ h1, h2, h3 { hanging-punctuation: first; }
   .project-steps { padding-left: 0; }
   .project-gallery { align-items: start; }
   .project-gallery > .rail { grid-row: 1; }
-  .project-gallery > .band { grid-row: 2; }
+  /* Beside its heading the band drops its full-bleed spread, which would paint over the heading. */
+  .project-gallery > .band { grid-column: 2 / -1; grid-row: 1; margin-top: 0; padding-inline-start: 0; box-shadow: none; clip-path: none; }
 }
 
 .not-found { padding-block: 3rem 1rem; }
