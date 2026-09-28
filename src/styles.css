@@ -207,6 +207,13 @@ figcaption, .band-note {
 .section { padding-top: 2rem; }
 .section h2 { font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.25rem); font-weight: 560; letter-spacing: -0.018em; }
 @media (min-width: 64em) { .section { padding-top: 6rem; } }
+/* Portfolio opens a new part of the page: more room above, a heavy ink rule across the column and a larger heading.
+   The entries under it keep their hairlines, so the rule's weight is what marks the section. */
+@media screen {
+  #work { padding-top: 4rem; }
+  #work-title { padding-top: 1.25rem; border-top: 2px solid var(--ink); font-size: clamp(1.875rem, 1.35rem + 2vw, 2.75rem); }
+}
+@media screen and (min-width: 64em) { #work { padding-top: 7rem; } }
 
 /* Work entries */
 .entry { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
