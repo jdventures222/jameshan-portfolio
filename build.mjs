@@ -108,7 +108,7 @@ const pageUrl = f => `${origin}/${f.replace(/(^|\/)index\.html$/, '$1')}`;
 const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html'].includes(f)).map(pageUrl).sort();
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${listed.map(u => `  <url><loc>${u}</loc><lastmod>${facts.updated}</lastmod></url>`).join('\n')}
+${listed.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
 </urlset>
 `);
 
