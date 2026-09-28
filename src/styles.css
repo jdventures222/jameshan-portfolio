@@ -36,6 +36,11 @@ body {
   font-kerning: normal;
 }
 @media (min-width: 48em) { body { font-size: 1.125rem; } }
+/* A page shorter than the screen keeps its footer at the foot of the screen. */
+@media screen {
+  body { display: flex; flex-direction: column; min-height: 100vh; min-height: 100dvh; }
+  body > main { flex: 1 0 auto; }
+}
 
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
