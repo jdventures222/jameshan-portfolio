@@ -201,6 +201,12 @@ figcaption, .band-note {
 }
 @media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
+.print-sample { margin-top: 1rem; }
+.print-pair { display: grid; gap: 1rem; align-items: start; }
+.print-pair > a { width: 100%; max-width: 24.375rem; }
+.print-sample .shot-link, .print-sample .screen { border-radius: 0; }
+@media (min-width: 37.5em) { .print-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
 /* Fyt's dark App Store screens sit on a band the colour of the page's brown. */
 .band {
   color-scheme: dark;
