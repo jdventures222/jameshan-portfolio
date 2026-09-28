@@ -1,16 +1,16 @@
 /* The Logbook: one stylesheet for every page. The build prepends src/fonts/*.css (Literata, Schibsted Grotesk). */
 
 :root {
-  color-scheme: light dark;
-  --ground: light-dark(#FCFCFB, #141414);
+  color-scheme: dark;
+  --ground: light-dark(#FCFCFB, #1B1714);
   --ink: light-dark(#17181A, #E9E8E4);
   --secondary: light-dark(#55595F, #A6A7A2);
   --hairline: light-dark(#C9CBC6, #3A3B3D);
   --surface: color-mix(in srgb, var(--ink) 3.5%, var(--ground));
   --link: light-dark(#1F3A93, #9DB2FF);
-  --on-link: light-dark(#FCFCFB, #141414);
+  --on-link: light-dark(#FCFCFB, #1B1714);
   --mark: light-dark(#FFE14D, #E8C547);
-  --mark-ink: light-dark(#17181A, #141414);
+  --mark-ink: light-dark(#17181A, #1B1714);
   --serif: "Literata", "Literata Fallback", Georgia, "Times New Roman", serif;
   --sans: "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, system-ui, "Segoe UI", sans-serif;
   --pad: 1.25rem;
@@ -177,12 +177,12 @@ figcaption, .band-note {
 }
 @media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
-/* Fyt's dark App Store screens sit on a near-black band; in dark mode the band is the page. */
+/* Fyt's dark App Store screens sit on a band the colour of the page's brown. */
 .band {
   color-scheme: dark;
   color: var(--ink);
-  background: #141414;
-  box-shadow: 0 0 0 100vmax #141414;
+  background: #1B1714;
+  box-shadow: 0 0 0 100vmax #1B1714;
   clip-path: inset(0 -100vmax);
   margin-top: 2rem; padding-block: 2rem 1.75rem;
 }
@@ -278,7 +278,7 @@ mark {
 .scripts [lang="hi"] { font-family: "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", sans-serif; }
 @media (min-width: 48em) { .scripts { font-size: 1.125rem; } }
 
-/* What I build: five cards, each a hook and three things you get; each card links to its section on Services. */
+/* What I build: five cards, each a hook and three things you get; each card opens the Services page. */
 #services .more { grid-column: 1 / -1; max-width: var(--measure); }
 /* One row of cards that scrolls sideways and snaps, like the menus directory; the next card peeks in. The row keeps
    its own scrollbar in view as the cue that it scrolls: a hairline track with a Pencil Grey thumb, inset to the text edge. */
@@ -290,11 +290,13 @@ mark {
   scrollbar-color: auto;
 }
 .offer > li { scroll-snap-align: start; }
-.offer::-webkit-scrollbar { height: 3px; }
-.offer::-webkit-scrollbar-track { margin-inline: var(--pad); background: linear-gradient(var(--hairline) 0 0) center / 100% 1px no-repeat; }
-.offer::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 1.5px; }
+/* Fyt's picture row below (a scroller on phones) shows the same scrollbar; it inherits the root's scrollbar-color too. */
+.band.shots { scrollbar-color: auto; }
+:is(.offer, .band.shots)::-webkit-scrollbar { height: 3px; }
+:is(.offer, .band.shots)::-webkit-scrollbar-track { margin-inline: var(--pad); background: linear-gradient(var(--hairline) 0 0) center / 100% 1px no-repeat; }
+:is(.offer, .band.shots)::-webkit-scrollbar-thumb { background: var(--secondary); border-radius: 1.5px; }
 @supports not selector(::-webkit-scrollbar) {
-  .offer { scrollbar-width: thin; scrollbar-color: var(--secondary) transparent; }
+  :is(.offer, .band.shots) { scrollbar-width: thin; scrollbar-color: var(--secondary) transparent; }
 }
 :is(.offer, .band.shots):focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
 /* Fyt's pictures scroll the same way where two do not fit side by side (on screen only; print hides the band). */
@@ -313,7 +315,7 @@ mark {
 .offer-card { position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
 /* The heading's link covers the whole card, so the card is one target whose name is just the heading. */
 .offer-card h3 a { color: inherit; text-decoration-color: transparent; }
-/* z-index lifts the cover above the list items, which are positioned for their dash markers. */
+/* z-index lifts the cover above the list items, which are positioned for their dot markers. */
 .offer-card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .offer-card h3 a:focus-visible { outline: 0; }
 .offer-card:has(h3 a:focus-visible) { outline: 2px solid var(--link); outline-offset: -2px; }
@@ -322,8 +324,8 @@ mark {
 .offer-hook { margin-top: 0.5rem; color: var(--secondary); font-size: 1.0625rem; line-height: 1.45; }
 .offer-list { display: grid; gap: 0.625rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 1rem; line-height: 1.45; }
 .offer-list li { position: relative; padding-left: 1.125rem; }
-/* A short grey dash for each line: the book's marker, not the link colour, which is for things you can press. */
-.offer-list li::before { content: ""; position: absolute; left: 0; top: 0.7em; width: 0.5rem; height: 1px; background: var(--secondary); }
+/* A small grey dot for each line, like the site's other bullets; the link colour is for things you can press. */
+.offer-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--secondary); }
 /* With a real pointer the card lifts a touch and its edge darkens; no motion at all under reduced motion. */
 @media (hover: hover) {
   .offer-card:hover { border-color: var(--secondary); }
