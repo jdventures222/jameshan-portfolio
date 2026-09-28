@@ -461,8 +461,9 @@ h1, h2, h3 { hanging-punctuation: first; }
 .results > .bullets { margin-top: 1.75rem; }
 
 /* Link lists: About's "Elsewhere" and the 404 page. */
-.elsewhere { display: flex; flex-wrap: wrap; column-gap: 1.5rem; list-style: none; font-family: var(--sans); font-weight: 600; }
-.elsewhere a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; }
+.elsewhere, .jump-links { display: flex; flex-wrap: wrap; column-gap: 1.5rem; list-style: none; font-family: var(--sans); font-weight: 600; }
+:is(.elsewhere, .jump-links) a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; }
+.jump-links a { justify-content: center; }
 
 /* Services, About and case studies: shorter chapters, separated by the book's existing rule. */
 .page-upgrade .side-row { position: relative; margin-top: 2rem; padding-top: 1.25rem; }
