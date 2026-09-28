@@ -115,6 +115,10 @@ main:focus { outline: none; }
 .site-header a { scroll-margin-top: -6rem; }
 /* Start a project stays while it has focus, even when the page's own button scrolls into sight. */
 .nav .nav-cta:focus { opacity: 1; visibility: visible; }
+/* Focus rings stay inside the bar: the name and About ring their own box, Start a project its drawn button. */
+.nav a:focus-visible { outline-offset: 0; }
+.nav .nav-cta:focus-visible { outline: 0; }
+.nav .nav-cta:focus-visible::before { outline: 2px solid var(--link); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .nav .nav-cta { transition: none; } }
 .nav ul { display: flex; column-gap: clamp(0.875rem, 3vw, 1.75rem); list-style: none; }
 .nav a { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; }
