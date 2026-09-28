@@ -532,7 +532,6 @@ h1, h2, h3 { hanging-punctuation: first; }
 }
 @media (min-width: 64em) {
   .page-upgrade .side-row { margin-top: 2.5rem; padding-top: 1.5rem; }
-  .case-study .case-head > .ledger { align-items: start; }
   .case-study .case-head .facts { margin-top: 0; }
   .project-steps { padding-left: 0; }
   .project-gallery { align-items: start; }
