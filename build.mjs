@@ -50,7 +50,7 @@ function lookup(path, fmt) {
 
 // The header marks the page the reader is on.
 const navCurrent = {
-  'services/index.html': ['/services/', 'page'], 'about/index.html': ['/about/', 'page'],
+  'about/index.html': ['/about/', 'page'],
 };
 function markNav(html, file) {
   if (!navCurrent[file]) return html;

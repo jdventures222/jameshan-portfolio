@@ -152,6 +152,8 @@ figcaption, .band-note {
 .crop-end .screen { aspect-ratio: 280 / 316; object-position: 50% 100%; }
 /* App Store listing images carry their own headline in the top sixth; the crop starts below it. */
 .crop-listing .screen { object-position: 50% 33%; }
+/* The finished gym session sits low on its listing image; this crop runs from the session title to its exercise list. */
+.crop-workout .screen { object-position: 50% 87%; }
 
 /* Case-study galleries: a scroll-snap strip on phones, a grid above. Each screenshot opens in the viewer. */
 .screens { display: flex; gap: 1rem; margin-top: 2rem; }
@@ -276,7 +278,7 @@ mark {
 .scripts [lang="hi"] { font-family: "Kohinoor Devanagari", "Devanagari Sangam MN", "Noto Sans Devanagari", "Nirmala UI", sans-serif; }
 @media (min-width: 48em) { .scripts { font-size: 1.125rem; } }
 
-/* What I build: five cards, numbered like ledger entries, each a hook and three things you get. */
+/* What I build: five cards, each a hook and three things you get; each card links to its section on Services. */
 #services .more { grid-column: 1 / -1; max-width: var(--measure); }
 /* One row of cards that scrolls sideways and snaps, like the menus directory; the next card peeks in. The row keeps
    its own scrollbar in view as the cue that it scrolls: a hairline track with a Pencil Grey thumb, inset to the text edge. */
@@ -308,14 +310,14 @@ mark {
 @media screen and (min-width: 64em) {
   .ledger > .band.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; padding-inline-start: 0; }
 }
-.offer-card { padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
-/* Each card's number, ruled across the card like a ledger line; decorative, so aria-hidden and gone in print. */
-.offer-num {
-  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.125rem;
-  color: var(--secondary); font-family: var(--sans); font-size: 0.8125rem; font-weight: 600; line-height: 1;
-  letter-spacing: 0.06em; font-variant-numeric: tabular-nums;
-}
-.offer-num::after { content: ""; flex: 1; height: 1px; background: var(--hairline); }
+.offer-card { position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
+/* The heading's link covers the whole card, so the card is one target whose name is just the heading. */
+.offer-card h3 a { color: inherit; text-decoration-color: transparent; }
+/* z-index lifts the cover above the list items, which are positioned for their dash markers. */
+.offer-card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.offer-card h3 a:focus-visible { outline: 0; }
+.offer-card:has(h3 a:focus-visible) { outline: 2px solid var(--link); outline-offset: -2px; }
+.offer-card:active { border-color: var(--secondary); }
 .offer-card h3 { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
 .offer-hook { margin-top: 0.5rem; color: var(--secondary); font-size: 1.0625rem; line-height: 1.45; }
 .offer-list { display: grid; gap: 0.625rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 1rem; line-height: 1.45; }
@@ -325,6 +327,7 @@ mark {
 /* With a real pointer the card lifts a touch and its edge darkens; no motion at all under reduced motion. */
 @media (hover: hover) {
   .offer-card:hover { border-color: var(--secondary); }
+  .offer-card:hover h3 a { text-decoration-color: currentColor; }
   @media (prefers-reduced-motion: no-preference) {
     .offer-card { transition: translate 180ms ease, border-color 180ms ease; }
     .offer-card:hover { translate: 0 -2px; }
@@ -579,7 +582,7 @@ html:has(.viewer[open]) { overflow: hidden; }
   .offer { display: block; margin: 6pt 0 0; padding: 0; overflow: visible; }
   .offer-card { padding: 3pt 0; background: none; border: 0; break-inside: avoid; }
   .offer-card h3 { font-size: 11.5pt; }
-  .offer-num, .offer-hook { display: none; }
+  .offer-hook { display: none; }
   .offer-list { display: block; margin-top: 1pt; font-size: 9.5pt; }
   .offer-list li { display: inline; padding-left: 0; }
   .offer-list li::before { content: none; }
