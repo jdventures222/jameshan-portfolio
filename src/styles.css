@@ -111,6 +111,10 @@ main:focus { outline: none; }
 .nav .nav-cta:hover::before { background: var(--ink); }
 .nav .nav-cta:active::before { background: var(--secondary); }
 .site-header.scrolled .nav-cta { opacity: 1; visibility: visible; }
+/* The header is always in view, so focusing its links must not scroll the page; this cancels html's scroll-padding-top. */
+.site-header a { scroll-margin-top: -6rem; }
+/* Start a project stays while it has focus, even when the page's own button scrolls into sight. */
+.nav .nav-cta:focus { opacity: 1; visibility: visible; }
 @media (prefers-reduced-motion: reduce) { .nav .nav-cta { transition: none; } }
 .nav ul { display: flex; column-gap: clamp(0.875rem, 3vw, 1.75rem); list-style: none; }
 .nav a { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; }
