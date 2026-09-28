@@ -453,6 +453,9 @@ h1, h2, h3 { hanging-punctuation: first; }
   .side-row > h2 { margin-bottom: 0; }
 }
 .side-row > .actions { margin-top: 0; }
+/* Thanks and error: the message sits under its heading as close as a case study's lead. */
+@media screen { .request-page .case-head + .side-row { padding-top: 1.5rem; } }
+@media screen and (min-width: 64em) { .request-page .case-head + .side-row { padding-top: 2rem; } }
 
 /* The services page: each service's list and its supporting link. */
 .detail > * + * { margin-top: 1rem; }
