@@ -11,6 +11,22 @@ for (const row of document.querySelectorAll('.band.shots[tabindex]')) {
   new ResizeObserver(() => { row.tabIndex = row.scrollWidth > row.clientWidth ? 0 : -1; }).observe(row);
 }
 
+// The request form sends once: while the request is on its way the button keeps its pressed colour and ignores further
+// presses. pageshow clears that, because the error page sends people Back to this form; so does a load that never
+// arrives (stopped, or offline) after 10 s.
+{
+  const form = document.querySelector('.request-form'), send = form?.querySelector('[type="submit"]');
+  let timer = 0;
+  const ready = () => { clearTimeout(timer); form.removeAttribute('aria-busy'); send.removeAttribute('aria-disabled'); };
+  form?.addEventListener('submit', event => {
+    if (form.hasAttribute('aria-busy')) { event.preventDefault(); return; }
+    form.setAttribute('aria-busy', 'true');
+    send.setAttribute('aria-disabled', 'true');
+    timer = setTimeout(ready, 10000);
+  });
+  if (form) addEventListener('pageshow', ready);
+}
+
 // Shows the header's "Start a project" once the page's title and its own "Start a project" buttons are out of sight,
 // the way the menus' bar shows their logo. Without JavaScript the header keeps the name and About only.
 (() => {

@@ -683,6 +683,8 @@ html:has(.viewer[open]) { overflow: hidden; }
 .request-send { display: grid; gap: 0.875rem; }
 .request-send .button { width: 100%; border: 0; cursor: pointer; }
 @media (min-width: 40em) { .request-send .button { width: auto; justify-self: start; padding-inline: 2rem; } }
+/* While the request is on its way (nav.js) the button keeps its pressed colour. */
+.request-send .button[aria-disabled="true"] { background: var(--secondary); color: var(--ground); cursor: progress; }
 #request-privacy { color: var(--secondary); font-family: var(--sans); font-size: 0.875rem; line-height: 1.45; }
 .request-form [hidden] { display: none !important; }
 .request-next { font-family: var(--sans); }
