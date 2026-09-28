@@ -7,16 +7,25 @@ for (const address of document.querySelectorAll('[data-copy]')) {
   const status = document.createElement('span');
   status.className = 'visually-hidden';
   status.setAttribute('role', 'status');
+  let reset, attempt = 0;
   button.addEventListener('click', async () => {
+    const current = ++attempt;
+    clearTimeout(reset);
+    status.className = 'visually-hidden';
+    status.textContent = '';
     try {
       await navigator.clipboard.writeText(address.textContent.trim());
+      if (current !== attempt) return;
       button.textContent = 'Copied';
       status.textContent = 'Address copied.';
+      reset = setTimeout(() => { button.textContent = 'Copy address'; status.textContent = ''; }, 2500);
     } catch {
+      if (current !== attempt) return;
       getSelection().selectAllChildren(address);
-      status.textContent = 'Address selected. Copy it with your keyboard.';
+      button.textContent = 'Try copying again';
+      status.className = 'copy-status';
+      status.textContent = 'Couldn’t copy. Select the address and copy it.';
     }
-    setTimeout(() => { button.textContent = 'Copy address'; status.textContent = ''; }, 2500);
   });
   address.after(button, status);
 }
