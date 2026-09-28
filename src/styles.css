@@ -224,7 +224,7 @@ figcaption, .band-note {
 .screen-grid + .entry-body, .band + .entry-body { margin-top: 1.75rem; }
 .entry-body .live { margin-top: 1.5rem; }
 .entry-body .live:first-child { margin-top: 0; }
-.entry-body .live + p { margin-top: 1.5rem; }
+.entry-body .live + * { margin-top: 1.5rem; }
 .more { margin-top: 0.75rem; }
 .more a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; font-family: var(--sans); font-weight: 600; }
 @media (min-width: 64em) {
@@ -429,11 +429,13 @@ h1, h2, h3 { hanging-punctuation: first; }
 @media (min-width: 64em) {
   .decisions, .bullets { padding-left: 0; }
 }
+/* Inside a numbered decision the dots stay in the text column, clear of the numbers. */
+.decisions .bullets { margin-top: 0.5rem; padding-left: 1.25rem; list-style-type: disc; }
 
 .result + .result { margin-top: 1.75rem; }
 .result h3 { font-size: clamp(1.375rem, 1rem + 1.2vw, 2rem); font-weight: 560; letter-spacing: -0.018em; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .result p { margin-top: 0.25rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary); }
-.results > p:last-child { margin-top: 1.75rem; }
+.results > .bullets { margin-top: 1.75rem; }
 
 /* Link lists: About's "Elsewhere" and the 404 page. */
 .elsewhere { display: flex; flex-wrap: wrap; column-gap: 1.5rem; list-style: none; font-family: var(--sans); font-weight: 600; }
