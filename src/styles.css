@@ -190,6 +190,10 @@ figcaption, .band-note {
   }
   .screens > * { scroll-snap-align: start; }
 }
+@media (max-width: 23.4375em) {
+  .menu-gallery .screen { aspect-ratio: 3 / 5; object-fit: cover; object-position: top; }
+  .menu-gallery .menu-allergen { object-position: bottom; }
+}
 @media (min-width: 37.5em) {
   .screens { gap: 1.5rem; }
   .screens > * { flex: 0 1 17.5rem; }
