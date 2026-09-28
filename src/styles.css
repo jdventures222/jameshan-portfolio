@@ -123,6 +123,7 @@ main:focus { outline: none; }
 .nav ul { display: flex; column-gap: clamp(0.875rem, 3vw, 1.75rem); list-style: none; }
 .nav a { position: relative; display: inline-flex; align-items: center; justify-content: center; min-width: 2.75rem; min-height: 2.75rem; }
 .nav .name { color: var(--ink); font-weight: 650; letter-spacing: -0.01em; text-decoration: none; }
+.nav .name:active { color: var(--secondary); }
 .nav ul a { color: var(--ink); font-weight: 500; text-decoration-color: transparent; }
 .nav ul a:hover { text-decoration-color: currentColor; }
 .nav ul a:active { color: var(--secondary); }
@@ -460,6 +461,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 .faq summary::-webkit-details-marker { display: none; }
 .faq summary::after { content: "+"; content: "+" / ""; flex: none; color: var(--link); font-family: var(--sans); font-size: 1.5rem; line-height: 1; transition: transform 0.2s ease; }
 .faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:active::after { color: var(--secondary); }
 .faq summary:focus-visible { outline: 2px solid var(--link); outline-offset: 2px; }
 .faq details > p { margin: 0 0 1rem; }
 @media (prefers-reduced-motion: reduce) { .faq summary::after { transition: none; } }
