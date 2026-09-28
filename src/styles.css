@@ -257,6 +257,11 @@ figcaption, .band-note {
   #work #work-title { padding-top: 1.25rem; border-top: 2px solid var(--ink); font-size: clamp(1.875rem, 1.35rem + 2vw, 2.75rem); }
 }
 @media screen and (min-width: 64em) { #work { padding-top: 7rem; } }
+/* On tablets each home section opens further from the one before than its entries sit from each other. */
+@media screen and (min-width: 37.5em) and (max-width: 63.9375em) {
+  .section { padding-top: 4rem; }
+  #work { padding-top: 5rem; }
+}
 
 /* Work entries */
 .entry { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
