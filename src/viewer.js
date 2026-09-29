@@ -193,6 +193,8 @@
       const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
       if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
     }
+    // A picture in a stacked gallery, or in a later row, can sit above or below the screen; bring the page to it too.
+    opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     if (reduced.matches) { dialog.close(); return; }
     const item = current(), frame = thumbFrame(item), rect = frame.rect;
     const bgFrom = getComputedStyle(bg).opacity, chromeFrom = getComputedStyle(chrome).opacity;
@@ -237,9 +239,13 @@
     runPendingOpen();
   });
   addEventListener('popstate', () => {
+    const leaving = waitingForBack || dialog.open;
     waitingForBack = false;
     if (dialog.open) close(true);
     runPendingOpen();
+    // Going back restores the page's scroll from when the viewer opened, just after this event; before the next paint,
+    // bring the page back to the picture last shown, unless a queued opening has taken over.
+    if (leaving) requestAnimationFrame(() => { if (!dialog.open || closing) opener?.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
   });
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   closeButton.addEventListener('click', () => close());
