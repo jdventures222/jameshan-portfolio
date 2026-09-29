@@ -169,6 +169,8 @@ main:focus { outline: none; }
 
 /* Screens: bare, rounded, a hairline on every ground. Never shown wider than 390 CSS px, except the Fyt chat picture. */
 .screen { width: 100%; border: 1px solid var(--hairline); border-radius: 9% / 4.16%; }
+/* With motion allowed, a picture's edge eases into its hover, focus and press colour, as the cards' edges do. */
+@media (prefers-reduced-motion: no-preference) { .screen { transition: border-color 180ms ease; } }
 figcaption, .band-note {
   margin-top: 0.625rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary);
 }
