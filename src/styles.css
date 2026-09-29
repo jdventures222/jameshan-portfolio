@@ -214,12 +214,9 @@ figcaption, .band-note {
   .screens { gap: 1.5rem; }
   .screens > * { flex: 0 1 17.5rem; }
   .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 17.5rem)); gap: 2rem 1.5rem; }
-  .gallery.four { grid-template-columns: repeat(2, minmax(0, 17.5rem)); }
-  /* The chat picture is about half as tall as a screenshot, so it takes two columns to match their height,
-     but no more than a phone's 390 px width. */
-  .gallery.four > .wide-shot { grid-column: span 2; max-width: 24.375rem; }
+  /* The chat picture is about half as tall as a screenshot, so it takes two columns to match their height. */
+  .gallery.four > .wide-shot { grid-column: span 2; }
 }
-@media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .print-sample { margin-top: 1rem; }
 .print-pair { display: grid; gap: 1rem; align-items: start; }
