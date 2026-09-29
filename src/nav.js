@@ -11,17 +11,21 @@ for (const row of document.querySelectorAll('.band.shots[tabindex]')) {
   new ResizeObserver(() => { row.tabIndex = row.scrollWidth > row.clientWidth ? 0 : -1; }).observe(row);
 }
 
-// The request form sends once: while the request is on its way the button keeps its pressed colour and ignores further
-// presses. pageshow clears that, because the error page sends people Back to this form; so does a load that never
+// The request form sends once: while the request is on its way the button reads "Sending…" at its own width, keeps its
+// pressed colour and ignores further presses. pageshow clears that, because the error page sends people Back to this form; so does a load that never
 // arrives (stopped, or offline) after 10 s.
 {
-  const form = document.querySelector('.request-form'), send = form?.querySelector('[type="submit"]');
+  const form = document.querySelector('.request-form'), send = form?.querySelector('[type="submit"]'), label = send?.textContent;
   let timer = 0;
-  const ready = () => { clearTimeout(timer); form.removeAttribute('aria-busy'); send.removeAttribute('aria-disabled'); };
+  const ready = () => {
+    clearTimeout(timer); form.removeAttribute('aria-busy'); send.removeAttribute('aria-disabled');
+    send.textContent = label; send.style.minWidth = '';
+  };
   form?.addEventListener('submit', event => {
     if (form.hasAttribute('aria-busy')) { event.preventDefault(); return; }
     form.setAttribute('aria-busy', 'true');
     send.setAttribute('aria-disabled', 'true');
+    send.style.minWidth = `${send.offsetWidth}px`; send.textContent = 'Sending…';
     timer = setTimeout(ready, 10000);
   });
   if (form) addEventListener('pageshow', ready);
