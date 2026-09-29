@@ -251,7 +251,8 @@ figcaption, .band-note {
   .ledger > .span { grid-column: 1 / -1; }
   .ledger > .rail { grid-column: 1; grid-row: 1 / span 2; }
   .ledger > .wide { grid-column: 2 / -1; }
-  .ledger > .band { grid-column: 1 / -1; padding-inline-start: calc(var(--rail) + var(--gutter)); }
+  /* The band sits beside the rail like a wide gallery, without its full-bleed spread, which would paint over the rail. */
+  .ledger > .band { grid-column: 2 / -1; box-shadow: none; clip-path: none; }
 }
 
 .section { padding-top: 2rem; }
@@ -373,7 +374,7 @@ mark {
 }
 /* On desktop all four fit in one row across the band. */
 @media screen and (min-width: 64em) {
-  .ledger > .band.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; padding-inline-start: 0; }
+  .ledger > .band.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
 }
 .offer-card { position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
 /* The heading's link covers the whole card, so the card is one target whose name is just the heading. */
@@ -538,8 +539,7 @@ h1, h2, h3 { hanging-punctuation: first; }
   .project-steps { padding-left: 0; }
   .project-gallery { align-items: start; }
   .project-gallery > .rail { grid-row: 1; }
-  /* Beside its heading the band drops its full-bleed spread, which would paint over the heading. */
-  .project-gallery > .band { grid-column: 2 / -1; grid-row: 1; margin-top: 0; padding-inline-start: 0; box-shadow: none; clip-path: none; }
+  .project-gallery > .band { grid-row: 1; margin-top: 0; }
 }
 
 .not-found { padding-block: 2.25rem 1rem; }
