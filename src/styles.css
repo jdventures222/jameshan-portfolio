@@ -118,8 +118,9 @@ main:focus { outline: none; }
 .site-header.scrolled .nav-cta { opacity: 1; visibility: visible; }
 /* The header is always in view, so focusing its links must not scroll the page; this cancels html's scroll-padding-top. */
 .site-header a { scroll-margin-top: -6rem; }
-/* Start a project stays while it has focus, even when the page's own button scrolls into sight. */
-.nav .nav-cta:focus { opacity: 1; visibility: visible; }
+/* Start a project stays while it has keyboard focus, even when the page's own button scrolls into sight; the focus a
+   click leaves behind (kept when Back restores the page) does not hold it. */
+.nav .nav-cta:focus-visible { opacity: 1; visibility: visible; }
 /* Focus rings stay inside the bar: the name and About ring their own box a pixel out, clear of the letters and the
    current page's underline; Start a project rings its drawn button. */
 .nav a:focus-visible { outline-offset: 1px; }
