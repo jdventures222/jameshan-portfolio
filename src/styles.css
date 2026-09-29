@@ -120,8 +120,9 @@ main:focus { outline: none; }
 .site-header a { scroll-margin-top: -6rem; }
 /* Start a project stays while it has focus, even when the page's own button scrolls into sight. */
 .nav .nav-cta:focus { opacity: 1; visibility: visible; }
-/* Focus rings stay inside the bar: the name and About ring their own box, Start a project its drawn button. */
-.nav a:focus-visible { outline-offset: 0; }
+/* Focus rings stay inside the bar: the name and About ring their own box a pixel out, clear of the letters and the
+   current page's underline; Start a project rings its drawn button. */
+.nav a:focus-visible { outline-offset: 1px; }
 .nav .nav-cta:focus-visible { outline: 0; }
 .nav .nav-cta:focus-visible::before { outline: 2px solid var(--link); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .nav .nav-cta { transition: none; } }
