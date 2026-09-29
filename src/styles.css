@@ -220,6 +220,18 @@ figcaption, .band-note {
 }
 @media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(3, minmax(0, 17.5rem)); } }
 
+/* fyt.life's pages: stacked on phones; above, two rows whose pictures grow in proportion to their shape (16:10
+   desktop, 1170:2532 phone), so the pictures in a row share one height. The 2px basis is each picture's two border
+   pixels, which do not scale with the shape. Desktop pages take the panel corner. */
+.site-gallery, .site-row { display: grid; gap: 2rem; }
+.site-shot .shot-link, .site-shot .screen { border-radius: 8px; }
+.phone-shot { max-width: 16.25rem; }
+@media (min-width: 37.5em) {
+  .site-row { display: flex; gap: 1.5rem; align-items: start; }
+  .site-row > * { flex: 1.6 1 2px; min-width: 0; }
+  .site-row > .phone-shot { flex-grow: 0.4621; max-width: none; }
+}
+
 .print-sample { margin-top: 1rem; }
 .print-pair { display: grid; gap: 1rem; align-items: start; }
 .print-pair > a { width: 100%; max-width: 24.375rem; }
