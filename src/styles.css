@@ -363,7 +363,7 @@ mark {
    and scrollbar (on screen only; print hides the band). */
 @media screen and (max-width: 63.9375em) {
   .band.shots {
-    display: grid; grid-auto-flow: column; grid-auto-columns: 17.5rem; gap: 1rem;
+    display: grid; grid-auto-flow: column; grid-auto-columns: min(17.5rem, calc(100vw - 4.5rem)); gap: 1rem;
     margin-inline: calc(-1 * var(--pad)); padding: 0.25rem var(--pad) 1.125rem;
     overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
   }
