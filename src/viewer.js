@@ -154,6 +154,9 @@
     });
     track.replaceChildren(...group.map(item => item.figure));
     index = group.findIndex(item => item.link === link);
+    // The close handler returns focus to the picture last shown. Left focused, the tapped picture would be refocused by
+    // the dialog as it closes, and nav.js would scroll its strip back to it.
+    document.activeElement?.blur();
     dialog.showModal();
     // Forward can land on an old viewer entry; reuse it rather than stack a second one.
     if (history.state?.viewer) history.replaceState({ viewer: true }, '');
