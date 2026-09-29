@@ -26,7 +26,7 @@
   const caption = $('.viewer-caption'), count = $('.viewer-count');
   const closeButton = $('.viewer-close');
   const pointers = new Map();
-  let group = [], index = 0, opener = null, gesture = null;
+  let group = [], index = 0, opener = null, tapped = null, tappedTop = 0, tappedSize = '', gesture = null;
   let scale = 1, tx = 0, ty = 0, chromeOn = true, closing = false, closeTimer = 0;
   let tap = null, tapTimer = 0, ownsHistory = false, waitingForBack = false, pendingOpen = null;
   // Focus goes back to the opener with a ring only when the viewer was left from the keyboard.
@@ -137,7 +137,9 @@
   function open(link) {
     if (waitingForBack || closing) { pendingOpen = link; return; }
     if (dialog.open) return;
-    opener = link;
+    opener = tapped = link;
+    // Where the picture sat on screen, and the screen's size, so closing on it can put the page back exactly there.
+    tappedTop = link.getBoundingClientRect().top; tappedSize = `${innerWidth}x${innerHeight}`;
     group = [...link.closest('.screen-grid').querySelectorAll('.shot-link')].map(anchor => {
       const thumb = anchor.querySelector('img');
       const text = anchor.closest('figure')?.querySelector('figcaption')?.textContent.trim() || thumb.alt;
@@ -185,16 +187,19 @@
     settleAnimations();
     releasePointers();
     placeSlides();
-    // Come back to the picture on screen: focus returns to it, and a sideways strip brings it into view first so the
-    // closing animation can land on it.
+    // Come back to the picture on screen: focus returns to it, and when it is not the one that was opened, a sideways
+    // strip brings it into view first so the closing animation can land on it, and the page scrolls to a picture in a
+    // stacked gallery or a later row. The picture that was opened is already on screen, so the page stays put; without
+    // this, scrollIntoView honoured the page's 6rem scroll padding and pulled a picture near the top down to that line.
     opener = current().link;
-    const strip = opener.closest('.screens');
-    if (strip && strip.scrollWidth > strip.clientWidth) {
-      const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
-      if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
+    if (opener !== tapped || tappedSize !== `${innerWidth}x${innerHeight}`) {
+      const strip = opener.closest('.screens');
+      if (strip && strip.scrollWidth > strip.clientWidth) {
+        const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
+        if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
+      }
+      opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     }
-    // A picture in a stacked gallery, or in a later row, can sit above or below the screen; bring the page to it too.
-    opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     if (reduced.matches) { dialog.close(); return; }
     const item = current(), frame = thumbFrame(item), rect = frame.rect;
     const bgFrom = getComputedStyle(bg).opacity, chromeFrom = getComputedStyle(chrome).opacity;
@@ -222,6 +227,15 @@
     animate(bg, [{ opacity: bgFrom }, { opacity: 0 }], { duration, easing: 'ease-out' });
     closeTimer = setTimeout(() => dialog.close(), duration);
   }
+  // With the viewer closed and the page's own scrolling back, bring the page to the picture last shown: the one that
+  // was opened returns to exactly where it sat (a browser with a classic scrollbar reflows the page as its scrollbar
+  // leaves and returns, and Chrome does not re-anchor the scroll on the way back); any other scrolls into view, and
+  // so does the opened one when the screen has turned or been resized meanwhile, since its old place may be off screen.
+  function settlePage() {
+    if (!opener) return;
+    if (opener === tapped && tappedSize === `${innerWidth}x${innerHeight}`) { const off = opener.getBoundingClientRect().top - tappedTop; if (Math.abs(off) > 0.5) scrollBy(0, off); }
+    else opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+  }
   // One history entry per opening. Queue a rapid reopen until our Back traversal has finished.
   if (history.state?.viewer) history.replaceState(null, '');
   dialog.addEventListener('close', () => {
@@ -235,7 +249,7 @@
     bg.style.opacity = 0; chrome.style.opacity = 1; chrome.inert = false;
     chrome.classList.remove('off'); chromeOn = true;
     track.classList.remove('zoomed');
-    if (!pendingOpen) opener?.focus({ preventScroll: true, focusVisible: usedKeyboard });
+    if (!pendingOpen) { settlePage(); opener?.focus({ preventScroll: true, focusVisible: usedKeyboard }); }
     runPendingOpen();
   });
   addEventListener('popstate', () => {
@@ -245,7 +259,7 @@
     runPendingOpen();
     // Going back restores the page's scroll from when the viewer opened, just after this event; before the next paint,
     // bring the page back to the picture last shown, unless a queued opening has taken over.
-    if (leaving) requestAnimationFrame(() => { if (!dialog.open || closing) opener?.scrollIntoView({ block: 'nearest', inline: 'nearest' }); });
+    if (leaving) requestAnimationFrame(() => { if (!dialog.open || closing) settlePage(); });
   });
   dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
   closeButton.addEventListener('click', () => close());
