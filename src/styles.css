@@ -167,7 +167,7 @@ main:focus { outline: none; }
 .address { color: var(--ink); font-family: var(--sans); font-weight: 500; overflow-wrap: anywhere; }
 @media (min-width: 75em) { .hero { padding-block: 4.5rem 1rem; } }
 
-/* Screens: bare, rounded, a hairline on every ground. Never shown wider than 390 CSS px. */
+/* Screens: bare, rounded, a hairline on every ground. Never shown wider than 390 CSS px, except the Fyt chat picture. */
 .screen { width: 100%; border: 1px solid var(--hairline); border-radius: 9% / 4.16%; }
 figcaption, .band-note {
   margin-top: 0.625rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary);
@@ -214,9 +214,11 @@ figcaption, .band-note {
   .screens { gap: 1.5rem; }
   .screens > * { flex: 0 1 17.5rem; }
   .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 17.5rem)); gap: 2rem 1.5rem; }
+  .gallery.four { grid-template-columns: repeat(2, minmax(0, 17.5rem)); }
   /* The chat picture is about half as tall as a screenshot, so it takes two columns to match their height. */
   .gallery.four > .wide-shot { grid-column: span 2; }
 }
+@media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(3, minmax(0, 17.5rem)); } }
 
 .print-sample { margin-top: 1rem; }
 .print-pair { display: grid; gap: 1rem; align-items: start; }
