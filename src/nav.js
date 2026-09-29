@@ -25,7 +25,7 @@ for (const row of document.querySelectorAll('.band.shots[tabindex]')) {
     if (form.hasAttribute('aria-busy')) { event.preventDefault(); return; }
     form.setAttribute('aria-busy', 'true');
     send.setAttribute('aria-disabled', 'true');
-    send.style.minWidth = `${send.offsetWidth}px`; send.textContent = 'Sending…';
+    send.style.minWidth = `min(${send.offsetWidth}px, 100%)`; send.textContent = 'Sending…';
     timer = setTimeout(ready, 10000);
   });
   if (form) addEventListener('pageshow', ready);
