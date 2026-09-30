@@ -26,7 +26,7 @@
   const caption = $('.viewer-caption'), count = $('.viewer-count');
   const closeButton = $('.viewer-close');
   const pointers = new Map();
-  let group = [], index = 0, opener = null, tapped = null, tappedTop = 0, tappedSize = '', gesture = null;
+  let group = [], index = 0, opener = null, tapped = null, tappedTop = 0, tappedWidth = 0, gesture = null;
   let scale = 1, tx = 0, ty = 0, chromeOn = true, closing = false, closeTimer = 0;
   let tap = null, tapTimer = 0, ownsHistory = false, waitingForBack = false, pendingOpen = null;
   // Focus goes back to the opener with a ring only when the viewer was left from the keyboard.
@@ -138,8 +138,8 @@
     if (waitingForBack || closing) { pendingOpen = link; return; }
     if (dialog.open) return;
     opener = tapped = link;
-    // Where the picture sat on screen, and the screen's size, so closing on it can put the page back exactly there.
-    tappedTop = link.getBoundingClientRect().top; tappedSize = `${innerWidth}x${innerHeight}`;
+    // Where the picture sat on screen, and the screen's width, so closing on it can put the page back exactly there.
+    tappedTop = link.getBoundingClientRect().top; tappedWidth = innerWidth;
     group = [...link.closest('.screen-grid').querySelectorAll('.shot-link')].map(anchor => {
       const thumb = anchor.querySelector('img');
       const text = anchor.closest('figure')?.querySelector('figcaption')?.textContent.trim() || thumb.alt;
@@ -189,10 +189,10 @@
     placeSlides();
     // Come back to the picture on screen: focus returns to it, and when it is not the one that was opened, a sideways
     // strip brings it into view first so the closing animation can land on it, and the page scrolls to a picture in a
-    // stacked gallery or a later row. The picture that was opened is already on screen, so the page stays put; without
+    // stacked gallery or a later row. The picture that was opened is still on screen, so the page stays put; without
     // this, scrollIntoView honoured the page's 6rem scroll padding and pulled a picture near the top down to that line.
     opener = current().link;
-    if (opener !== tapped || tappedSize !== `${innerWidth}x${innerHeight}`) {
+    if (!inPlace()) {
       const strip = opener.closest('.screens');
       if (strip && strip.scrollWidth > strip.clientWidth) {
         const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
@@ -227,14 +227,22 @@
     animate(bg, [{ opacity: bgFrom }, { opacity: 0 }], { duration, easing: 'ease-out' });
     closeTimer = setTimeout(() => dialog.close(), duration);
   }
+  // The picture that was opened, on a screen as wide as when it was opened and still at least partly on it. Only the
+  // width counts: Safari's toolbars grow and shrink the height while the viewer is open, and turning the phone changes
+  // the width.
+  function inPlace() {
+    if (opener !== tapped || innerWidth !== tappedWidth) return false;
+    const r = opener.getBoundingClientRect();
+    return r.bottom > 0 && r.top < innerHeight;
+  }
   // With the viewer closed and the page's own scrolling back, bring the page to the picture last shown: the one that
   // was opened returns to exactly where it sat (a browser with a classic scrollbar reflows the page as its scrollbar
   // leaves and returns, and Chrome does not re-anchor the scroll on the way back); any other scrolls into view, and
-  // so does the opened one when the screen has turned or been resized meanwhile, since its old place may be off screen.
+  // so does the opened one when the screen has turned, or its old place is now off a shorter screen.
   function settlePage() {
     if (!opener) return;
-    if (opener === tapped && tappedSize === `${innerWidth}x${innerHeight}`) { const off = opener.getBoundingClientRect().top - tappedTop; if (Math.abs(off) > 0.5) scrollBy(0, off); }
-    else opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    if (opener === tapped && innerWidth === tappedWidth) { const off = opener.getBoundingClientRect().top - tappedTop; if (Math.abs(off) > 0.5) scrollBy(0, off); }
+    if (!inPlace()) opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
   // One history entry per opening. Queue a rapid reopen until our Back traversal has finished.
   if (history.state?.viewer) history.replaceState(null, '');
