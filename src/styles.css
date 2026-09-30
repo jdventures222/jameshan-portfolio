@@ -416,14 +416,14 @@ mark {
 @media screen and (min-width: 64em) {
   .ledger > .band.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
 }
-.offer-card { position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--hairline); border-radius: 8px; }
+.offer-card { --edge: var(--hairline); position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; }
 /* The heading's link covers the whole card, so the card is one target whose name is just the heading. */
 .offer-card h3 a { color: inherit; text-decoration-color: transparent; }
 /* z-index lifts the cover above the list items, which are positioned for their dot markers. */
 .offer-card h3 a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
 .offer-card h3 a:focus-visible { outline: 0; }
 .offer-card:has(h3 a:focus-visible) { outline: 2px solid var(--link); outline-offset: -2px; }
-.offer-card:active { border-color: var(--secondary); }
+.offer-card:active { --edge: var(--secondary); }
 .offer-card h3 { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
 .offer-hook { margin-top: 0.5rem; color: var(--secondary); font-size: 1.0625rem; line-height: 1.45; }
 .offer-list { display: grid; gap: 0.625rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 1rem; line-height: 1.45; }
@@ -432,11 +432,49 @@ mark {
 .offer-list li::before { content: ""; position: absolute; left: 0; top: 0.6em; width: 0.375rem; height: 0.375rem; border-radius: 50%; background: var(--secondary); }
 /* With a real pointer the card lifts a touch and its edge darkens; no motion at all under reduced motion. */
 @media (hover: hover) {
-  .offer-card:hover { border-color: var(--secondary); }
+  .offer-card:hover { --edge: var(--secondary); }
   .offer-card:hover h3 a { text-decoration-color: currentColor; }
   @media (prefers-reduced-motion: no-preference) {
     .offer-card { transition: translate 180ms ease, border-color 180ms ease; }
     .offer-card:hover { translate: 0 -2px; }
+  }
+}
+/* Each card takes the shape of what it builds, drawn in the page's neutrals and never a project colour (the cards are
+   links): an order ticket, a flow, a browser window, a phone and a blank sheet. Print lists the cards plainly. */
+@media screen {
+  /* Restaurants: a ticket, its items under a perforation with a notch cut from each edge. */
+  .ticket .offer-list { position: relative; margin-inline: -1.5rem; padding: 1.25rem 1.5rem 0; border-top: 1px dashed var(--edge); }
+  .ticket .offer-list::before, .ticket .offer-list::after {
+    content: ""; position: absolute; top: -0.625rem; width: 0.625rem; height: 1.25rem;
+    background: var(--ground); border: 1px solid var(--edge);
+  }
+  .ticket .offer-list::before { left: -1px; border-left: 0; border-radius: 0 999px 999px 0; }
+  .ticket .offer-list::after { right: -1px; border-right: 0; border-radius: 999px 0 0 999px; }
+  /* Automations: the three lines joined dot to dot, each step running into the next. */
+  .flow .offer-list li:not(:last-child)::after {
+    content: ""; position: absolute; left: calc(0.1875rem - 0.5px); top: calc(0.6em + 0.375rem);
+    width: 1px; height: calc(100% + 0.25rem); background: var(--secondary);
+  }
+  /* Websites: a browser window's bar across the top, with its three small dots (single-colour gradients). */
+  .offer-card.window { padding-top: 3.25rem; }
+  .offer-card.window::before {
+    content: ""; position: absolute; inset: 0 0 auto; height: 1.75rem; border-bottom: 1px solid var(--edge);
+    --dot: color-mix(in srgb, var(--secondary) 45%, var(--surface));
+    background:
+      radial-gradient(circle at 1rem 50%, var(--dot) 0.1875rem, transparent calc(0.1875rem + 0.5px)),
+      radial-gradient(circle at 1.625rem 50%, var(--dot) 0.1875rem, transparent calc(0.1875rem + 0.5px)),
+      radial-gradient(circle at 2.25rem 50%, var(--dot) 0.1875rem, transparent calc(0.1875rem + 0.5px));
+  }
+  /* Apps: a phone's rounded corners and the island at the top of its screen. */
+  .offer-card.phone { padding-top: 3.25rem; border-radius: 1.75rem; }
+  .offer-card.phone::before {
+    content: ""; position: absolute; top: 0.875rem; left: calc(50% - 2.25rem); width: 4.5rem; height: 1.125rem;
+    border-radius: 999px; background: var(--ground);
+  }
+  /* Custom: a blank sheet on the page itself, its edge dashed, still to be drawn. */
+  .offer-card.blank { background: none; border-style: dashed; }
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .ticket .offer-list, .ticket .offer-list::before, .ticket .offer-list::after, .offer-card.window::before { transition: border-color 180ms ease; }
   }
 }
 .label { font-family: var(--sans); font-size: 0.9375em; font-weight: 600; }
