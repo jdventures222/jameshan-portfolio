@@ -150,6 +150,7 @@
       image.height = Number(thumb.getAttribute('height')) || thumb.naturalHeight;
       image.draggable = false; image.decoding = 'async';
       zoom.style.backgroundImage = `url(${JSON.stringify(thumb.currentSrc || thumb.src)})`;
+      zoom.style.backgroundPosition = image.style.objectPosition = getComputedStyle(thumb).objectPosition;
       image.addEventListener('load', () => image.classList.add('loaded'));
       zoom.append(image); figure.append(zoom);
       return { link: anchor, thumb, caption: text, w: image.width, h: image.height, figure, zoom, image };

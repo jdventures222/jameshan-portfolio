@@ -653,12 +653,14 @@ html:has(.viewer[open]) { overflow: hidden; }
 .viewer-track:focus { outline: none; }
 .viewer-track.zoomed { cursor: move; }
 .viewer-figure { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; overflow: hidden; }
+/* Cover, anchored where the thumbnail's crop is (viewer.js): at rest the box has the picture's own shape, so nothing is
+   cut; flying from or to a cropped thumbnail, the crop opens out into the whole picture instead of a squeezed strip. */
 .viewer-zoom {
   position: relative; flex-shrink: 0; transform-origin: center; overflow: hidden;
-  background-position: center; background-size: contain; background-repeat: no-repeat;
+  background-position: center; background-size: cover; background-repeat: no-repeat;
 }
 .viewer-image {
-  display: block; width: 100%; height: 100%; max-width: none; object-fit: contain;
+  display: block; width: 100%; height: 100%; max-width: none; object-fit: cover;
   border: 0; border-radius: 0; opacity: 0; pointer-events: none; -webkit-user-drag: none;
 }
 .viewer-image.loaded { opacity: 1; }
