@@ -155,6 +155,7 @@
       return { link: anchor, thumb, caption: text, w: image.width, h: image.height, figure, zoom, image };
     });
     track.replaceChildren(...group.map(item => item.figure));
+    count.hidden = group.length < 2;
     index = group.findIndex(item => item.link === link);
     // The close handler returns focus to the picture last shown. Left focused, the tapped picture would be refocused by
     // the dialog as it closes, and nav.js would scroll its strip back to it.
