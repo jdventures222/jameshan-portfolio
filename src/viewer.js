@@ -187,19 +187,17 @@
     settleAnimations();
     releasePointers();
     placeSlides();
-    // Come back to the picture on screen: focus returns to it, and when it is not the one that was opened, a sideways
-    // strip brings it into view first so the closing animation can land on it, and the page scrolls to a picture in a
-    // stacked gallery or a later row. The picture that was opened is still on screen, so the page stays put; without
-    // this, scrollIntoView honoured the page's 6rem scroll padding and pulled a picture near the top down to that line.
+    // Come back to the picture on screen: focus returns to it, and a sideways strip brings it fully into view first so
+    // the closing animation can land on it, and so keyboard focus has nothing left to scroll. The page scrolls to a
+    // picture in a stacked gallery or a later row; the picture that was opened is still on screen, so the page stays
+    // put, since scrollIntoView honours the page's 6rem scroll padding and would pull a picture near the top down to it.
     opener = current().link;
-    if (!inPlace()) {
-      const strip = opener.closest('.screens');
-      if (strip && strip.scrollWidth > strip.clientWidth) {
-        const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
-        if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
-      }
-      opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+    const strip = opener.closest('.screens');
+    if (strip && strip.scrollWidth > strip.clientWidth) {
+      const a = opener.getBoundingClientRect(), r = strip.getBoundingClientRect();
+      if (a.left < r.left || a.right > r.right) strip.scrollLeft += a.left - r.left - (parseFloat(getComputedStyle(strip).scrollPaddingLeft) || 0);
     }
+    if (!inPlace()) opener.scrollIntoView({ block: 'nearest', inline: 'nearest' });
     if (reduced.matches) { dialog.close(); return; }
     const item = current(), frame = thumbFrame(item), rect = frame.rect;
     const bgFrom = getComputedStyle(bg).opacity, chromeFrom = getComputedStyle(chrome).opacity;
