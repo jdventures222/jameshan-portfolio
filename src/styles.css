@@ -6,7 +6,9 @@
   --ink: light-dark(#17181A, #E9E8E4);
   --secondary: light-dark(#55595F, #A6A7A2);
   --hairline: light-dark(#C9CBC6, #3A3B3D);
-  --surface: color-mix(in srgb, var(--ink) 3.5%, var(--ground));
+  /* Three grounds: Raised (cards and the request panel) sits above Paper; the Well, behind screenshots, sits below it. */
+  --surface: color-mix(in srgb, var(--ink) 8%, var(--ground));
+  --well: #120F0D;
   --link: light-dark(#1F3A93, #9DB2FF);
   --on-link: light-dark(#FCFCFB, #1B1714);
   --mark: light-dark(#FFE14D, #E8C547);
@@ -240,13 +242,18 @@ figcaption, .band-note {
 .print-sample .shot-link, .print-sample .screen { border-radius: 0; }
 @media (min-width: 37.5em) { .print-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Fyt's dark App Store screens sit on a band the colour of the page's brown. */
+/* Screenshots sit in a well, a ground deeper than the page. Below 64em it runs to both edges of the screen, the spread
+   carrying its colour past the wrap; from 64em it is a tray set out beside the rail, its padding matched by a negative
+   margin so the pictures keep their size and place. */
+.well {
+  background: var(--well);
+  box-shadow: 0 0 0 100vmax var(--well);
+  clip-path: inset(0 -100vmax);
+  padding-block: var(--pad);
+}
 .band {
   color-scheme: dark;
   color: var(--ink);
-  background: #1B1714;
-  box-shadow: 0 0 0 100vmax #1B1714;
-  clip-path: inset(0 -100vmax);
   margin-top: 2rem;
 }
 .band .screens { margin-top: 0; }
@@ -264,8 +271,10 @@ figcaption, .band-note {
   .ledger > .span { grid-column: 1 / -1; }
   .ledger > .rail { grid-column: 1; grid-row: 1 / span 2; }
   .ledger > .wide { grid-column: 2 / -1; }
-  /* The band sits beside the rail like a wide gallery, without its full-bleed spread, which would paint over the rail. */
-  .ledger > .band { grid-column: 2 / -1; box-shadow: none; clip-path: none; }
+  /* The band sits beside the rail like a wide gallery. */
+  .ledger > .band { grid-column: 2 / -1; }
+  /* A well becomes a tray: the full-bleed spread would paint over the rail. */
+  .well { margin-inline: -1.5rem; padding: 1.5rem; border-radius: 8px; box-shadow: none; clip-path: none; }
 }
 
 .section { padding-top: 2rem; }
@@ -375,12 +384,12 @@ mark {
   :is(.offer, .band.shots) { scrollbar-width: thin; scrollbar-color: var(--secondary) transparent; }
 }
 :is(.offer, .band.shots):focus-visible { outline: 2px solid var(--link); outline-offset: -2px; }
-/* Fyt's pictures scroll the same way where two do not fit side by side, with the offer row's room for its focus ring
-   and scrollbar (on screen only; print hides the band). */
+/* Fyt's pictures scroll the same way where two do not fit side by side; the well's padding leaves room for the focus
+   ring and scrollbar (on screen only; print hides the band). */
 @media screen and (max-width: 63.9375em) {
   .band.shots {
     display: grid; grid-auto-flow: column; grid-auto-columns: min(17.5rem, calc(100vw - 4.5rem)); gap: 1rem;
-    margin-inline: calc(-1 * var(--pad)); padding: 0.25rem var(--pad) 1.125rem;
+    margin-inline: calc(-1 * var(--pad)); padding-inline: var(--pad);
     overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scroll-padding-inline: var(--pad);
   }
   .band.shots > .shot { scroll-snap-align: start; }
