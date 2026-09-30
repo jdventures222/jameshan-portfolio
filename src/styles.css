@@ -6,9 +6,10 @@
   --ink: light-dark(#17181A, #E9E8E4);
   --secondary: light-dark(#55595F, #A6A7A2);
   --hairline: light-dark(#C9CBC6, #3A3B3D);
-  /* Three grounds: Raised (cards and the request panel) sits above Paper; the Well, behind screenshots, sits below it. */
+  /* Three grounds: Paper; Raised (cards and the request panel) above it; and the Well behind screenshots, also a step
+     above Paper, in its project's tint, so the screenshots' shadow has a ground to fall on. */
   --surface: color-mix(in srgb, var(--ink) 8%, var(--ground));
-  --well: #120F0D;
+  --well: #292623;
   --link: light-dark(#1F3A93, #9DB2FF);
   --on-link: light-dark(#FCFCFB, #1B1714);
   --mark: light-dark(#FFE14D, #E8C547);
@@ -246,7 +247,7 @@ figcaption, .band-note {
 .print-sample .shot-link, .print-sample .screen { border-radius: 0; }
 @media (min-width: 37.5em) { .print-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Screenshots sit in a well, a ground deeper than the page. Below 64em it runs to both edges of the screen, the spread
+/* Screenshots sit in a well, a ground a step above the page. Below 64em it runs to both edges of the screen, the spread
    carrying its colour past the wrap; from 64em it is a tray set out beside the rail, its padding matched by a negative
    margin so the pictures keep their size and place. */
 .well {
@@ -571,8 +572,8 @@ h1, h2, h3 { hanging-punctuation: first; }
 /* Each project keeps its product's own colour inside its own chapter, never on anything you press: the menus' red and
    Fyt's teal tint the well behind their screenshots, draw the rule above the entry or picture chapter, and colour the
    case study's fact labels (the red lightened for text, 6.2:1 on the page; the teal as it is, 6.5:1). */
-.project-menus { --project: #D11423; --project-text: #ED756E; --well: #1C0B0A; }
-.project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; --well: #081314; }
+.project-menus { --project: #D11423; --project-text: #ED756E; --well: #3A1D1A; }
+.project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; --well: #0E2B2F; }
 .entry:is(.project-menus, .project-fyt) { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .project-gallery::before { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .facts dt { color: var(--project-text); }
