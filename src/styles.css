@@ -183,11 +183,11 @@ main:focus { outline: none; }
   .hero-work { margin-top: 0; }
 }
 
-/* Screens: bare, rounded, a hairline on every ground. Never shown wider than 390 CSS px, except the Fyt chat picture.
-   A soft warm-brown shadow sets each one on its well; nothing else on the page casts one. */
+/* Screens: bare, rounded, a hairline on every ground but the menus' well. Never shown wider than 390 CSS px, except the
+   Fyt chat picture. A soft warm-brown shadow sets each one on its well; nothing else on the page casts one. */
 .screen {
-  width: 100%; border: 1px solid var(--hairline); border-radius: 9% / 4.16%;
-  box-shadow: 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%);
+  width: 100%; border: 1px solid var(--screen-edge, var(--hairline)); border-radius: 9% / 4.16%;
+  box-shadow: var(--screen-shadow, 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%));
 }
 /* With motion allowed, a picture's edge eases into its hover, focus and press colour, as the cards' edges do. */
 @media (prefers-reduced-motion: no-preference) { .screen { transition: border-color 180ms ease; } }
@@ -626,7 +626,12 @@ h1, h2, h3 { hanging-punctuation: first; }
 /* Each project keeps its product's own colour inside its own chapter, never on anything you press: the menus' red and
    Fyt's teal tint the well behind their screenshots, draw the rule above the entry or picture chapter, and colour the
    case study's fact labels (the red lightened for text, 6.2:1 on the page; the teal as it is, 6.5:1). */
-.project-menus { --project: #D11423; --project-text: #ED756E; --well: #3A1D1A; }
+/* The menus' light screens need no hairline on their wine well (a grey stroke round them read as an outline; the edge
+   stays for hover, focus and press), and their shadow is a deep shade of the well, not brown-black. */
+.project-menus {
+  --project: #D11423; --project-text: #ED756E; --well: #411815; --screen-edge: transparent;
+  --screen-shadow: 0 1px 2px rgb(20 4 3 / 60%), 0 6px 12px -4px rgb(20 4 3 / 55%), 0 20px 40px -12px rgb(20 4 3 / 95%);
+}
 .project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; --well: #0E2B2F; }
 .entry:is(.project-menus, .project-fyt) { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .project-gallery::before { border-top-color: var(--project); }
