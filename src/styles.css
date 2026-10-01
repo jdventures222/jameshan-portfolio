@@ -520,6 +520,8 @@ h1, h2, h3 { hanging-punctuation: first; }
   .side-row > h2 { margin-bottom: 0; }
 }
 .side-row > .actions { margin-top: 0; }
+/* The next case study, above Contact: its link where a chapter's heading sits, the home page's line about it beside it. */
+.next-study > .more, .next-study > .more + p { margin-top: 0; }
 /* Thanks and error: the message sits under its heading as close as a case study's lead. */
 @media screen { .request-page .case-head + .side-row { padding-top: 1.5rem; } }
 @media screen and (min-width: 64em) { .request-page .case-head + .side-row { padding-top: 2rem; } }
