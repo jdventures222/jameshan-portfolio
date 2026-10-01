@@ -482,6 +482,8 @@ mark {
 .nowrap { white-space: nowrap; }
 h1, h2, h3 { hanging-punctuation: first; }
 .site-footer p { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: var(--secondary); }
+/* The privacy link keeps a 44 px target and stays whole, like the line's other segments. */
+.site-footer a { display: inline-flex; align-items: center; min-height: 2.75rem; white-space: nowrap; }
 @media (min-width: 64em) { .site-footer { margin-top: 5rem; } }
 
 /* Case studies and About */
