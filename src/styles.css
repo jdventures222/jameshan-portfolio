@@ -149,15 +149,10 @@ main:focus { outline: none; }
 
 /* Hero */
 .hero { padding-block: 2.25rem 0; }
-.hero h1 {
-  max-width: 15em;
-  font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
-  font-weight: 560; line-height: 1.08; letter-spacing: -0.022em;
-}
 /* The photo with the button and the reply line centred beside it. */
 .reach {
   display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action";
-  align-items: center; column-gap: 1.25rem; margin-top: 1.75rem;
+  align-items: center; column-gap: 1.25rem;
   font-family: var(--sans); font-size: 1rem; line-height: 1.5; color: var(--secondary);
 }
 .reach .portrait { grid-area: photo; width: 5.5rem; margin-top: 0; }
