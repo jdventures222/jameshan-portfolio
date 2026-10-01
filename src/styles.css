@@ -191,8 +191,9 @@ main:focus { outline: none; }
 }
 /* With motion allowed, a picture's edge eases into its hover, focus and press colour, as the cards' edges do. */
 @media (prefers-reduced-motion: no-preference) { .screen { transition: border-color 180ms ease; } }
+/* Captions sit clear of the shadow under their screenshot. */
 figcaption, .band-note {
-  margin-top: 0.625rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary);
+  margin-top: 1rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary);
 }
 
 /* Home entries: one picture on phones and two from 768 px, each cropped to 280 x 300 CSS px; the full sets live on
