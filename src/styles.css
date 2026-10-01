@@ -174,7 +174,7 @@ main:focus { outline: none; }
 }
 
 /* Screens: bare, rounded, a hairline on every one but the menus' light screens. Never shown wider than 390 CSS px, except
-   the Fyt chat picture. A soft warm-brown shadow sets each one on the page; nothing else on the page casts one. */
+   fyt.life's desktop pages. A soft warm-brown shadow sets each one on the page; nothing else on the page casts one. */
 .screen {
   width: 100%; border: 1px solid var(--screen-edge, var(--hairline)); border-radius: 9% / 4.16%;
   box-shadow: 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%);
@@ -227,11 +227,9 @@ figcaption, .band-note {
   .screens { gap: 1.5rem; }
   .screens > * { flex: 0 1 17.5rem; }
   .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 17.5rem)); gap: 2rem 1.5rem; }
+  /* Fyt's four App Store screenshots: two rows of two. */
   .gallery.four { grid-template-columns: repeat(2, minmax(0, 17.5rem)); }
-  /* The chat picture is about half as tall as a screenshot, so it takes two columns to match their height. */
-  .gallery.four > .wide-shot { grid-column: span 2; }
 }
-@media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(3, minmax(0, 17.5rem)); } }
 
 /* fyt.life's pages: stacked on phones; above, two rows whose pictures grow in proportion to their shape (16:10
    desktop, 1170:2532 phone), so the pictures in a row share one height. The 2px basis is each picture's two border
