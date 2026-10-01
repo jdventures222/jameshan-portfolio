@@ -622,12 +622,12 @@ h1, h2, h3 { hanging-punctuation: first; }
 }
 
 /* Each project keeps its product's own colour inside its own chapter, never on anything you press: the menus' red and
-   Fyt's teal draw the rule above the entry or picture chapter and colour the case study's fact labels (the red
-   lightened for text, 6.2:1 on the page; the teal as it is, 6.5:1). */
+   Fyt's deep petrol draw the rule above the entry or picture chapter and colour the case study's fact labels (the red
+   lightened for text, 6.2:1 on the page; the petrol lightened for text, 4.7:1). */
 /* The menus' light screens need no hairline (a grey stroke round them read as an outline; the edge stays for hover,
    focus and press). */
 .project-menus { --project: #D11423; --project-text: #ED756E; --screen-edge: transparent; }
-.project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; }
+.project-fyt { --project: #015A6F; --project-text: #028EAF; }
 .entry:is(.project-menus, .project-fyt) { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .project-gallery::before { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .facts dt { color: var(--project-text); }
