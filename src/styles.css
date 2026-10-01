@@ -276,6 +276,8 @@ figcaption, .band-note {
   .ledger > .wide { grid-column: 2 / -1; }
   /* The band sits beside the rail like a wide gallery. */
   .ledger > .band { grid-column: 2 / -1; }
+  /* The pictures keep the place they had on desktop: 1.5rem above and below, not the wider page padding. */
+  .well { padding-block: 1.5rem; }
 }
 
 .section { padding-top: 2rem; }
