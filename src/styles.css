@@ -6,10 +6,8 @@
   --ink: light-dark(#17181A, #E9E8E4);
   --secondary: light-dark(#55595F, #A6A7A2);
   --hairline: light-dark(#C9CBC6, #3A3B3D);
-  /* Three grounds: Paper; Raised (cards and the request panel) above it; and the Well behind screenshots, also a step
-     above Paper, in its project's tint, so the screenshots' shadow has a ground to fall on. */
+  /* Two grounds: Paper, and Raised (cards and the request panel) above it. Screenshots sit straight on Paper. */
   --surface: color-mix(in srgb, var(--ink) 8%, var(--ground));
-  --well: #292623;
   --link: light-dark(#1F3A93, #9DB2FF);
   --on-link: light-dark(#FCFCFB, #1B1714);
   --mark: light-dark(#FFE14D, #E8C547);
@@ -169,25 +167,22 @@ main:focus { outline: none; }
 @media (min-width: 30em) { .reach .portrait { width: 7.5rem; } }
 .address { color: var(--ink); font-family: var(--sans); font-weight: 500; overflow-wrap: anywhere; }
 @media (min-width: 75em) { .hero { padding-block: 4.5rem 1rem; } }
-/* Real work in the opening: a menu and Fyt, each in a tray of its own project's well, under the button on phones and
-   beside the heading from 64em. Trays at every width: two full-bleed wells would run into each other. */
+/* Real work in the opening: a menu and Fyt, straight on the page, under the button on phones and beside the heading from
+   64em. Each picture fills its half of the pair. */
 .hero-work { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.75rem; max-width: 36rem; margin-top: 1.75rem; }
-.hero-work .well { margin: 0; padding: 0.75rem; border-radius: 8px; box-shadow: none; clip-path: none; }
+.hero-work .well { margin: 0; padding: 0; }
 .hero-work .shot > a { width: 100%; }
-@media (min-width: 37.5em) {
-  .hero-work { gap: 1rem; }
-  .hero-work .well { padding: 1.5rem; }
-}
+@media (min-width: 37.5em) { .hero-work { gap: 1rem; } }
 @media (min-width: 64em) {
   .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 31rem); column-gap: clamp(2rem, 4vw, 4rem); align-items: center; }
   .hero-work { margin-top: 0; }
 }
 
-/* Screens: bare, rounded, a hairline on every ground but the menus' well. Never shown wider than 390 CSS px, except the
-   Fyt chat picture. A soft warm-brown shadow sets each one on its well; nothing else on the page casts one. */
+/* Screens: bare, rounded, a hairline on every one but the menus' light screens. Never shown wider than 390 CSS px, except
+   the Fyt chat picture. A soft warm-brown shadow sets each one on the page; nothing else on the page casts one. */
 .screen {
   width: 100%; border: 1px solid var(--screen-edge, var(--hairline)); border-radius: 9% / 4.16%;
-  box-shadow: var(--screen-shadow, 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%));
+  box-shadow: 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%);
 }
 /* With motion allowed, a picture's edge eases into its hover, focus and press colour, as the cards' edges do. */
 @media (prefers-reduced-motion: no-preference) { .screen { transition: border-color 180ms ease; } }
@@ -261,15 +256,9 @@ figcaption, .band-note {
 .print-sample .shot-link, .print-sample .screen { border-radius: 0; }
 @media (min-width: 37.5em) { .print-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
-/* Screenshots sit in a well, a ground a step above the page. Below 64em it runs to both edges of the screen, the spread
-   carrying its colour past the wrap; from 64em it is a tray set out beside the rail, its padding matched by a negative
-   margin so the pictures keep their size and place. */
-.well {
-  background: var(--well);
-  box-shadow: 0 0 0 100vmax var(--well);
-  clip-path: inset(0 -100vmax);
-  padding-block: var(--pad);
-}
+/* Screenshots sit straight on the page, no ground of their own (James, 2026-09-30). A well is only their group; its
+   padding leaves room for the focus ring and the scrollbar of a sideways row. */
+.well { padding-block: var(--pad); }
 .band {
   color-scheme: dark;
   color: var(--ink);
@@ -292,8 +281,6 @@ figcaption, .band-note {
   .ledger > .wide { grid-column: 2 / -1; }
   /* The band sits beside the rail like a wide gallery. */
   .ledger > .band { grid-column: 2 / -1; }
-  /* A well becomes a tray: the full-bleed spread would paint over the rail. */
-  .well { margin-inline: -1.5rem; padding: 1.5rem; border-radius: 8px; box-shadow: none; clip-path: none; }
 }
 
 .section { padding-top: 2rem; }
@@ -625,15 +612,12 @@ h1, h2, h3 { hanging-punctuation: first; }
 }
 
 /* Each project keeps its product's own colour inside its own chapter, never on anything you press: the menus' red and
-   Fyt's teal tint the well behind their screenshots, draw the rule above the entry or picture chapter, and colour the
-   case study's fact labels (the red lightened for text, 6.2:1 on the page; the teal as it is, 6.5:1). */
-/* The menus' light screens need no hairline on their wine well (a grey stroke round them read as an outline; the edge
-   stays for hover, focus and press), and their shadow is a deep shade of the well, not brown-black. */
-.project-menus {
-  --project: #D11423; --project-text: #ED756E; --well: #411815; --screen-edge: transparent;
-  --screen-shadow: 0 1px 2px rgb(20 4 3 / 60%), 0 6px 12px -4px rgb(20 4 3 / 55%), 0 20px 40px -12px rgb(20 4 3 / 95%);
-}
-.project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; --well: #0E2B2F; }
+   Fyt's teal draw the rule above the entry or picture chapter and colour the case study's fact labels (the red
+   lightened for text, 6.2:1 on the page; the teal as it is, 6.5:1). */
+/* The menus' light screens need no hairline (a grey stroke round them read as an outline; the edge stays for hover,
+   focus and press). */
+.project-menus { --project: #D11423; --project-text: #ED756E; --screen-edge: transparent; }
+.project-fyt { --project: #5CA8B0; --project-text: #5CA8B0; }
 .entry:is(.project-menus, .project-fyt) { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .project-gallery::before { border-top-color: var(--project); }
 :is(.project-menus, .project-fyt) .facts dt { color: var(--project-text); }
