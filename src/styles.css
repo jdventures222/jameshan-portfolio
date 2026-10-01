@@ -684,9 +684,12 @@ html:has(.viewer[open]) { overflow: hidden; }
   .viewer, .viewer *, .viewer::backdrop { animation: none !important; transition: none !important; }
 }
 
-/* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. */
+/* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. The header has its own
+   name, so it stays where it is while the page changes beneath it; a name must be unique on a page, or the browser
+   skips the transition. */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
+  .site-header { view-transition-name: site-header; }
 }
 
 /* Print: black on white. The home page prints as a one-page sheet with its QR code. */
