@@ -26,6 +26,15 @@
       <div class="ledger">
         <div class="case-summary">
           <p class="lead">Working menus for all {{menus.brands}} brands of the restaurant group where I work.</p>
+          <figure class="case-shot well screen-grid no-print">
+            <a class="shot-link" href="/assets/menu-04-ar-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/menu-04-ar-480.avif 480w, /assets/menu-04-ar-585.avif 585w, /assets/menu-04-ar-780.avif 780w, /assets/menu-04-ar-1170.avif 1170w" sizes="(min-width: 75em) 15rem, 16.25rem">
+                <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-480.webp 480w, /assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-780.webp 780w, /assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 75em) 15rem, 16.25rem" width="1170" height="2532" alt="A menu in Arabic, with the text, buttons and dish cards all reading from the right." decoding="async">
+              </picture>
+            </a>
+            <figcaption>A menu in Arabic, laid out right to left</figcaption>
+          </figure>
           <section class="case-results" aria-labelledby="result-title">
             <h2 id="result-title">Result</h2>
             <div class="results">
@@ -84,7 +93,7 @@
           <a class="shot-link" href="/assets/menu-01-directory-1170.webp">
             <picture>
               <source type="image/avif" srcset="/assets/menu-01-directory-480.avif 480w, /assets/menu-01-directory-585.avif 585w, /assets/menu-01-directory-780.avif 780w, /assets/menu-01-directory-1170.avif 1170w" sizes="(min-width: 75em) 17rem, (min-width: 64em) calc((100vw - 24rem) / 3), (min-width: 59.5em) 17.5rem, (min-width: 48em) calc((100vw - 7rem) / 3), (min-width: 37.5em) calc((100vw - 5.5rem) / 3), 16.25rem">
-              <img class="screen" src="/assets/menu-01-directory-585.webp" srcset="/assets/menu-01-directory-480.webp 480w, /assets/menu-01-directory-585.webp 585w, /assets/menu-01-directory-780.webp 780w, /assets/menu-01-directory-1170.webp 1170w" sizes="(min-width: 75em) 17rem, (min-width: 64em) calc((100vw - 24rem) / 3), (min-width: 59.5em) 17.5rem, (min-width: 48em) calc((100vw - 7rem) / 3), (min-width: 37.5em) calc((100vw - 5.5rem) / 3), 16.25rem" width="1170" height="2532" alt="The directory of every brand’s menu, with each location’s hours, phone and directions." decoding="async">
+              <img class="screen" src="/assets/menu-01-directory-585.webp" srcset="/assets/menu-01-directory-480.webp 480w, /assets/menu-01-directory-585.webp 585w, /assets/menu-01-directory-780.webp 780w, /assets/menu-01-directory-1170.webp 1170w" sizes="(min-width: 75em) 17rem, (min-width: 64em) calc((100vw - 24rem) / 3), (min-width: 59.5em) 17.5rem, (min-width: 48em) calc((100vw - 7rem) / 3), (min-width: 37.5em) calc((100vw - 5.5rem) / 3), 16.25rem" width="1170" height="2532" alt="The directory of every brand’s menu, with each location’s hours, phone and directions." decoding="async" loading="lazy">
             </picture>
           </a>
           <figcaption>Finding a restaurant’s menu in the directory</figcaption>
@@ -97,15 +106,6 @@
             </picture>
           </a>
           <figcaption>Reading the menu in English, as a guest sees it at the table</figcaption>
-        </figure>
-        <figure>
-          <a class="shot-link" href="/assets/menu-04-ar-1170.webp">
-            <picture>
-              <source type="image/avif" srcset="/assets/menu-04-ar-480.avif 480w, /assets/menu-04-ar-585.avif 585w, /assets/menu-04-ar-780.avif 780w, /assets/menu-04-ar-1170.avif 1170w" sizes="(min-width: 75em) 17rem, (min-width: 64em) calc((100vw - 24rem) / 3), (min-width: 59.5em) 17.5rem, (min-width: 48em) calc((100vw - 7rem) / 3), (min-width: 37.5em) calc((100vw - 5.5rem) / 3), 16.25rem">
-              <img class="screen" src="/assets/menu-04-ar-585.webp" srcset="/assets/menu-04-ar-480.webp 480w, /assets/menu-04-ar-585.webp 585w, /assets/menu-04-ar-780.webp 780w, /assets/menu-04-ar-1170.webp 1170w" sizes="(min-width: 75em) 17rem, (min-width: 64em) calc((100vw - 24rem) / 3), (min-width: 59.5em) 17.5rem, (min-width: 48em) calc((100vw - 7rem) / 3), (min-width: 37.5em) calc((100vw - 5.5rem) / 3), 16.25rem" width="1170" height="2532" alt="The same menu in Arabic, with the text, buttons and dish cards all reading from the right." decoding="async" loading="lazy">
-            </picture>
-          </a>
-          <figcaption>The same menu in Arabic, laid out right to left</figcaption>
         </figure>
         <figure>
           <a class="shot-link" href="/assets/menu-06-allergen-1170.webp">
@@ -134,6 +134,9 @@
           </a>
           <figcaption>Another brand’s menu, in Korean</figcaption>
         </figure>
+      </div>
+      <div class="wide live-menu">
+        <p class="more"><a href="{{menus.example_url}}" target="_blank" rel="noopener">Try one brand’s live menu<span class="visually-hidden"> (opens in a new tab)</span></a></p>
       </div>
     </section>
 
@@ -170,6 +173,11 @@
     <section class="side-row wrap ledger" aria-labelledby="decisions-title">
       <h2 class="rail" id="decisions-title">Decisions</h2>
       <ol class="decisions">
+        <li>
+          <h3>One set of menu data, so a price changes once.</h3>
+          <p><span class="label">Why:</span> a price can’t drift between languages or between phone and print.</p>
+          <p><span class="label">Trade-off:</span> dish text is still edited in each language.</p>
+        </li>
         <li>
           <h3>Keep allergen warnings available without JavaScript.</h3>
           <p>Each page includes a plain menu for when JavaScript is switched off. Every dish in that menu keeps its allergen warning.</p>
@@ -211,6 +219,11 @@
         </li>
       </ol>
     </section>
+
+    <nav class="side-row wrap ledger next-study no-print" aria-label="Next case study">
+      <p class="rail more"><a href="/work/fyt/">Next: Fyt, a social fitness app</a></p>
+      <p>Fyt tracks users’ runs and lifts, and announces each run in the group’s iMessage chat.</p>
+    </nav>
 
     <section class="side-row wrap ledger" aria-labelledby="contact-title">
       <h2 class="rail" id="contact-title">Contact</h2>

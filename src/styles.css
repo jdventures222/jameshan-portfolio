@@ -177,7 +177,7 @@ main:focus { outline: none; }
 }
 
 /* Screens: bare, rounded, a hairline on every one but the menus' light screens. Never shown wider than 390 CSS px, except
-   the Fyt chat picture. A soft warm-brown shadow sets each one on the page; nothing else on the page casts one. */
+   fyt.life's desktop pages. A soft warm-brown shadow sets each one on the page; nothing else on the page casts one. */
 .screen {
   width: 100%; border: 1px solid var(--screen-edge, var(--hairline)); border-radius: 9% / 4.16%;
   box-shadow: 0 1px 2px rgb(10 6 3 / 60%), 0 6px 12px -4px rgb(10 6 3 / 55%), 0 20px 40px -12px rgb(10 6 3 / 95%);
@@ -230,11 +230,9 @@ figcaption, .band-note {
   .screens { gap: 1.5rem; }
   .screens > * { flex: 0 1 17.5rem; }
   .gallery { display: grid; grid-template-columns: repeat(3, minmax(0, 17.5rem)); gap: 2rem 1.5rem; }
+  /* Fyt's four App Store screenshots: two rows of two. */
   .gallery.four { grid-template-columns: repeat(2, minmax(0, 17.5rem)); }
-  /* The chat picture is about half as tall as a screenshot, so it takes two columns to match their height. */
-  .gallery.four > .wide-shot { grid-column: span 2; }
 }
-@media (min-width: 64em) { .gallery.four { grid-template-columns: repeat(3, minmax(0, 17.5rem)); } }
 
 /* fyt.life's pages: stacked on phones; above, two rows whose pictures grow in proportion to their shape (16:10
    desktop, 1170:2532 phone), so the pictures in a row share one height. The 2px basis is each picture's two border
@@ -527,6 +525,8 @@ h1, h2, h3 { hanging-punctuation: first; }
   .side-row > h2 { margin-bottom: 0; }
 }
 .side-row > .actions { margin-top: 0; }
+/* The next case study, above Contact: its link where a chapter's heading sits, the home page's line about it beside it. */
+.next-study > .more, .next-study > .more + p { margin-top: 0; }
 /* Thanks and error: the message sits under its heading as close as a case study's lead. */
 @media screen { .request-page .case-head + .side-row { padding-top: 1.5rem; } }
 @media screen and (min-width: 64em) { .request-page .case-head + .side-row { padding-top: 2rem; } }
@@ -594,6 +594,14 @@ h1, h2, h3 { hanging-punctuation: first; }
 .case-study .case-head .facts { margin-top: 1.5rem; margin-bottom: 0; }
 .case-results { margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--hairline); }
 .case-results > h2 { margin-bottom: 1.25rem; font-size: 1.5rem; font-weight: 600; line-height: 1.2; }
+/* The work on the first screen (James, 2026-09-30): one screenshot, straight on the page, under the lead and before the
+   results; from 75em, where the empty column beside them is 15rem wide, it sits there, level with the lead. */
+.case-head .case-shot { width: min(100%, 16.25rem); margin-top: 1.5rem; padding: 0; }
+@media (min-width: 75em) {
+  .case-head .case-summary { grid-column: 2 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: auto 1fr; }
+  .case-summary > * { grid-column: 1; }
+  .case-head .case-summary > .case-shot { grid-column: 2; grid-row: 1 / span 2; width: auto; margin-top: 0; }
+}
 .case-study .result + .result { margin-top: 0.875rem; padding-top: 0.875rem; border-top: 1px solid var(--hairline); }
 .project-gallery .scripts { margin-top: 0; margin-bottom: 0; }
 .menu-project-gallery .scripts { max-width: var(--measure); gap: 0.375rem 0.875rem; margin-top: 0.5rem; }
@@ -688,6 +696,20 @@ html:has(.viewer[open]) { overflow: hidden; }
 @media (prefers-reduced-motion: reduce) {
   .viewer, .viewer *, .viewer::backdrop { animation: none !important; transition: none !important; }
 }
+
+/* The live menu (nav.js): one brand's menu itself, in a phone-sized frame with the screenshots' corners and shadow. In
+   the page it is at most 390 x 780 and never taller than the screen under the header, with its Close beside it; on a
+   small screen it fills the screen under a bar with its Close, and the page underneath holds still. No motion. */
+.live-menu [hidden] { display: none; }
+.live-menu .button { border: 0; cursor: pointer; }
+.live-frame { position: static; width: auto; max-width: none; height: auto; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ground); color: var(--ink); }
+.live-frame[open] { display: grid; grid-template-columns: min(24.375rem, 100%) minmax(0, 1fr); align-items: start; gap: 1rem 1.5rem; }
+.live-frame-bar { grid-column: 2; display: grid; justify-items: start; gap: 0.75rem; color: var(--secondary); font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; }
+.live-frame iframe { grid-row: 1; height: min(48.75rem, calc(100dvh - 6rem)); }
+.live-frame:modal { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: stretch; gap: 0; }
+.live-frame:modal .live-frame-bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.5rem var(--pad); border-bottom: 1px solid var(--hairline); }
+.live-frame:modal iframe { flex: 1 1 0; min-height: 0; border: 0; border-radius: 0; box-shadow: none; }
+html:has(.live-frame:modal) { overflow: hidden; }
 
 /* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. The header has its own
    name, so it stays where it is while the page changes beneath it; a name must be unique on a page, or the browser
