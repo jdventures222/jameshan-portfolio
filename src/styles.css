@@ -48,6 +48,9 @@ h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
 ul, ol { padding: 0; }
 h1, h2, h3 { text-wrap: balance; font-weight: 580; line-height: 1.15; }
 p, li, dd, figcaption { text-wrap: pretty; }
+/* Abbreviations (POS, QR, PDF) in Literata's real small caps, a little spaced; a face without small caps keeps
+   plain capitals rather than shrunken ones. */
+abbr { font-variant-caps: all-small-caps; font-synthesis-small-caps: none; letter-spacing: 0.04em; }
 
 ::selection { background: var(--mark); color: var(--mark-ink); }
 /* A selected picture is washed in the selection colour, and a press-and-hold on a phone selects it. */
