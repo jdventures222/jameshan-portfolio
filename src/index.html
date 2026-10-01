@@ -15,8 +15,8 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="A photo of James Han.">
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "{{person.name}}", "url": "{{site.url}}"}</script>
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "{{person.name}}", "url": "{{site.url}}", "jobTitle": "Freelance software developer", "sameAs": ["{{links.github}}", "{{links.app_store_developer}}"]}</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "@id": "{{site.url}}#website", "name": "{{person.name}}", "url": "{{site.url}}", "inLanguage": "en", "publisher": {"@id": "{{site.url}}#person"} }</script>
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "@id": "{{site.url}}#person", "name": "{{person.name}}", "url": "{{site.url}}", "image": "{{site.url}}assets/james-han-headshot-640.webp", "jobTitle": "{{person.role}}", "description": "James Han builds websites, apps and automations.", "email": "{{person.email}}", "sameAs": ["{{links.github}}", "{{links.app_store_developer}}"]}</script>
 </head>
 <body>
   {{include partials/header.html}}

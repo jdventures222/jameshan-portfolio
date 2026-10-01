@@ -46,8 +46,11 @@ body {
 img { display: block; max-width: 100%; height: auto; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
 ul, ol { padding: 0; }
-h1, h2, h3 { text-wrap: balance; font-weight: 580; line-height: 1.15; letter-spacing: -0.015em; }
+h1, h2, h3 { text-wrap: balance; font-weight: 580; line-height: 1.15; }
 p, li, dd, figcaption { text-wrap: pretty; }
+/* Abbreviations (POS, QR, PDF) in Literata's real small caps, a little spaced; a face without small caps keeps
+   plain capitals rather than shrunken ones. */
+abbr { font-variant-caps: all-small-caps; font-synthesis-small-caps: none; letter-spacing: 0.04em; }
 
 ::selection { background: var(--mark); color: var(--mark-ink); }
 /* A selected picture is washed in the selection colour, and a press-and-hold on a phone selects it. */
@@ -281,7 +284,7 @@ figcaption, .band-note {
 }
 
 .section { padding-top: 2rem; }
-.section h2 { font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.25rem); font-weight: 560; letter-spacing: -0.018em; }
+.section h2 { font-size: clamp(1.625rem, 1.25rem + 1.5vw, 2.25rem); font-weight: 560; }
 @media (min-width: 64em) { .section { padding-top: 6rem; } }
 /* Portfolio opens a new part of the page: more room above, a heavy ink rule across the column and a larger heading.
    The entries under it keep their hairlines, so the rule's weight is what marks the section. */
@@ -299,7 +302,7 @@ figcaption, .band-note {
 /* Work entries */
 .entry { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
 .entry + .entry { margin-top: 2.5rem; }
-.entry h3 { font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem); font-weight: 600; letter-spacing: -0.012em; line-height: 1.2; }
+.entry h3 { font-size: clamp(1.375rem, 1.15rem + 0.9vw, 1.75rem); font-weight: 600; line-height: 1.2; }
 .entry-body > * + * { margin-top: 1rem; }
 /* Text that follows an entry's pictures keeps the same space the pictures have above them. */
 .screen-grid + .entry-body, .band + .entry-body { margin-top: 1.75rem; }
@@ -409,7 +412,7 @@ mark {
 .offer-card h3 a:focus-visible { outline: 0; }
 .offer-card:has(h3 a:focus-visible) { outline: 2px solid var(--link); outline-offset: -2px; }
 .offer-card:active { --edge: var(--secondary); }
-.offer-card h3 { font-size: 1.375rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+.offer-card h3 { font-size: 1.375rem; font-weight: 600; line-height: 1.2; }
 .offer-hook { margin-top: 0.5rem; color: var(--secondary); font-size: 1.0625rem; line-height: 1.45; }
 .offer-list { display: grid; gap: 0.625rem; margin: 1.25rem 0 0; padding: 0; list-style: none; font-family: var(--sans); font-size: 1rem; line-height: 1.45; }
 .offer-list li { position: relative; padding-left: 1.125rem; }
@@ -489,7 +492,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 .case-head h1 {
   max-width: 18em;
   font-size: clamp(2rem, 1.3rem + 2.6vw, 3.125rem);
-  font-weight: 560; line-height: 1.1; letter-spacing: -0.022em;
+  font-weight: 560; line-height: 1.1;
 }
 .case-head > .ledger, .case-head > .about-intro, .case-head > .lead { margin-top: 1.5rem; }
 .lead { font-size: 1.25rem; line-height: 1.5; }
@@ -513,7 +516,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 }
 
 .side-row { padding-top: 3.5rem; }
-.side-row > h2 { font-size: 1.625rem; font-weight: 600; letter-spacing: -0.012em; line-height: 1.2; }
+.side-row > h2 { font-size: 1.625rem; font-weight: 600; line-height: 1.2; }
 .side-row > h2 { margin-bottom: 0.75rem; }
 .side-row p + p { margin-top: 1rem; }
 @media (min-width: 64em) {
@@ -532,7 +535,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 .decisions { padding-left: 1.75rem; }
 .decisions > li + li { margin-top: 2rem; }
 .decisions ::marker { font-family: var(--sans); font-weight: 600; color: var(--secondary); font-variant-numeric: proportional-nums; }
-.decisions h3, .faq h3 { font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; }
+.decisions h3, .faq h3 { font-size: 1.25rem; font-weight: 600; line-height: 1.3; }
 .decisions p, .faq p { margin-top: 0.5rem; }
 /* FAQ: each question opens its answer; native details, so it works without JavaScript. */
 .faq details { border-bottom: 1px solid var(--hairline); }
@@ -560,7 +563,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 .decisions .bullets { margin-top: 0.5rem; padding-left: 1.25rem; list-style-type: disc; }
 
 .result + .result { margin-top: 1.75rem; }
-.result h3 { font-size: clamp(1.375rem, 1rem + 1.2vw, 2rem); font-weight: 560; letter-spacing: -0.018em; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.result h3 { font-size: clamp(1.375rem, 1rem + 1.2vw, 2rem); font-weight: 560; line-height: 1.2; font-variant-numeric: tabular-nums; }
 .result p { margin-top: 0.25rem; font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; color: var(--secondary); }
 .results > .bullets { margin-top: 1.75rem; }
 
@@ -575,7 +578,7 @@ h1, h2, h3 { hanging-punctuation: first; }
   content: ""; position: absolute; top: 0; inset-inline: var(--pad); border-top: 1px solid var(--hairline);
 }
 .page-upgrade .item-title, .project-steps h3, .project-notes h3 {
-  font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3;
+  font-size: 1.25rem; font-weight: 600; line-height: 1.3;
 }
 .project-steps { padding-left: 1.25rem; }
 .project-steps h3 { text-wrap: pretty; }
@@ -620,7 +623,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 :is(.project-menus, .project-fyt) .facts dt { color: var(--project-text); }
 
 .not-found { padding-block: 2.25rem 1rem; }
-.not-found h1 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.125rem); font-weight: 560; line-height: 1.1; letter-spacing: -0.022em; }
+.not-found h1 { font-size: clamp(2rem, 1.3rem + 2.6vw, 3.125rem); font-weight: 560; line-height: 1.1; }
 .not-found p { max-width: var(--measure); margin-block: 1.25rem 0.75rem; }
 @media (min-width: 64em) { .not-found { padding-block: 2.25rem 2rem; } }
 
@@ -684,9 +687,12 @@ html:has(.viewer[open]) { overflow: hidden; }
   .viewer, .viewer *, .viewer::backdrop { animation: none !important; transition: none !important; }
 }
 
-/* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. */
+/* Moving between pages: a cross-fade where the browser supports it, off under reduced motion. The header has its own
+   name, so it stays where it is while the page changes beneath it; a name must be unique on a page, or the browser
+   skips the transition. */
 @media (prefers-reduced-motion: no-preference) {
   @view-transition { navigation: auto; }
+  .site-header { view-transition-name: site-header; }
 }
 
 /* Print: black on white. The home page prints as a one-page sheet with its QR code. */
@@ -722,7 +728,7 @@ html:has(.viewer[open]) { overflow: hidden; }
   body:has(.print-sheet) .site-header, body:has(.print-sheet) .site-footer { display: none; }
   .print-only { display: block; }
   .print-sheet { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16pt; padding-bottom: 12pt; border-bottom: 1px solid var(--hairline); }
-  .print-name { font-size: 22pt; font-weight: 600; line-height: 1.1; letter-spacing: -0.02em; }
+  .print-name { font-size: 22pt; font-weight: 600; line-height: 1.1; }
   .print-sheet p:not(.print-name) { font-family: var(--sans); }
   .print-reach { margin-top: 4pt; font-size: 10pt; }
   .print-qr { display: flex; align-items: center; gap: 8pt; }
@@ -748,7 +754,7 @@ html:has(.viewer[open]) { overflow: hidden; }
 
 /* Project requests: one calm form beside what happens next. Native controls, no script. */
 .request-head { padding-top: 2.25rem; }
-.request-head h1 { max-width: 15em; font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem); font-weight: 560; line-height: 1.08; letter-spacing: -0.022em; }
+.request-head h1 { max-width: 15em; font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem); font-weight: 560; line-height: 1.08; }
 .request-body { display: grid; gap: 2.5rem; padding-block: 2rem 0; }
 @media (min-width: 64em) {
   .request-body { grid-template-columns: minmax(0, 38rem) minmax(0, 17rem); column-gap: 4.5rem; align-items: start; }
