@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>Privacy and accessibility · James Han</title>
+  <meta name="description" content="What the request form collects, where it goes and how to have it deleted, and how this site is tested for accessibility.">
+  <link rel="canonical" href="{{site.url}}privacy/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="{{site.url}}privacy/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="Privacy and accessibility">
+  <meta property="og:description" content="What the request form collects, where it goes and how to have it deleted, and how this site is tested for accessibility.">
+  <meta property="og:image" content="{{site.url}}assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two phone screens: a restaurant menu in English and a run in Fyt’s group feed.">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main class="page-upgrade privacy-page" id="main" tabindex="-1">
+    <header class="case-head wrap ledger">
+      <h1 class="span">Privacy and accessibility</h1>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="privacy-title">
+      <h2 class="rail" id="privacy-title">Privacy</h2>
+      <div class="detail">
+        <p>This site sets no cookies, and its pages load nothing from any other site.</p>
+        <p>The request form asks for your name, your email and what you want built, and, if you like, what kind of project it is and when you need it. Your request goes through Formspark, which emails it to me. Formspark also records the IP address it came from and keeps that for {{privacy.formspark_ip_months}} months.</p>
+        <p id="privacy-retention">{{privacy.retention}}</p>
+        <p class="email-alt">To ask, email <span class="address" data-copy>{{person.email}}</span></p>
+        <p>Effective {{privacy.effective|date}}.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="access-title">
+      <h2 class="rail" id="access-title">Accessibility</h2>
+      <div class="detail">
+        <p>I aim for this site to meet the Web Content Accessibility Guidelines (WCAG) 2.2 at level AA.</p>
+        <p>I check every page with an automated test in Chrome, at phone and desktop sizes, in light and dark mode, and with JavaScript on and off. It checks that:</p>
+        <ul class="bullets">
+          <li>Every link, button and form field can be reached with the Tab key and shows a visible focus ring.</li>
+          <li>Text stands out from its background by at least the contrast WCAG AA asks for.</li>
+          <li>Links, buttons and form fields are at least 44 pixels tall, and every field has a label.</li>
+          <li>Animations and transitions stop when your device asks for less motion.</li>
+          <li>No page scrolls sideways at five widths from 320 to 1440 pixels.</li>
+        </ul>
+        <p class="email-alt">If anything here is hard to use, email <span class="address" data-copy>{{person.email}}</span></p>
+      </div>
+    </section>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>

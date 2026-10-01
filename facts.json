@@ -19,6 +19,16 @@
       "endpoint": "James's Formspark form 'Requests', created by him 2026-09-27 (form id 4db5K8S9Z, public by design)"
     }
   },
+  "privacy": {
+    "effective": "2026-10-01",
+    "retention": "Formspark keeps a copy of your request until I delete it, and I delete it whenever you ask.",
+    "formspark_ip_months": 12,
+    "_sources": {
+      "effective": "the privacy page's effective date, set in the 2026-09-30 brief for research plan row 13",
+      "retention": "James's sentence, 2026-09-30; Formspark's privacy policy (https://formspark.io/legal/privacy-policy/, read 2026-09-30) keeps submission content \"until the customer deletes it\" (deleted submissions stay recoverable for 30 days). The verify check fails while this reads PENDING",
+      "formspark_ip_months": "Formspark's privacy policy (https://formspark.io/legal/privacy-policy/, read 2026-09-30): the submitter's IP address is kept 12 months"
+    }
+  },
   "fyt": {
     "name": "Fyt",
     "tagline": "Social fitness app for iPhone and Apple Watch",
