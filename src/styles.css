@@ -205,6 +205,8 @@ figcaption, .band-note {
 .crop-end .screen { aspect-ratio: 280 / 316; object-position: 50% 100%; }
 /* App Store listing images carry their own headline in the top sixth; the crop starts below it. */
 .crop-listing .screen { object-position: 50% 33%; }
+/* The run's listing image fills its width with the phone, so its crop starts at the run's card and ends under the route. */
+.crop-route .screen { object-position: 50% 62%; }
 /* The finished gym session sits low on its listing image; this crop runs from the session title to its exercise list. */
 .crop-workout .screen { object-position: 50% 87%; }
 
