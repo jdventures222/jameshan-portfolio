@@ -278,6 +278,9 @@
     if (!dialog.open || closing) return;
     cancelTap();
     setChrome(true);
+    // Close is the only Tab stop. A Tab past it would leave the page for the browser's own controls, and the arrow keys
+    // would go there too. Shift and Option count: Safari reaches a button only with Option held.
+    if (event.key === 'Tab' && !event.ctrlKey && !event.metaKey) { event.preventDefault(); closeButton.focus({ preventScroll: true, focusVisible: true }); return; }
     if (event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
     if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(index - 1); }
     else if (event.key === 'ArrowRight') { event.preventDefault(); goTo(index + 1); }
