@@ -60,8 +60,11 @@
   };
 
   function layout() {
+    // On a wide, tall screen the stylesheet pads the figure above and below, so the picture keeps clear of the close
+    // button, counter and caption; the padding is symmetric, so the picture stays centred on the stage.
+    const band = parseFloat(getComputedStyle(current().figure).paddingTop) || 0;
     for (const item of group) {
-      const ratio = Math.min(width() / item.w, height() / item.h);
+      const ratio = Math.min(width() / item.w, (height() - 2 * band) / item.h);
       item.fit = { w: Math.round(item.w * ratio), h: Math.round(item.h * ratio) };
       item.zoom.style.width = `${item.fit.w}px`;
       item.zoom.style.height = `${item.fit.h}px`;

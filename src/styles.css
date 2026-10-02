@@ -654,7 +654,13 @@ html:has(.viewer[open]) { overflow: hidden; }
 }
 .viewer-track:focus { outline: none; }
 .viewer-track.zoomed { cursor: move; }
-.viewer-figure { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; overflow: hidden; }
+/* The row is as tall as the stage and no taller: a row left to size itself grows with a picture flying from or to a
+   thumbnail taller than the stage, which carries the picture below the stage's centre, off the thumbnail. */
+.viewer-figure { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr); place-items: center; margin: 0; overflow: hidden; }
+/* On a wide, tall screen the enlarged picture keeps 5.5rem clear above and below (viewer.js fits it inside this
+   padding), so the close button, counter and caption sit on the black stage instead of over the picture. Phones and
+   narrower or shorter windows keep the full-screen fit. A zoomed picture still runs to the screen's edges. */
+@media (min-width: 64em) and (min-height: 37.5em) { .viewer-figure { padding-block: 5.5rem; } }
 /* Cover, anchored where the thumbnail's crop is (viewer.js): at rest the box has the picture's own shape, so nothing is
    cut; flying from or to a cropped thumbnail, the crop opens out into the whole picture instead of a squeezed strip. */
 .viewer-zoom {
