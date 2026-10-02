@@ -659,8 +659,10 @@ html:has(.viewer[open]) { overflow: hidden; }
 .viewer-figure { position: absolute; inset: 0; display: grid; grid-template-rows: minmax(0, 1fr); place-items: center; margin: 0; overflow: hidden; }
 /* On a wide, tall screen the enlarged picture keeps 5.5rem clear above and below (viewer.js fits it inside this
    padding), so the close button, counter and caption sit on the black stage instead of over the picture. Phones and
-   narrower or shorter windows keep the full-screen fit. A zoomed picture still runs to the screen's edges. */
-@media (min-width: 64em) and (min-height: 37.5em) { .viewer-figure { padding-block: 5.5rem; } }
+   narrower or shorter windows keep the full-screen fit. The bands start at 50em tall, where the 39rem between them
+   clears the tallest thumbnail (37.9rem, an App Store screenshot): any shorter and a picture would open smaller than
+   its thumbnail. A zoomed picture still runs to the screen's edges. */
+@media (min-width: 64em) and (min-height: 50em) { .viewer-figure { padding-block: 5.5rem; } }
 /* Cover, anchored where the thumbnail's crop is (viewer.js): at rest the box has the picture's own shape, so nothing is
    cut; flying from or to a cropped thumbnail, the crop opens out into the whole picture instead of a squeezed strip. */
 .viewer-zoom {
