@@ -733,9 +733,11 @@ html:has(.viewer[open]) { overflow: hidden; }
   .viewer, .viewer *, .viewer::backdrop { animation: none !important; transition: none !important; }
 }
 
-/* The live menu (nav.js): one brand's menu itself, in a phone-sized frame with the screenshots' corners and shadow. In
-   the page it is at most 390 x 780 and never taller than the screen under the header, with its Close beside it; on a
-   small screen it fills the screen under a bar with its Close, and the page underneath holds still. No motion. */
+/* The live menu (nav.js): one brand's menu itself, in a phone-sized frame with the screenshots' corners and shadow and the
+   menus' transparent edge, on whichever page holds it. In the page it is at most 390 x 780 and never taller than the screen
+   under the header, with its Close beside it; on a small screen it fills the screen under a bar with its Close, and the page
+   underneath holds still. No motion. */
+.live-menu { --screen-edge: transparent; }
 .live-menu [hidden] { display: none; }
 .live-menu .button { cursor: pointer; }
 .live-menu .button:not(.outline) { border: 0; }
