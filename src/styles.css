@@ -85,6 +85,10 @@ main:focus { outline: none; }
 }
 @media (hover: hover) { .button:hover, .skip-link:hover { background: var(--ink); color: var(--ground); } }
 .button:active, .skip-link:active { background: var(--secondary); color: var(--ground); }
+/* The outline variant, drawn like the copy button: the buttons that leave the site (the live menus, the App Store). */
+.button.outline { background: transparent; color: var(--link); border: 1.5px solid var(--link); }
+@media (hover: hover) { .button.outline:hover { background: transparent; color: var(--ink); border-color: var(--ink); } }
+.button.outline:active { background: transparent; color: var(--secondary); border-color: var(--secondary); }
 .copy {
   min-width: 8.5rem; min-height: 2.75rem; padding: 0.5rem 1rem;
   background: transparent; color: var(--link);
@@ -311,10 +315,10 @@ figcaption, .band-note {
 .entry-body > * + * { margin-top: 1rem; }
 /* Text that follows an entry's pictures keeps the same space the pictures have above them. */
 .screen-grid + .entry-body, .band + .entry-body { margin-top: 1.75rem; }
-.entry-body .live { margin-top: 1.5rem; }
-.entry-body .live:first-child { margin-top: 0; }
-.entry-body .live + * { margin-top: 1.5rem; }
+.entry > h3 + p { margin-top: 0.75rem; }
+.entry-body .live { margin-top: 0.5rem; }
 .more { margin-top: 0.75rem; }
+.entry-body > .more:first-child { margin-top: 0; }
 .more a { display: inline-flex; align-items: center; min-width: 2.75rem; min-height: 2.75rem; font-family: var(--sans); font-weight: 600; }
 @media (min-width: 64em) {
   .entry { margin-top: 2rem; }
@@ -328,7 +332,9 @@ figcaption, .band-note {
 }
 .stamps strong { color: var(--ink); font-weight: 600; }
 @media (min-width: 64em) { .stamps { gap: 0.75rem; margin-bottom: 0; } }
-@media (max-width: 63.9375em) { .entry > h3 + .stamps { margin-top: 0.75rem; } }
+@media (max-width: 63.9375em) { .entry > p + .stamps { margin-top: 0.75rem; } }
+/* The stamps stay in the rail beside the title, the description and the pictures. */
+@media (min-width: 64em) { .entry > .rail { grid-row: 1 / span 3; } }
 @media (min-width: 64em) { .entry > .rail + .entry-body { margin-top: 1rem; } }
 
 /* The highlighter: a mark behind at most three facts per page, always with weight as a second cue. */
@@ -484,6 +490,9 @@ mark {
 .email-alt { display: grid; justify-items: start; color: var(--secondary); font-family: var(--sans); font-size: 1rem; line-height: 1.5; }
 .email-alt .address { font-size: 1.0625rem; }
 .email-alt .copy { margin-top: 0.625rem; }
+/* /restaurants/, under the pictures: the live menu, Start a project, then the case study. */
+.actions .more { margin-top: 0; }
+.actions > .live-menu { justify-self: stretch; }
 
 /* Footer */
 .site-footer { margin-top: 3rem; padding-block: 1.75rem 2.5rem; border-top: 1px solid var(--hairline); }
@@ -503,6 +512,7 @@ h1, h2, h3 { hanging-punctuation: first; }
 }
 .case-head > .ledger, .case-head > .about-intro, .case-head > .lead { margin-top: 1.5rem; }
 .lead { font-size: 1.25rem; line-height: 1.5; }
+.case-head > .lead + p { margin-top: 1rem; }
 .about-intro > p + p { margin-top: 1rem; }
 .portrait { display: block; }
 .portrait img { border-radius: 4px; }
@@ -540,6 +550,12 @@ h1, h2, h3 { hanging-punctuation: first; }
 
 /* The services page: each service's list and its supporting link. */
 .detail > * + * { margin-top: 1rem; }
+/* From 75em, where the column beside the measure is 15rem wide, each service that has a real picture shows one there.
+   Below that the pictures stay out of the page, and being lazy they are never downloaded. */
+.service-shot { display: none; }
+@media screen and (min-width: 75em) {
+  .ledger > .service-shot { display: block; grid-column: 3; grid-row: 1 / span 2; align-self: start; margin-top: 0; }
+}
 
 .decisions { padding-left: 1.75rem; }
 .decisions > li + li { margin-top: 2rem; }
@@ -716,7 +732,8 @@ html:has(.viewer[open]) { overflow: hidden; }
    the page it is at most 390 x 780 and never taller than the screen under the header, with its Close beside it; on a
    small screen it fills the screen under a bar with its Close, and the page underneath holds still. No motion. */
 .live-menu [hidden] { display: none; }
-.live-menu .button { border: 0; cursor: pointer; }
+.live-menu .button { cursor: pointer; }
+.live-menu .button:not(.outline) { border: 0; }
 .live-frame { position: static; width: auto; max-width: none; height: auto; max-height: none; margin: 0; padding: 0; border: 0; background: var(--ground); color: var(--ink); }
 .live-frame[open] { display: grid; grid-template-columns: min(24.375rem, 100%) minmax(0, 1fr); align-items: start; gap: 1rem 1.5rem; }
 .live-frame-bar { grid-column: 2; display: grid; justify-items: start; gap: 0.75rem; color: var(--secondary); font-family: var(--sans); font-size: 0.9375rem; line-height: 1.45; }
@@ -745,7 +762,7 @@ html:has(.live-frame:modal) { overflow: hidden; }
   a { color: inherit; text-decoration: none; }
   .skip-link, .nav ul, .nav .nav-cta, .copy, .copy-status, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .scripts, .no-print, .viewer[open] { display: none; }
   html:has(.viewer[open]) { overflow: visible; }
-  .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; background: none; color: inherit; font-size: inherit; }
+  .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
   mark { margin: 0; padding: 0; background: none; color: var(--ink); }
   .screen { box-shadow: none; }
   .sweep::before, .sweep::after { display: none; }
@@ -830,8 +847,9 @@ html:has(.live-frame:modal) { overflow: hidden; }
 .choice input { flex: none; width: 1.125rem; height: 1.125rem; margin: 0; }
 .request-form label.choice:has(:focus-visible) { outline: 2px solid var(--link); outline-offset: 3px; }
 .request-form :is(input, textarea, button):focus-visible { outline: 2px solid var(--link); outline-offset: 3px; }
-.request-send { display: grid; gap: 0.875rem; }
-.request-send .button { width: 100%; border: 0; cursor: pointer; }
+.request-send { display: grid; gap: 0.5rem; }
+.request-send .button { width: 100%; margin-bottom: 0.375rem; border: 0; cursor: pointer; }
+.request-reply { font-family: var(--sans); font-size: 0.9375rem; font-weight: 500; line-height: 1.45; }
 @media (min-width: 40em) { .request-send .button { width: auto; justify-self: start; padding-inline: 2rem; } }
 /* While the request is on its way (nav.js) the button keeps its pressed colour. */
 .request-send .button[aria-disabled="true"] { background: var(--secondary); color: var(--ground); cursor: progress; }
@@ -846,6 +864,13 @@ html:has(.live-frame:modal) { overflow: hidden; }
 .request-alt { margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
 .request-alt .email-alt { font-size: 0.9375rem; }
 .request-alt .address { font-size: 1rem; }
+/* Below 64em the face and the reply promise sit above the form, and the email under it. */
+@media screen and (max-width: 63.9375em) {
+  .request-body { gap: 1.5rem; }
+  .request-next { display: contents; }
+  .request-me { order: -1; }
+  .request-alt { margin-top: 0.5rem; padding-top: 0; border-top: 0; }
+}
 .request-page p a { display: inline-flex; align-items: center; max-width: 100%; min-width: 2.75rem; min-height: 2.75rem; padding-block: 0.375rem; overflow-wrap: anywhere; }
 @media print {
   .request-form { display: none; }

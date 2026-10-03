@@ -124,6 +124,7 @@
 
         <article class="entry span ledger project-menus" aria-labelledby="menus-title">
           <h3 id="menus-title">Restaurant menus</h3>
+          <p>I built working menus for all {{menus.brands}} brands of the restaurant group where I work.</p>
           <ul class="stamps rail">
             <li><mark class="sweep" data-mark="{{menus.languages}} languages">{{menus.languages}} languages</mark> · the menu’s language list</li>
             <li><strong>{{menus.brands}} brands</strong> · the menu repository</li>
@@ -177,20 +178,20 @@
             </figure>
           </div>
           <div class="entry-body">
-            <p class="live"><a class="button" href="{{menus.live_url}}">Open the live menus</a></p>
             <p>At the table, guests:</p>
             <ul class="bullets">
               <li>Scan a code.</li>
               <li>Choose their language.</li>
               <li>Filter by the allergens they avoid.</li>
             </ul>
-            <p>I built working menus for all {{menus.brands}} brands of the restaurant group where I work.</p>
+            <p class="more"><a href="/work/menus/">How I built the menus</a></p>
+            <p class="live"><a class="button outline" href="{{menus.live_url}}">Open the live menus</a></p>
           </div>
-          <p class="more"><a href="/work/menus/">How I built the menus</a></p>
         </article>
 
         <article class="entry span ledger project-fyt" aria-labelledby="fyt-title">
           <h3 id="fyt-title">Fyt, a social fitness app</h3>
+          <p>Fyt tracks users’ runs and lifts, and announces each run in the group’s iMessage chat.</p>
           <ul class="stamps rail">
             <li><mark>{{fyt.users_display}} users</mark> · as of {{fyt.users_as_of|date}} · Fyt’s production database</li>
             <li><strong>{{fyt.rating|fixed1}} from {{fyt.rating_count}} ratings</strong> · {{fyt.review_count}} reviews · App Store</li>
@@ -239,10 +240,9 @@
             </figure>
           </div>
           <div class="entry-body">
-            <p class="live"><a class="button" href="{{fyt.app_store_url}}">View on the App Store</a></p>
-            <p>Fyt tracks users’ runs and lifts, and announces each run in the group’s iMessage chat.</p>
+            <p class="more"><a href="/work/fyt/">How I built Fyt</a></p>
+            <p class="live"><a class="button outline" href="{{fyt.app_store_url}}">View on the App Store</a></p>
           </div>
-          <p class="more"><a href="/work/fyt/">How I built Fyt</a></p>
         </article>
       </div>
     </section>

@@ -19,9 +19,9 @@
   {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Websites and web apps", "url": "{{site.url}}services/#web-title", "description": "Fast sites on your own domain, usable on phones, with a screen reader or with a keyboard. Forms that reach your inbox, and links to your booking, ordering and payment tools. Web apps and dashboards for your team, with the database behind them.", "provider": {"@id": "{{site.url}}#person"} } },
   {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "iPhone and Apple Watch apps", "url": "{{site.url}}services/#apps-title", "description": "Native iPhone and Apple Watch apps built in Swift and SwiftUI, published on the App Store. The server, database and sign-in behind them. Health and workout data, notifications and group-chat messages, all running in Fyt today.", "provider": {"@id": "{{site.url}}#person"} } },
   {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Automations and integrations", "url": "{{site.url}}services/#auto-title", "description": "Connect the tools you use: phone alerts, daily summaries, reminders and spreadsheets that fill themselves. Bots, scripts and AI assistants that draft replies, sort requests and handle the repetitive work.", "provider": {"@id": "{{site.url}}#person"} } },
-  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Restaurants", "url": "{{site.url}}services/#rest-title", "description": "Menus in up to {{menus.languages}} languages, one tap to switch. Arabic, Farsi and Urdu read right to left across the whole page, and printed menus use typefaces drawn for each script. Printed menus and QR table cards included. Websites linked to your online ordering, reservations and Google Business Profile. POS features: loyalty, gift cards and texting inside Square or Toast. Custom software and automations: catering requests to your phone, a daily sales summary, reservation reminders. Before launch, your kitchen confirms each allergen line.", "provider": {"@id": "{{site.url}}#person"} } },
-  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Care, month to month", "url": "{{site.url}}services/#care-title", "description": "Hosting, backups, security and fixes, plus changes when you need them. Stop anytime.", "provider": {"@id": "{{site.url}}#person"} } },
-  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom", "url": "{{site.url}}services/#custom-title", "description": "Software custom-built around how you work, for any device or platform. If it runs on a phone, in a browser or between your tools, ask. A clear plan and a fixed price in writing, then scoped, built and supported end to end.", "provider": {"@id": "{{site.url}}#person"} } }
+  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Restaurants", "url": "{{site.url}}services/#rest-title", "description": "Menus in up to {{menus.languages}} languages, one tap to switch. Arabic, Farsi and Urdu read right to left across the whole page, and printed menus use typefaces drawn for each script. Websites linked to your online ordering, reservations and Google Business Profile.", "provider": {"@id": "{{site.url}}#person"} } },
+  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom", "url": "{{site.url}}services/#custom-title", "description": "Software custom-built around how you work, for any device or platform. If it runs on a phone, in a browser or between your tools, ask. A clear plan and a fixed price in writing, then scoped, built and supported end to end.", "provider": {"@id": "{{site.url}}#person"} } },
+  {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Care, month to month", "url": "{{site.url}}services/#care-title", "description": "Hosting, backups, security and fixes, plus changes when you need them. Stop anytime.", "provider": {"@id": "{{site.url}}#person"} } }
   ]}</script>
 </head>
 <body>
@@ -37,9 +37,9 @@
           <li><a href="#apps-title">Apps</a></li>
           <li><a href="#auto-title">Automations</a></li>
           <li><a href="#rest-title">Restaurants</a></li>
+          <li><a href="#custom-title">Custom</a></li>
           <li><a href="#care-title">Care</a></li>
           <li><a href="#faq-title">FAQ</a></li>
-          <li><a href="#custom-title">Custom</a></li>
         </ul>
       </nav>
     </header>
@@ -60,11 +60,23 @@
 
     <section class="side-row wrap ledger" aria-labelledby="web-title">
       <h2 class="rail" id="web-title">Websites and web apps</h2>
-      <ul class="bullets">
-        <li>Fast sites on your own domain, usable on phones, with a screen reader or with a keyboard.</li>
-        <li>Forms that reach your inbox, and links to your booking, ordering and payment tools.</li>
-        <li>Web apps and dashboards for your team, with the database behind them.</li>
-      </ul>
+      <div class="detail">
+        <ul class="bullets">
+          <li>Fast sites on your own domain, usable on phones, with a screen reader or with a keyboard.</li>
+          <li>Forms that reach your inbox, and links to your booking, ordering and payment tools.</li>
+          <li>Web apps and dashboards for your team, with the database behind them.</li>
+        </ul>
+        <p class="more"><a href="/work/fyt/#site-title">See the website I built for Fyt</a></p>
+      </div>
+      <figure class="service-shot site-shot screen-grid no-print">
+        <a class="shot-link" href="/assets/fyt-site-home-2560.webp">
+          <picture>
+            <source type="image/avif" srcset="/assets/fyt-site-home-1280.avif 1280w" sizes="15rem">
+            <img class="screen" src="/assets/fyt-site-home-1280.webp" srcset="/assets/fyt-site-home-1280.webp 1280w" sizes="15rem" width="2560" height="1600" alt="fyt.life’s home page on a desktop: the headline “The all-in-one fitness tracker.”, the App Store badge and a link to text Fyt’s bot, beside a group chat in which the bot announces runs and the year’s leaderboard. Runners’ names are blurred." decoding="async" loading="lazy">
+          </picture>
+        </a>
+        <figcaption>Fyt’s website, fyt.life, on a desktop</figcaption>
+      </figure>
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="apps-title">
@@ -77,14 +89,35 @@
         </ul>
         <p class="more"><a href="/work/fyt/">How I built Fyt</a></p>
       </div>
+      <figure class="service-shot shot crop crop-route screen-grid no-print">
+        <a class="shot-link" href="/assets/fyt-02-runs-1170.webp">
+          <picture>
+            <source type="image/avif" srcset="/assets/fyt-02-runs-585.avif 585w" sizes="15rem">
+            <img class="screen" src="/assets/fyt-02-runs-585.webp" srcset="/assets/fyt-02-runs-585.webp 585w" sizes="15rem" width="1170" height="2543" alt="Fyt’s group feed: a run’s route map, distance, pace and time, beside its heart rate and calories." decoding="async" loading="lazy">
+          </picture>
+        </a>
+        <figcaption>A run in Fyt’s feed, from its App Store&nbsp;screenshots</figcaption>
+      </figure>
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="auto-title">
       <h2 class="rail" id="auto-title">Automations and integrations</h2>
-      <ul class="bullets">
-        <li>Connect the tools you use: phone alerts, daily summaries, reminders and spreadsheets that fill themselves.</li>
-        <li>Bots, scripts and AI assistants that draft replies, sort requests and handle the repetitive work.</li>
-      </ul>
+      <div class="detail">
+        <ul class="bullets">
+          <li>Connect the tools you use: phone alerts, daily summaries, reminders and spreadsheets that fill themselves.</li>
+          <li>Bots, scripts and AI assistants that draft replies, sort requests and handle the repetitive work.</li>
+        </ul>
+        <p class="more"><a href="/work/fyt/#announce-title">How Fyt posts each run to the group chat</a></p>
+      </div>
+      <figure class="service-shot shot crop screen-grid no-print">
+        <a class="shot-link" href="/assets/fyt-chat-1170.webp">
+          <picture>
+            <source type="image/avif" srcset="/assets/fyt-chat-585.avif 585w" sizes="15rem">
+            <img class="screen" src="/assets/fyt-chat-585.webp" srcset="/assets/fyt-chat-585.webp 585w" sizes="15rem" width="1170" height="1254" alt="A message from Fyt’s bot in a group’s iMessage chat: James Han ran 20 miles, crossed 100 total miles and stacked three milestones, including passing another runner on the year’s leaderboard. Friends reacted with fire and a heart." decoding="async" loading="lazy">
+          </picture>
+        </a>
+        <figcaption>Fyt’s bot posting a run in a group’s iMessage chat; another runner’s name is hidden</figcaption>
+      </figure>
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="rest-title">
@@ -95,15 +128,29 @@
           <li>Menus in up to {{menus.languages}} languages, one tap to switch.</li>
           <li>Arabic, Farsi and Urdu read right to left across the whole page, and printed menus use typefaces drawn for each script.</li>
           <li>A filter for the {{menus.allergens}} major allergens California requires restaurant chains of {{law.sb68_chain_locations}} or more locations to show from {{law.sb68_in_force|month}} (SB 68).</li>
-          <li>Printed menus and <abbr>QR</abbr> table cards included.</li>
           <li>Websites linked to your online ordering, reservations and Google Business Profile.</li>
-          <li><abbr>POS</abbr> features: loyalty, gift cards and texting inside Square or Toast.</li>
-          <li>Custom software and automations: catering requests to your phone, a daily sales summary, reservation reminders.</li>
-          <li>Before launch, your kitchen confirms each allergen line.</li>
         </ul>
         <p class="more"><a href="{{menus.example_url}}">See a live menu</a></p>
         <p class="more"><a href="/restaurants/">More for restaurant owners</a></p>
       </div>
+      <figure class="service-shot shot crop project-menus screen-grid no-print">
+        <a class="shot-link" href="/assets/menu-02-en-1170.webp">
+          <picture>
+            <source type="image/avif" srcset="/assets/menu-02-en-480.avif 480w, /assets/menu-02-en-585.avif 585w" sizes="15rem">
+            <img class="screen" src="/assets/menu-02-en-480.webp" srcset="/assets/menu-02-en-480.webp 480w, /assets/menu-02-en-585.webp 585w" sizes="15rem" width="1170" height="2532" alt="A restaurant menu in English, with the language choices, a button for avoiding an allergen and dish photos with prices." decoding="async" loading="lazy">
+          </picture>
+        </a>
+        <figcaption>A menu in English, as a guest sees it at the table</figcaption>
+      </figure>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="custom-title">
+      <h2 class="rail" id="custom-title">Custom</h2>
+      <ul class="bullets">
+        <li>Software custom-built around how you work, for any device or platform.</li>
+        <li>If it runs on a phone, in a browser or between your tools, ask.</li>
+        <li>A clear plan and a fixed price in writing, then scoped, built and supported end to end.</li>
+      </ul>
     </section>
 
     <section class="side-row wrap ledger" aria-labelledby="care-title">
@@ -137,14 +184,9 @@
       </div>
     </section>
 
-    <section class="side-row wrap ledger" aria-labelledby="custom-title">
-      <h2 class="rail" id="custom-title">Custom</h2>
-      <div class="detail">
-        <ul class="bullets">
-          <li>Software custom-built around how you work, for any device or platform.</li>
-          <li>If it runs on a phone, in a browser or between your tools, ask.</li>
-          <li>A clear plan and a fixed price in writing, then scoped, built and supported end to end.</li>
-        </ul>
+    <section class="side-row wrap ledger" aria-labelledby="contact-title">
+      <h2 class="rail" id="contact-title">Contact</h2>
+      <div>
         <p>I reply within one business day.</p>
         <div class="actions">
           <a class="button" href="/request/">Start a project</a>

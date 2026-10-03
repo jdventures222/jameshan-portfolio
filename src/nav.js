@@ -55,7 +55,7 @@ for (const row of document.querySelectorAll('.band.shots[tabindex]')) {
   const holder = document.querySelector('.live-menu'), link = holder?.querySelector('a');
   if (link && typeof HTMLDialogElement === 'function') {
     const open = document.createElement('button'), dialog = document.createElement('dialog');
-    open.type = 'button'; open.className = 'button'; open.textContent = 'Try one brand’s live menu';
+    open.type = 'button'; open.className = holder.dataset.button || 'button'; open.textContent = 'Try one brand’s live menu';
     open.setAttribute('aria-haspopup', 'dialog');
     dialog.className = 'live-frame';
     dialog.setAttribute('aria-labelledby', 'live-frame-title');
