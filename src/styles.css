@@ -501,6 +501,11 @@ h1, h2, h3 { hanging-punctuation: first; }
 .site-footer p { font-family: var(--sans); font-size: 0.9375rem; line-height: 1.5; color: var(--secondary); }
 /* The privacy link keeps a 44 px target and stays whole, like the line's other segments. */
 .site-footer a { display: inline-flex; align-items: center; min-height: 2.75rem; white-space: nowrap; }
+/* Where the line cannot hold all three segments, the link takes its own line, and that line does not open on a "·". */
+@media (max-width: 34.9375em) {
+  .site-footer .nowrap:last-child { display: block; }
+  .site-footer .sep { display: none; }
+}
 @media (min-width: 64em) { .site-footer { margin-top: 5rem; } }
 
 /* Case studies and About */
