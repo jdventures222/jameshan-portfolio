@@ -556,7 +556,8 @@ h1, h2, h3 { hanging-punctuation: first; }
 /* The services page: each service's list and its supporting link. */
 .detail > * + * { margin-top: 1rem; }
 /* From 75em, where the column beside the measure is 15rem wide, each service that has a real picture shows one there.
-   Below that the pictures stay out of the page, and being lazy they are never downloaded. */
+   Below that the pictures stay out of the page and, being lazy, are not downloaded (a browser with scripts off ignores
+   lazy loading and fetches them). */
 .service-shot { display: none; }
 @media screen and (min-width: 75em) {
   .ledger > .service-shot { display: block; grid-column: 3; grid-row: 1 / span 2; align-self: start; margin-top: 0; }
