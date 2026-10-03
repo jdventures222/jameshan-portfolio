@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+  {{include partials/head.html}}
+  <title>Pressure, a workout streak app for iPhone and Apple Watch · James Han</title>
+  <meta name="description" content="How I built Pressure, a workout streak app for iPhone and Apple Watch, on the App Store since {{fyt.app_store_since_display}}. Its bot posts each run in the group’s iMessage chat.">
+  <link rel="canonical" href="{{site.url}}work/pressure/">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="{{site.url}}work/pressure/">
+  <meta property="og:site_name" content="James Han">
+  <meta property="og:title" content="Pressure, a workout streak app for iPhone and Apple Watch">
+  <meta property="og:description" content="How I built Pressure, a workout streak app for iPhone and Apple Watch, on the App Store since {{fyt.app_store_since_display}}. Its bot posts each run in the group’s iMessage chat.">
+  <meta property="og:image" content="{{site.url}}assets/og-fyt.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Two screens from Pressure: a run in the group’s feed with its route map, and a finished gym session with the muscles trained.">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebPage", "@id": "{{site.url}}work/pressure/#page", "url": "{{site.url}}work/pressure/", "name": "Pressure, a workout streak app for iPhone and Apple Watch", "author": {"@id": "{{site.url}}#person"}, "about": {"@type": "MobileApplication", "name": "{{fyt.name}}", "description": "Pressure is a weekly workout streak you keep with friends: it tracks runs and lifts, and its bot, runbot, posts each run in the group’s iMessage chat.", "url": "{{fyt.site_url}}", "installUrl": "{{fyt.app_store_url}}", "sameAs": ["{{fyt.app_store_url}}", "{{fyt.site_url}}"], "datePublished": "{{fyt.app_store_since}}", "softwareVersion": "{{fyt.latest_version}}", "creator": {"@id": "{{site.url}}#person"} } }</script>
+</head>
+<body>
+  {{include partials/header.html}}
+
+  <main class="page-upgrade case-study project-fyt" id="main" tabindex="-1">
+    <header class="case-head wrap">
+      <h1>Pressure, a workout streak app</h1>
+      <div class="ledger">
+        <div class="case-summary">
+          <p class="lead">Pressure is a weekly workout streak you keep with friends: it tracks runs and lifts, and its bot, runbot, posts each run in the group’s iMessage chat.</p>
+          <figure class="case-shot well screen-grid no-print">
+            <a class="shot-link" href="/assets/fyt-chat-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-chat-585.avif 585w, /assets/fyt-chat-1170.avif 1170w" sizes="(min-width: 75em) 15rem, 16.25rem">
+                <img class="screen" src="/assets/fyt-chat-585.webp" srcset="/assets/fyt-chat-585.webp 585w, /assets/fyt-chat-1170.webp 1170w" sizes="(min-width: 75em) 15rem, 16.25rem" width="1170" height="1254" alt="A message from runbot, Pressure’s bot, in a group’s iMessage chat: James Han ran 20 miles, crossed 100 total miles and stacked three milestones, including passing another runner on the year’s leaderboard. Friends reacted with fire and a heart." decoding="async">
+              </picture>
+            </a>
+            <figcaption>A run posted to the group’s iMessage chat, with milestones and the leaderboard; another runner’s name is hidden</figcaption>
+          </figure>
+          <section class="case-results" aria-labelledby="result-title">
+            <h2 id="result-title">Result</h2>
+            <div class="results">
+              <div class="result">
+                <h3><mark>{{fyt.users_display}}</mark> users</h3>
+                <p>As of {{fyt.users_as_of|month}} · Pressure’s production database</p>
+              </div>
+              <div class="result">
+                <h3><mark>{{fyt.rating|fixed1}}</mark> from {{fyt.rating_count}} ratings</h3>
+                <p>{{fyt.review_count}} reviews on the App Store</p>
+              </div>
+              <div class="result">
+                <h3><mark>{{fyt.chat_posts}}</mark> workout posts</h3>
+                <p>In group chats since {{fyt.chat_posts_since|month}} · as of {{fyt.chat_posts_as_of|date}} · Pressure’s production database</p>
+              </div>
+              <div class="result">
+                <h3>{{fyt.updates_since_launch}} updates</h3>
+                <p>Since launch, the latest on {{fyt.latest_version_date|date}} · the App Store version history</p>
+              </div>
+            </div>
+          </section>
+        </div>
+        <dl class="facts rail">
+          <div><dt>Role</dt><dd>Founder and lead engineer: the product, the iPhone and Apple Watch app, the server and the website</dd></div>
+          <div><dt>On the App Store</dt><dd>Since {{fyt.app_store_since|date}}; version {{fyt.latest_version}}, {{fyt.latest_version_date|date}}</dd></div>
+          <div><dt>Name</dt><dd>Launched as Fyt in {{fyt.app_store_since_display}} and is now being renamed Pressure. The App Store still lists it as Fyt until version 1.1 ships.</dd></div>
+          <div><dt>Stack</dt><dd>Swift, SwiftUI, watchOS, HealthKit · TypeScript, Fastify, PostgreSQL · Fly.io</dd></div>
+          <div><dt>Links</dt><dd class="links"><a class="button outline" href="{{fyt.app_store_url}}">View on the App Store</a> <a class="site-link" href="{{fyt.site_url}}">fyt.life</a></dd></div>
+        </dl>
+      </div>
+    </header>
+
+    <section class="side-row wrap ledger" aria-labelledby="problem-title">
+      <h2 class="rail" id="problem-title">The problem</h2>
+      <div class="detail">
+        <p>Friends who run and lift together already talk every day in iMessage. Their workouts sit in separate apps built around personal logs, so someone has to post each one by hand. Members without the fitness app miss out.</p>
+        <h3 class="item-title">The goal</h3>
+        <p>Put every run and lift in front of the whole group, in the chat they already use, without asking everyone to install an app.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger project-gallery" aria-labelledby="screens-title">
+      <h2 class="rail" id="screens-title">In the app</h2>
+      <div class="band well">
+        <div class="screens gallery four screen-grid">
+          <figure>
+            <a class="shot-link" href="/assets/fyt-02-runs-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-02-runs-585.avif 585w, /assets/fyt-02-runs-1170.avif 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem">
+                <img class="screen" src="/assets/fyt-02-runs-585.webp" srcset="/assets/fyt-02-runs-585.webp 585w, /assets/fyt-02-runs-1170.webp 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem" width="1170" height="2543" alt="The App Store screenshot “Every mile, mapped”: the feed with a run’s route map, distance, pace and time, beside its heart rate and calories." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>A run in the feed, with its route, distance, pace and heart rate</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-03-run-record-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-03-run-record-585.avif 585w, /assets/fyt-03-run-record-1170.avif 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem">
+                <img class="screen" src="/assets/fyt-03-run-record-585.webp" srcset="/assets/fyt-03-run-record-585.webp 585w, /assets/fyt-03-run-record-1170.webp 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem" width="1170" height="2543" alt="The App Store screenshot “Record your run, live”: an iPhone ready to start a run on a map, beside an Apple Watch recording one." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>Recording a run live, on iPhone and Apple Watch</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-04-gym-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-04-gym-585.avif 585w, /assets/fyt-04-gym-1170.avif 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem">
+                <img class="screen" src="/assets/fyt-04-gym-585.webp" srcset="/assets/fyt-04-gym-585.webp 585w, /assets/fyt-04-gym-1170.webp 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem" width="1170" height="2543" alt="The App Store screenshot “Every lift, logged”: a finished gym session with a muscle diagram, sets, total volume and the exercises done, under the week’s totals." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>A finished gym session: sets, volume and the muscles trained</figcaption>
+          </figure>
+          <figure>
+            <a class="shot-link" href="/assets/fyt-05-gym-record-1170.webp">
+              <picture>
+                <source type="image/avif" srcset="/assets/fyt-05-gym-record-585.avif 585w, /assets/fyt-05-gym-record-1170.avif 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem">
+                <img class="screen" src="/assets/fyt-05-gym-record-585.webp" srcset="/assets/fyt-05-gym-record-585.webp 585w, /assets/fyt-05-gym-record-1170.webp 1170w" sizes="(min-width: 39em) 17.5rem, (min-width: 37.5em) calc((100vw - 4rem) / 2), 16.25rem" width="1170" height="2543" alt="The App Store screenshot “Track your lift, live”: a gym session in progress, with weights and reps checked off set by set." decoding="async" loading="lazy">
+              </picture>
+            </a>
+            <figcaption>Logging a lift live, set by set</figcaption>
+          </figure>
+        </div>
+        <p class="band-note">From the App Store screenshots.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger project-gallery" aria-labelledby="site-title">
+      <h2 class="rail" id="site-title">The website</h2>
+      <div class="band well">
+        <div class="site-gallery screen-grid">
+          <div class="site-row">
+            <figure class="site-shot">
+              <a class="shot-link" href="/assets/fyt-site-home-2560.webp">
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-site-home-1280.avif 1280w, /assets/fyt-site-home-2560.avif 2560w" sizes="(min-width: 75em) 40.67rem, (min-width: 64em) calc((100vw - 22.75rem) * 0.7759 + 2px), (min-width: 48em) calc((100vw - 5.75rem) * 0.7759 + 2px), (min-width: 37.5em) calc((100vw - 4.25rem) * 0.7759 + 2px), calc(100vw - 2.5rem)">
+                  <img class="screen" src="/assets/fyt-site-home-1280.webp" srcset="/assets/fyt-site-home-1280.webp 1280w, /assets/fyt-site-home-2560.webp 2560w" sizes="(min-width: 75em) 40.67rem, (min-width: 64em) calc((100vw - 22.75rem) * 0.7759 + 2px), (min-width: 48em) calc((100vw - 5.75rem) * 0.7759 + 2px), (min-width: 37.5em) calc((100vw - 4.25rem) * 0.7759 + 2px), calc(100vw - 2.5rem)" width="2560" height="1600" alt="fyt.life’s home page on a desktop: the headline “The all-in-one fitness tracker.”, the App Store badge and a link to text runbot, beside a group chat in which the bot announces runs and the year’s leaderboard. Runners’ names are blurred." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>The home page on a desktop, with a group chat as runbot posts it</figcaption>
+            </figure>
+            <figure class="phone-shot">
+              <a class="shot-link" href="/assets/fyt-site-home-phone-1170.webp">
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-site-home-phone-585.avif 585w, /assets/fyt-site-home-phone-1170.avif 1170w" sizes="(min-width: 75em) 11.83rem, (min-width: 64em) calc((100vw - 22.75rem) * 0.2241 + 2px), (min-width: 48em) calc((100vw - 5.75rem) * 0.2241 + 2px), (min-width: 37.5em) calc((100vw - 4.25rem) * 0.2241 + 2px), 16.25rem">
+                  <img class="screen" src="/assets/fyt-site-home-phone-585.webp" srcset="/assets/fyt-site-home-phone-585.webp 585w, /assets/fyt-site-home-phone-1170.webp 1170w" sizes="(min-width: 75em) 11.83rem, (min-width: 64em) calc((100vw - 22.75rem) * 0.2241 + 2px), (min-width: 48em) calc((100vw - 5.75rem) * 0.2241 + 2px), (min-width: 37.5em) calc((100vw - 4.25rem) * 0.2241 + 2px), 16.25rem" width="1170" height="2532" alt="fyt.life’s home page on an iPhone: the same headline, App Store badge and link to the bot, above the group chat. Runners’ names and a town are blurred." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>The same page on an iPhone</figcaption>
+            </figure>
+          </div>
+          <div class="site-row">
+            <figure class="site-shot">
+              <a class="shot-link" href="/assets/fyt-site-stats-2560.webp">
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-site-stats-1280.avif 1280w, /assets/fyt-site-stats-2560.avif 2560w" sizes="(min-width: 75em) 26.25rem, (min-width: 64em) calc((100vw - 22.5rem) / 2), (min-width: 48em) calc((100vw - 5.5rem) / 2), (min-width: 37.5em) calc((100vw - 4rem) / 2), calc(100vw - 2.5rem)">
+                  <img class="screen" src="/assets/fyt-site-stats-1280.webp" srcset="/assets/fyt-site-stats-1280.webp 1280w, /assets/fyt-site-stats-2560.webp 2560w" sizes="(min-width: 75em) 26.25rem, (min-width: 64em) calc((100vw - 22.5rem) / 2), (min-width: 48em) calc((100vw - 5.5rem) / 2), (min-width: 37.5em) calc((100vw - 4rem) / 2), calc(100vw - 2.5rem)" width="2560" height="1600" alt="fyt.life’s stats page: active groups, runners, runs and miles tracked across all time and the last seven days, then the weekly activity so far this year." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>The stats page: totals for runners in active group chats, from Pressure’s database</figcaption>
+            </figure>
+            <figure class="site-shot">
+              <a class="shot-link" href="/assets/fyt-site-faq-2560.webp">
+                <picture>
+                  <source type="image/avif" srcset="/assets/fyt-site-faq-1280.avif 1280w, /assets/fyt-site-faq-2560.avif 2560w" sizes="(min-width: 75em) 26.25rem, (min-width: 64em) calc((100vw - 22.5rem) / 2), (min-width: 48em) calc((100vw - 5.5rem) / 2), (min-width: 37.5em) calc((100vw - 4rem) / 2), calc(100vw - 2.5rem)">
+                  <img class="screen" src="/assets/fyt-site-faq-1280.webp" srcset="/assets/fyt-site-faq-1280.webp 1280w, /assets/fyt-site-faq-2560.webp 2560w" sizes="(min-width: 75em) 26.25rem, (min-width: 64em) calc((100vw - 22.5rem) / 2), (min-width: 48em) calc((100vw - 5.5rem) / 2), (min-width: 37.5em) calc((100vw - 4rem) / 2), calc(100vw - 2.5rem)" width="2560" height="1600" alt="fyt.life’s FAQ page: five questions, the first opened to say the app is free with an optional subscription, above the footer every page shares." decoding="async" loading="lazy">
+                </picture>
+              </a>
+              <figcaption>The FAQ, in the header and footer every page shares</figcaption>
+            </figure>
+          </div>
+        </div>
+        <p class="band-note">From fyt.life; members’ names and towns are blurred.</p>
+      </div>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="built-title">
+      <h2 class="rail" id="built-title">What I built</h2>
+      <ul class="bullets">
+        <li>The iPhone app (Swift, SwiftUI): live GPS run recording, a gym logger with sets, reps, weights and a rest timer, and workouts imported from Apple Health.</li>
+        <li>The Apple Watch app: live run recording.</li>
+        <li>The server and database (TypeScript, PostgreSQL): the API and the background jobs that import workouts, find personal records, update leaderboards and post to the group chats, hosted on Fly.io.</li>
+        <li>The public website, fyt.life, with a shareable page for every workout, and a subscription tier through Apple.</li>
+      </ul>
+    </section>
+
+    <section class="side-row wrap ledger" aria-labelledby="decisions-title">
+      <h2 class="rail" id="decisions-title">Decisions</h2>
+      <ol class="decisions">
+        <li>
+          <h3>Give the group a shared record.</h3>
+          <p>Every workout lands in the shared feed and on the group’s leaderboard. Personal records are called out to everyone.</p>
+          <p><span class="label">Why:</span> the group can follow each other’s progress in the same place.</p>
+        </li>
+        <li>
+          <h3 id="announce-title">Announce in the chat people already use.</h3>
+          <p>Shortly after a run, runbot posts in the group’s iMessage chat:</p>
+          <ul class="bullets">
+            <li>The workout.</li>
+            <li>Personal records.</li>
+            <li>Leaderboard changes.</li>
+            <li>A link to the full workout.</li>
+          </ul>
+          <p>A group can switch lifts on too. Everyone in the chat sees the post, including members without the app.</p>
+          <p><span class="label">Why:</span> a new app is one more place to check; the group chat is already open.</p>
+          <p><span class="label">Trade-off:</span> the posts go out through Messages on a Mac that has to stay running.</p>
+        </li>
+        <li>
+          <h3>Record on the wrist.</h3>
+          <p>The Apple Watch app records a run with live GPS, pace, distance and heart rate, and sends the finished run straight to Pressure’s server.</p>
+          <p><span class="label">Why:</span> the watch is already on the runner’s wrist; the phone does not have to come along to record the run.</p>
+        </li>
+      </ol>
+    </section>
+
+    <nav class="side-row wrap ledger next-study no-print" aria-label="Next case study">
+      <p class="rail more"><a href="/work/menus/">Next: Restaurant menus</a></p>
+      <p>I built working menus for all {{menus.brands}} brands of the restaurant group where I work.</p>
+    </nav>
+
+    <section class="side-row wrap ledger" aria-labelledby="contact-title">
+      <h2 class="rail" id="contact-title">Contact</h2>
+      <div>
+        <p>Want an app built? I reply within one business day.</p>
+        <div class="actions">
+          <a class="button" href="/request/">Start a project</a>
+          <p class="email-alt">Or email <span class="address" data-copy>{{person.email}}</span></p>
+        </div>
+        <p class="more"><a href="/services/">How a project runs</a></p>
+      </div>
+    </section>
+  </main>
+
+  {{include partials/footer.html}}
+</body>
+</html>

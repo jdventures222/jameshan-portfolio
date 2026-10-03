@@ -105,7 +105,7 @@ writeFileSync(join(dist, 'styles.css'), [...fontCss, read('src/styles.css')].joi
 writeFileSync(join(dist, 'CNAME'), `${config.host}\n`);
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 const pageUrl = f => `${origin}/${f.replace(/(^|\/)index\.html$/, '$1')}`;
-const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html'].includes(f)).map(pageUrl).sort();
+const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html', 'work/fyt/index.html'].includes(f)).map(pageUrl).sort();
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${listed.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
