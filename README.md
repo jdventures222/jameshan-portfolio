@@ -1,6 +1,6 @@
 # jameshan.fyt.life
 
-The site of James Han, a freelance software developer in Orange County, California, who builds websites, iPhone apps, automations and restaurant menus: a home page, a services page, a page for restaurant owners, a page for each project (a restaurant menu system and Fyt, an iPhone and Apple Watch app), an About page, a request form and a privacy page.
+The site of James Han, a freelance software developer in Orange County, California, who builds websites, iPhone apps, automations and restaurant menus: a home page, a services page, a page for restaurant owners, a page for each project (a restaurant menu system and Pressure, an iPhone and Apple Watch app), an About page, a request form and a privacy page.
 
 It is plain HTML and CSS with no framework and no trackers, plus three small scripts, one for the full-screen screenshot viewer, one for the copy-address button and one for the header's Start a project button, the request form's sending state, the live menu and keyboard focus in the picture rows; everything works without them.
 
