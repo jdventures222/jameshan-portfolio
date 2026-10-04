@@ -1,5 +1,5 @@
 {
-  "_about": "Single source for every number and link on the page. The build step injects these values; nothing on the page is typed by hand. Re-verify each entry with its _source before anything goes public.",
+  "_about": "Single source for every number and link on the page. The build step injects these values. Re-verify each entry with its _source before anything goes public.",
   "updated": "2026-09-28",
   "person": {
     "name": "James Han",
