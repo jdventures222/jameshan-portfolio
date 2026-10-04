@@ -181,7 +181,10 @@ main:focus { outline: none; }
 .hero-work .shot > a { width: 100%; }
 @media (min-width: 37.5em) { .hero-work { gap: 1rem; } }
 @media (min-width: 64em) {
-  .hero { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 31rem); column-gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  /* The heading's first two words stay on one line and the text column is never narrower than them, so the heading never
+     stacks one word a line; up to about 70em the pictures give up the difference. */
+  .hero { display: grid; grid-template-columns: minmax(min-content, 1fr) minmax(0, 31rem); column-gap: clamp(2rem, 4vw, 4rem); align-items: center; }
+  .hero h1 .keep { white-space: nowrap; }
   .hero-work { margin-top: 0; }
 }
 
