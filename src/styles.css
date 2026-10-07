@@ -800,7 +800,7 @@ main { container-type: inline-size; }
   /* A printed page can lead somewhere: a link that leaves the site prints its address, and the footer the site's own. */
   a[href^="http"]:not(.site-link)::after { content: " (" attr(href) ")"; font-family: var(--sans); font-size: 9pt; }
   .site-footer p::after { content: " · " attr(data-host); }
-  .skip-link, .nav ul, .nav .nav-cta, .copy, .copy-status, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .scripts, .no-print, .viewer[open] { display: none; }
+  .skip-link, .nav ul, .nav .nav-cta, .copy, .copy-status, .actions .button, .live, .live-menu, .more, picture, .portrait, .shot, .shots, .screens, .band, .scripts, .no-print, .viewer[open] { display: none; }
   html:has(.viewer[open]) { overflow: visible; }
   .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
   mark { margin: 0; padding: 0; background: none; color: var(--ink); }
