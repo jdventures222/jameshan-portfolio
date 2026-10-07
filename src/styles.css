@@ -387,8 +387,8 @@ mark {
 
 /* What I build: five cards, each a hook and three things you get; each card opens the Services page. */
 #services .more { grid-column: 1 / -1; max-width: var(--measure); }
-/* One row of cards that scrolls sideways and snaps, like the menus directory; the next card peeks in. The row keeps
-   its own scrollbar in view as the cue that it scrolls: a hairline track with a Pencil Grey thumb, inset to the text edge. */
+/* Below 64em, one row of cards that scrolls sideways and snaps, like the menus directory; the next card peeks in. The row
+   keeps its own scrollbar in view as the cue that it scrolls: a hairline track with a Pencil Grey thumb, inset to the text edge. */
 .offer {
   display: grid; grid-auto-flow: column; grid-auto-columns: min(84vw, 20.5rem); gap: 1rem;
   margin: 1.5rem calc(-1 * var(--pad)) 0; padding: 0.25rem var(--pad) 1.125rem; list-style: none;
@@ -419,6 +419,10 @@ mark {
 /* On desktop all four fit in one row across the band. */
 @media screen and (min-width: 64em) {
   .ledger > .band.shots { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+}
+/* From 64em the five cards wrap three and two across the column, all in view at once, and the row no longer scrolls. */
+@media screen and (min-width: 64em) {
+  .offer { grid-auto-flow: row; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-inline: 0; padding: 0; overflow: visible; scroll-snap-type: none; }
 }
 .offer-card { --edge: var(--hairline); position: relative; padding: 1.5rem 1.5rem 1.75rem; background: var(--surface); border: 1px solid var(--edge); border-radius: 8px; }
 /* The heading's link covers the whole card, so the card is one target whose name is just the heading. */
