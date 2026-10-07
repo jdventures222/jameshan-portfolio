@@ -68,6 +68,7 @@ function markNav(html, file) {
 
 function render(file) {
   let html = readFileSync(join(src, file), 'utf8');
+  data.page = dates[file];
   html = html.replace(/\{\{include (partials\/[\w.-]+)\}\}/g, (_, p) => {
     const part = readFileSync(join(src, p), 'utf8').trim();
     // A QR partial must encode this site, or a printed sheet points at an old host.
