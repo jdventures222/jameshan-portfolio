@@ -14,4 +14,4 @@ Node 22 or newer, nothing to install. The build renders every page in `src/`, fi
 
 ## Where the numbers come from
 
-The figures about the work (users, posts, ratings, languages, brands) are not typed by hand. Each one lives in `facts.json` next to a note on its source and the date it was read. The app's figures are re-read daily by a job that commits the new reading; the menu figures carry the date they were read.
+The figures about the work (users, posts, ratings, languages, brands) are not typed by hand. Each one lives in `facts.json` next to a note on its source and the date it was read. The app's figures are re-read daily by a job that commits a changed reading; the menu figures carry the date they were read.

@@ -41,8 +41,8 @@ const formats = {
   },
 };
 
-// The month under the home heading comes from the build itself (Pacific time), so it is never older than the last
-// deploy: the daily stats push rebuilds the site.
+// The month under the home heading comes from the build itself (Pacific time): the Pages workflow rebuilds the site on
+// the first of each month, and on every push.
 data.build = { month: formats.month(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date())) };
 
 // Only |count may take a list, and never an empty one.
