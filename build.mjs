@@ -4,6 +4,7 @@
 // {{include partials/<file>}} inlines a file from src/partials. Every value is HTML-escaped.
 import { readFileSync, writeFileSync, mkdirSync, rmSync, cpSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { join, dirname, relative, sep, posix } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const root = dirname(fileURLToPath(import.meta.url));
@@ -97,6 +98,15 @@ cpSync(src, dist, { recursive: true, filter: s => !skip(s) });
 // Page paths use forward slashes: they double as URL paths.
 const pages = readdirSync(src, { recursive: true }).map(f => f.split(sep).join('/'))
   .filter(f => f.endsWith('.html') && !f.startsWith('partials/')).sort();
+// Each page is dated by its own source file's history: its last commit (the sitemap's lastmod, its feed entry, About's
+// dateModified) and its first, renames followed (About's dateCreated). A file git does not know yet is dated now. CI
+// checks out the whole history (fetch-depth 0 in pages.yml); a shallow clone would date every page by its newest commit.
+const git = args => { try { return execFileSync('git', args, { cwd: root, encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { return ''; } };
+const now = new Date().toISOString();
+const dates = Object.fromEntries(pages.map(f => [f, {
+  modified: git(['log', '-1', '--format=%cI', '--', `src/${f}`]) || now,
+  created: git(['log', '--follow', '--format=%cI', '--', `src/${f}`]).split('\n').filter(Boolean).at(-1) || now,
+}]));
 for (const f of pages) {
   mkdirSync(dirname(join(dist, f)), { recursive: true });
   writeFileSync(join(dist, f), render(f));
@@ -109,10 +119,11 @@ writeFileSync(join(dist, 'styles.css'), [...fontCss, read('src/styles.css')].joi
 writeFileSync(join(dist, 'CNAME'), `${config.host}\n`);
 writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
 const pageUrl = f => `${origin}/${f.replace(/(^|\/)index\.html$/, '$1')}`;
-const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html', 'work/fyt/index.html'].includes(f)).map(pageUrl).sort();
+const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html', 'work/fyt/index.html'].includes(f))
+  .map(f => ({ url: pageUrl(f), updated: dates[f].modified })).sort((a, b) => (a.url < b.url ? -1 : a.url > b.url ? 1 : 0));
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${listed.map(u => `  <url><loc>${u}</loc></url>`).join('\n')}
+${listed.map(p => `  <url><loc>${p.url}</loc><lastmod>${p.updated}</lastmod></url>`).join('\n')}
 </urlset>
 `);
 
