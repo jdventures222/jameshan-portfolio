@@ -118,14 +118,38 @@ const fontCss = readdirSync(join(src, 'fonts')).filter(f => f.endsWith('.css')).
 writeFileSync(join(dist, 'styles.css'), [...fontCss, read('src/styles.css')].join('\n'));
 
 writeFileSync(join(dist, 'CNAME'), `${config.host}\n`);
-writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\n`);
+writeFileSync(join(dist, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${origin}/sitemap.xml\nSitemap: ${origin}/feed.xml\n`);
 const pageUrl = f => `${origin}/${f.replace(/(^|\/)index\.html$/, '$1')}`;
+// A page's title and description, as rendered (already HTML-escaped, which XML reads the same way).
+const head = f => { const html = readFileSync(join(dist, f), 'utf8'); return { title: html.match(/<title>([^<]*)<\/title>/)[1], summary: html.match(/<meta name="description" content="([^"]*)">/)[1] }; };
 const listed = pages.filter(f => !['404.html', 'request/thanks/index.html', 'request/error/index.html', 'work/fyt/index.html'].includes(f))
-  .map(f => ({ url: pageUrl(f), updated: dates[f].modified })).sort((a, b) => (a.url < b.url ? -1 : a.url > b.url ? 1 : 0));
+  .map(f => ({ url: pageUrl(f), updated: dates[f].modified, ...head(f) })).sort((a, b) => (a.url < b.url ? -1 : a.url > b.url ? 1 : 0));
 writeFileSync(join(dist, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${listed.map(p => `  <url><loc>${p.url}</loc><lastmod>${p.updated}</lastmod></url>`).join('\n')}
 </urlset>
+`);
+// An Atom feed of the same pages, for the engines that take one (Google's account-free route, told of changes through
+// the WebSub hub): each entry is a page's title and description under the date of its last change, newest first.
+const newest = [...listed].sort((a, b) => (a.updated < b.updated ? 1 : a.updated > b.updated ? -1 : 0));
+writeFileSync(join(dist, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>${escape(facts.person.name)}</title>
+  <subtitle>${head('index.html').summary}</subtitle>
+  <id>${origin}/</id>
+  <link rel="self" type="application/atom+xml" href="${origin}/feed.xml"/>
+  <link rel="alternate" type="text/html" href="${origin}/"/>
+  <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
+  <updated>${newest[0].updated}</updated>
+  <author><name>${escape(facts.person.name)}</name><uri>${origin}/</uri></author>
+${newest.map(p => `  <entry>
+    <title>${p.title}</title>
+    <id>${p.url}</id>
+    <link rel="alternate" type="text/html" href="${p.url}"/>
+    <updated>${p.updated}</updated>
+    <summary>${p.summary}</summary>
+  </entry>`).join('\n')}
+</feed>
 `);
 
 // Every local reference must resolve inside dist/ (root-absolute from dist/, relative from the page's own folder;
