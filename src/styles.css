@@ -788,7 +788,8 @@ main { container-type: inline-size; }
   .case-head .case-summary { display: block; }
   .case-head .case-summary > .case-shot { width: min(100%, 16.25rem); margin-top: 1.5rem; }
   .ledger > .service-shot { display: none; }
-  .ledger > .band.shots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* The desktop band only: below 64em the band is the sideways row, and its columns are its own. */
+  @media screen and (min-width: 64em) { .ledger > .band.shots { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 }
 
 /* Print: black on white. The home page prints as a one-page sheet with its QR code. */
