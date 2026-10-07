@@ -40,6 +40,10 @@ const formats = {
   },
 };
 
+// The month under the home heading comes from the build itself (Pacific time), so it is never older than the last
+// deploy: the daily stats push rebuilds the site.
+data.build = { month: formats.month(new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date())) };
+
 // Only |count may take a list, and never an empty one.
 function lookup(path, fmt) {
   const v = path.split('.').reduce((o, k) => (o == null ? undefined : o[k]), data);

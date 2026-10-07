@@ -171,6 +171,8 @@ main:focus { outline: none; }
 .reach .hero-action { grid-area: action; display: grid; justify-items: start; row-gap: 0.5rem; }
 /* Lighter than --secondary but still 4.5:1 on both grounds. */
 .reply { color: color-mix(in srgb, var(--secondary) 85%, var(--ground)); font-size: 0.8125rem; }
+/* A dated line under the heading, set like the stamps; the build fills in its month. */
+.availability { margin-top: 1rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; color: var(--secondary); }
 @media (min-width: 30em) { .reach .portrait { width: 7.5rem; } }
 .address { color: var(--ink); font-family: var(--sans); font-weight: 500; overflow-wrap: anywhere; }
 @media (min-width: 75em) { .hero { padding-block: 4.5rem 1rem; } }
