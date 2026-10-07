@@ -42,7 +42,7 @@
     "review_count": 5,
     "latest_version": "1.0.45",
     "latest_version_date": "2026-09-30",
-    "app_store_url": "https://apps.apple.com/us/app/fyt-run-club-gym-tracker/id6783633047",
+    "app_store_url": "https://apps.apple.com/us/app/pressure-workout-streak/id6783633047",
     "site_url": "https://pressure.fyt.life",
     "commits_since_2026_05_01": 3425,
     "swiftui_files": 283,
@@ -63,7 +63,7 @@
       "updates_since_launch": "the App Store listing's version history: one dated entry per public release after the launch release, the first 1.0.17 (2026-07-07); re-counted daily",
       "chat_posts, chat_posts_since": "read-only query of the production database: announcements with sent_to_imessage_at set (count, earliest date), re-read daily; on 2026-09-24, 438 posts covered 346 distinct workouts (a workout can be posted to more than one group chat), so the page says \"workout posts\"",
       "background_upload_since": "version 1.0.43 release notes and App Store listing: a run finished on the Watch reaches Pressure in the background; only workouts recorded by Pressure's own Watch app",
-      "app_store_url": "the App Store lookup's trackViewUrl for id 6783633047, read 2026-09-24",
+      "app_store_url": "the App Store lookup's trackViewUrl for id 6783633047, read 2026-10-07",
       "site_url": "Pressure's public website, which James built"
     }
   },
@@ -118,11 +118,12 @@
   "links": {
     "github": "https://github.com/jdventures222",
     "upwork": null,
-    "app_store": "https://apps.apple.com/us/app/fyt-run-club-gym-tracker/id6783633047",
+    "app_store": "https://apps.apple.com/us/app/pressure-workout-streak/id6783633047",
     "app_store_developer": "https://apps.apple.com/us/developer/james-han/id1896170542",
     "_sources": {
       "github": "linked from /about/ by James's decision of 2026-09-24, after his profile README fix (pushed 2026-09-24)",
       "upwork": "not linked: James decided on 2026-09-23 to leave Upwork out",
+      "app_store": "the App Store lookup's trackViewUrl for id 6783633047, read 2026-10-07",
       "app_store_developer": "the App Store lookup's artistViewUrl (artistName James Han, artistId 1896170542), read 2026-09-24"
     }
   }
