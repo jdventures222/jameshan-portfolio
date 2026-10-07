@@ -1,6 +1,6 @@
 {
   "_about": "Single source for every number and link on the page. The build step injects these values. Re-verify each entry with its _source before anything goes public.",
-  "updated": "2026-09-28",
+  "updated": "2026-10-06",
   "person": {
     "name": "James Han",
     "role": "Freelance software developer",
@@ -107,6 +107,12 @@
     "sb68_chain_locations": 20,
     "_sources": {
       "sb68_in_force, sb68_chain_locations": "California SB 68 (Chapter 741, Statutes of 2025), Health and Safety Code section 114093.5: \"Commencing July 1, 2026\", for food facilities subject to 21 U.S.C. 343(q)(5)(H), which are chains of 20 or more locations; read 2026-09-24 at https://leginfo.legislature.ca.gov/faces/billNavClient.xhtml?bill_id=202520260SB68"
+    }
+  },
+  "terms": {
+    "guarantee_months": 12,
+    "_sources": {
+      "guarantee_months": "James's decision, 2026-10-06: \"12 months\" for the written guarantee on Services: \"If something I built doesn't work as we agreed, I fix it at no charge for 12 months after launch.\""
     }
   },
   "links": {
