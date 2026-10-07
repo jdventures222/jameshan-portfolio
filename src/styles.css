@@ -772,6 +772,19 @@ html:has(.live-frame:modal) { overflow: hidden; }
   .site-header { view-transition-name: site-header; }
 }
 
+/* Text enlarged on its own (a root font size above the browser's default; zoom reflows instead): the em media queries
+   keep the desktop layout while every rem grows, so where main is narrower than 64rem the three first-screen arrangements
+   that need the width fall back to their narrower ones. A container query reads rem against the enlarged root. */
+main { container-type: inline-size; }
+@container (max-width: 63.9375rem) {
+  .hero { display: block; }
+  .hero h1 .keep { white-space: normal; }
+  .hero-work { margin-top: 1.75rem; }
+  .case-head .case-summary { display: block; }
+  .case-head .case-summary > .case-shot { width: min(100%, 16.25rem); margin-top: 1.5rem; }
+  .ledger > .service-shot { display: none; }
+}
+
 /* Print: black on white. The home page prints as a one-page sheet with its QR code. */
 .print-only { display: none; }
 @media print {
