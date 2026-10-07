@@ -131,12 +131,12 @@ ${listed.map(p => `  <url><loc>${p.url}</loc><lastmod>${p.updated}</lastmod></ur
 `);
 // An Atom feed of the same pages, for the engines that take one (Google's account-free route, told of changes through
 // the WebSub hub): each entry is a page's title and description under the date of its last change, newest first.
-const newest = [...listed].sort((a, b) => (a.updated < b.updated ? 1 : a.updated > b.updated ? -1 : 0));
+const newest = [...listed].sort((a, b) => Date.parse(b.updated) - Date.parse(a.updated));
 writeFileSync(join(dist, 'feed.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>${escape(facts.person.name)}</title>
   <subtitle>${head('index.html').summary}</subtitle>
-  <id>${origin}/</id>
+  <id>${origin}/feed.xml</id>
   <link rel="self" type="application/atom+xml" href="${origin}/feed.xml"/>
   <link rel="alternate" type="text/html" href="${origin}/"/>
   <link rel="hub" href="https://pubsubhubbub.appspot.com/"/>
