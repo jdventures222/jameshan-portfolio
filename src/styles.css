@@ -161,6 +161,9 @@ main:focus { outline: none; }
   font-size: clamp(2.125rem, 1.3rem + 3vw, 3.375rem);
   font-weight: 560; line-height: 1.08;
 }
+/* Under 340 px the heading's first two words would not fit on one line at the Display step, so it steps down to 31 px,
+   still above the Portfolio heading's 30. */
+@media (max-width: 21.1875em) { .hero h1 { font-size: 1.9375rem; } }
 /* The photo with the button and the reply line centred beside it. */
 .reach {
   display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "photo action";
@@ -169,8 +172,7 @@ main:focus { outline: none; }
 }
 .reach .portrait { grid-area: photo; width: 5.5rem; margin-top: 0; }
 .reach .hero-action { grid-area: action; display: grid; justify-items: start; row-gap: 0.5rem; }
-/* Lighter than --secondary but still 4.5:1 on both grounds. */
-.reply { color: color-mix(in srgb, var(--secondary) 85%, var(--ground)); font-size: 0.8125rem; }
+.reply { color: var(--secondary); font-size: 0.9375rem; }
 /* A dated line under the heading, set like the stamps; the build fills in its month. */
 .availability { margin-top: 1rem; font-family: var(--sans); font-size: 0.9375rem; font-weight: 600; line-height: 1.45; color: var(--secondary); }
 @media (min-width: 30em) { .reach .portrait { width: 7.5rem; } }
@@ -794,6 +796,9 @@ main { container-type: inline-size; }
   .project-menus, .project-fyt { --project: var(--hairline); --project-text: var(--secondary); }
   body { font-size: 10.5pt; line-height: 1.45; }
   a { color: inherit; text-decoration: none; }
+  /* A printed page can lead somewhere: a link that leaves the site prints its address, and the footer the site's own. */
+  a[href^="http"]:not(.site-link)::after { content: " (" attr(href) ")"; font-family: var(--sans); font-size: 9pt; }
+  .site-footer p::after { content: " · " attr(data-host); }
   .skip-link, .nav ul, .nav .nav-cta, .copy, .copy-status, .actions .button, .live, .more, picture, .portrait, .shot, .shots, .screens, .band, .scripts, .no-print, .viewer[open] { display: none; }
   html:has(.viewer[open]) { overflow: visible; }
   .button, .facts .button { display: inline; min-height: 0; margin: 0; padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
