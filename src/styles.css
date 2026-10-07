@@ -495,9 +495,8 @@ mark {
 .email-alt { display: grid; justify-items: start; color: var(--secondary); font-family: var(--sans); font-size: 1rem; line-height: 1.5; }
 .email-alt .address { font-size: 1.0625rem; }
 .email-alt .copy { margin-top: 0.625rem; }
-/* /restaurants/, under the pictures: the live menu, Start a project, then the case study. */
+/* /restaurants/, under the pictures: Start a project, then the case study. */
 .actions .more { margin-top: 0; }
-.actions > .live-menu { justify-self: stretch; }
 
 /* Footer */
 .site-footer { margin-top: 3rem; padding-block: 1.75rem 2.5rem; border-top: 1px solid var(--hairline); }
@@ -523,6 +522,9 @@ h1, h2, h3 { hanging-punctuation: first; }
 .case-head > .ledger, .case-head > .about-intro, .case-head > .lead { margin-top: 1.5rem; }
 .lead { font-size: 1.25rem; line-height: 1.5; }
 .case-head > .lead + p { margin-top: 1rem; }
+/* /restaurants/: the live menu's button sits directly under the lead, the restaurant-group line after it. */
+.case-head > .live-menu { margin-top: 1.25rem; }
+.case-head > .live-menu + p { margin-top: 1.25rem; }
 .about-intro > p + p { margin-top: 1rem; }
 .portrait { display: block; }
 .portrait img { border-radius: 4px; }
